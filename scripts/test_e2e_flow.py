@@ -146,7 +146,7 @@ def run_e2e_flow():
     stats = dash_res.json()
     print(f"  [OK] Owner Listings: {stats['owner_metrics']['total_equipment']}")
     print(f"  [OK] Owner Completed Rentals: {stats['owner_metrics']['completed_rentals']}")
-    print(f"  [OK] Owner Total Earnings: ${stats['owner_metrics']['total_earnings']}")
+    print(f"  [OK] Owner Total Earnings: INR {stats['owner_metrics']['total_earnings']}")
 
     print("\n==================================================")
     print("ALL END-TO-END WORKFLOW CHECKS PASSED PERFECTLY!")

@@ -317,10 +317,10 @@ export default function EquipmentCatalogPage() {
 
             {/* Max Daily Price Filter */}
             <div className="form-group" style={{ marginBottom: 0 }}>
-              <label className="form-label">Max Price / Day ($)</label>
+              <label className="form-label">Max Price / Day (₹)</label>
               <input
                 type="number"
-                placeholder="e.g. 500"
+                placeholder="e.g. 5000"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(e.target.value)}
                 className="form-input"

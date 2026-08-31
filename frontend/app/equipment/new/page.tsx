@@ -253,29 +253,29 @@ export default function NewEquipmentPage() {
             {/* Pricing & Location */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "16px" }}>
               <div className="form-group" style={{ marginBottom: 0 }}>
-                <label className="form-label">Rental Price per Day ($) *</label>
+                <label className="form-label">Rental Price per Day (₹) *</label>
                 <input
                   type="number"
-                  placeholder="e.g. 450"
+                  placeholder="e.g. 4500"
                   value={pricePerDay}
                   onChange={(e) => setPricePerDay(e.target.value)}
                   className="form-input"
                   min="1"
-                  step="0.01"
+                  step="1"
                   required
                 />
               </div>
 
               <div className="form-group" style={{ marginBottom: 0 }}>
-                <label className="form-label">Security Deposit ($)</label>
+                <label className="form-label">Security Deposit (₹)</label>
                 <input
                   type="number"
-                  placeholder="e.g. 1000"
+                  placeholder="e.g. 10000"
                   value={securityDeposit}
                   onChange={(e) => setSecurityDeposit(e.target.value)}
                   className="form-input"
                   min="0"
-                  step="0.01"
+                  step="1"
                 />
               </div>
 
@@ -283,7 +283,7 @@ export default function NewEquipmentPage() {
                 <label className="form-label">Equipment Location *</label>
                 <input
                   type="text"
-                  placeholder="City, State (e.g. Ames, Iowa)"
+                  placeholder="City, State (e.g. Ludhiana, Punjab)"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   className="form-input"

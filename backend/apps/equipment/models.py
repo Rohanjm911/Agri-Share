@@ -74,13 +74,13 @@ class Equipment(models.Model):
     price_per_day = models.DecimalField(
         max_digits=10,
         decimal_places=2,
-        help_text="Rental rate per calendar day ($)",
+        help_text="Rental rate per calendar day (₹)",
     )
     security_deposit = models.DecimalField(
         max_digits=10,
         decimal_places=2,
         default=0.00,
-        help_text="Refundable deposit amount ($)",
+        help_text="Refundable deposit amount (₹)",
     )
     location = models.CharField(
         max_length=255,
@@ -138,7 +138,7 @@ class Equipment(models.Model):
         return self.reviews.count()
 
     def __str__(self):
-        return f"{self.name} ({self.brand} {self.model}) - ${self.price_per_day}/day"
+        return f"{self.name} ({self.brand} {self.model}) - ₹{self.price_per_day}/day"
 
 class EquipmentImage(models.Model):
     """Gallery images for an equipment listing."""

@@ -239,7 +239,7 @@ export function HeroSection() {
             >
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
                 <span style={{ fontWeight: "700", fontSize: "0.95rem" }}>John Deere 8R 370 HP</span>
-                <span style={{ color: "var(--primary)", fontWeight: "800" }}>$450 / day</span>
+                <span style={{ color: "var(--primary)", fontWeight: "800" }}>₹4,500 / day</span>
               </div>
               <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                 <span className="badge badge-info">Cedar Rapids, IA</span>
