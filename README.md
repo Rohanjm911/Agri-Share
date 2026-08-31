@@ -222,14 +222,15 @@ AgriShare/
 
 ## 🔑 Seed Data & Demo Accounts
 
-The database comes pre-seeded with realistic agricultural machinery across 7 categories (Tractors, Harvesters, Planters, Sprayers, Tillage, Balers, Haulers).
+The database comes pre-seeded with realistic Indian agricultural machinery across 7 categories (Tractors, Combine Harvesters, Tillage & Rotavators, Seeding & Super Seeders, Sprayers, Straw Balers, Threshers & Haulage).
 
 | Role | Email | Password | Details |
 | :--- | :--- | :--- | :--- |
-| **Admin** | `admin@agrishare.com` | `admin12345` | Superuser / Staff admin |
-| **Owner 1** | `john.farmer@agrishare.com` | `password123` | John Deere 8R, Case IH 8250 Combine |
-| **Owner 2** | `sarah.agri@agrishare.com` | `password123` | Kinze Planter, Hagie Sprayer |
-| **Renter** | `david.miller@agrishare.com` | `password123` | Active renter with sample rentals |
+| **Admin** | `admin@agrishare.com` | `admin12345` | Platform Administrator (New Delhi) |
+| **Owner (Punjab)** | `gurpreet.singh@agrishare.com` | `password123` | Gurpreet Singh: Mahindra 585 DI, Swaraj 855 FE (Ludhiana) |
+| **Owner (Gujarat)** | `rajesh.patel@agrishare.com` | `password123` | Rajesh Patel: John Deere 5310, Fieldking Thresher (Rajkot) |
+| **Owner (Haryana)** | `vikram.choudhary@agrishare.com` | `password123` | Vikram Choudhary: Preet 987 Harvester, Dasmesh Super Seeder (Karnal) |
+| **Renter (MP)** | `ramesh.sharma@agrishare.com` | `password123` | Ramesh Sharma: Active grower & renter (Indore) |
 
 *(Quick demo buttons are also built directly into the `/login` page for 1-click testing).*
 

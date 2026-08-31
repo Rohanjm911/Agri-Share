@@ -1,103 +1,86 @@
 /* ==========================================================================
-   AgriShare Ultra-Modern Luxury Emerald & Gold Design System
+   AgriShare Clean, Solid Modern Agricultural Design System
+   (Zero gradients, high contrast, clean solid borders and colors)
    ========================================================================== */
 
 :root {
-  /* Font Family Variables */
+  /* Font Families */
   --font-family-heading: var(--font-outfit), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-family-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  /* Light Mode Luxury Agricultural Palette */
-  --bg-main: #f7faf6;
+  /* Light Mode - Clean Flat Agricultural Palette */
+  --bg-main: #f4f6f4;
   --bg-surface: #ffffff;
-  --bg-subtle: #edf5eb;
+  --bg-subtle: #eaf1eb;
   --bg-card: #ffffff;
-  --bg-card-hover: #fbfdfa;
-  --bg-glass: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: #f9fbf9;
 
-  --text-main: #0c180e;
-  --text-muted: #4e6052;
-  --text-subtle: #798b7d;
+  --text-main: #141c16;
+  --text-muted: #4e5e52;
+  --text-subtle: #738477;
   --text-inverse: #ffffff;
 
-  --primary: #059669;
-  --primary-hover: #047857;
-  --primary-active: #065f46;
-  --primary-light: #e6f7f0;
-  --primary-gradient: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
-  --primary-glow: rgba(5, 150, 105, 0.25);
+  --primary: #236f41;
+  --primary-hover: #1a5632;
+  --primary-active: #144327;
+  --primary-light: #ebf4ee;
 
   --accent-gold: #d97706;
   --accent-gold-hover: #b45309;
   --accent-gold-light: #fef3c7;
-  --accent-gold-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  --accent-gold-glow: rgba(245, 158, 11, 0.25);
 
-  --accent-emerald: #10b981;
-  --accent-emerald-light: #ecfdf5;
+  --border: #dbe3dc;
+  --border-focus: #236f41;
+  --border-hover: #88a892;
 
-  --border: #e0e9df;
-  --border-focus: #059669;
-  --border-hover: #10b981;
-  
-  --shadow-xs: 0 1px 2px 0 rgba(12, 24, 14, 0.04);
-  --shadow-sm: 0 2px 4px 0 rgba(12, 24, 14, 0.06);
-  --shadow-md: 0 6px 16px -2px rgba(12, 24, 14, 0.08);
-  --shadow-lg: 0 14px 28px -4px rgba(12, 24, 14, 0.1);
-  --shadow-xl: 0 24px 48px -8px rgba(12, 24, 14, 0.12);
-  --shadow-card: 0 4px 20px -2px rgba(12, 24, 14, 0.05);
-  --shadow-card-hover: 0 16px 36px -4px rgba(5, 150, 105, 0.16);
-  
-  --radius-xs: 6px;
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 10px 0 rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 8px 20px 0 rgba(0, 0, 0, 0.1);
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
   --radius-full: 9999px;
 }
 
 [data-theme="dark"],
 .dark {
-  /* Dark Mode Luxury Emerald & Obsidian Palette */
-  --bg-main: #060a07;
-  --bg-surface: #0d150f;
-  --bg-subtle: #121e15;
-  --bg-card: #0f1911;
-  --bg-card-hover: #152418;
-  --bg-glass: rgba(13, 21, 15, 0.88);
+  /* Dark Mode - Clean Solid Charcoal & Green Palette */
+  --bg-main: #111613;
+  --bg-surface: #181f1b;
+  --bg-subtle: #212b25;
+  --bg-card: #1a221d;
+  --bg-card-hover: #222d26;
 
-  --text-main: #f0f7f1;
-  --text-muted: #95a899;
-  --text-subtle: #687b6d;
-  --text-inverse: #060a07;
+  --text-main: #f0f5f1;
+  --text-muted: #9db0a1;
+  --text-subtle: #6c7f70;
+  --text-inverse: #111613;
 
-  --primary: #10b981;
-  --primary-hover: #34d399;
-  --primary-active: #059669;
-  --primary-light: rgba(16, 185, 129, 0.16);
-  --primary-gradient: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
-  --primary-glow: rgba(16, 185, 129, 0.35);
+  --primary: #38a169;
+  --primary-hover: #48bb78;
+  --primary-active: #2f855a;
+  --primary-light: #1f3326;
 
-  --accent-gold: #fbbf24;
-  --accent-gold-hover: #f59e0b;
-  --accent-gold-light: rgba(251, 191, 36, 0.15);
-  --accent-gold-gradient: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  --accent-gold-glow: rgba(251, 191, 36, 0.3);
+  --accent-gold: #f59e0b;
+  --accent-gold-hover: #fbbf24;
+  --accent-gold-light: #332812;
 
-  --accent-emerald: #34d399;
-  --accent-emerald-light: rgba(52, 211, 153, 0.15);
-
-  --border: #1b291d;
-  --border-focus: #10b981;
-  --border-hover: #34d399;
+  --border: #28362d;
+  --border-focus: #38a169;
+  --border-hover: #4a6353;
 
   --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
-  --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 6px 16px -2px rgba(0, 0, 0, 0.6);
-  --shadow-lg: 0 14px 28px -4px rgba(0, 0, 0, 0.7);
-  --shadow-xl: 0 24px 48px -8px rgba(0, 0, 0, 0.8);
-  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.55);
-  --shadow-card-hover: 0 16px 36px -4px rgba(16, 185, 129, 0.22);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 10px 0 rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.7);
+  --shadow-card: 0 2px 8px 0 rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 8px 20px 0 rgba(0, 0, 0, 0.6);
 }
 
 /* ==========================================================================
@@ -117,21 +100,21 @@ body {
   color: var(--text-main);
   min-height: 100vh;
   line-height: 1.6;
-  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.15s ease, color 0.15s ease;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-heading);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   color: var(--text-main);
   line-height: 1.25;
+  font-weight: 800;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.2s ease;
 }
 
 button, input, select, textarea {
@@ -139,37 +122,34 @@ button, input, select, textarea {
   font-size: inherit;
 }
 
-/* Custom Sleek Scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background: var(--bg-main);
 }
-
 ::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: var(--radius-full);
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
 }
 
-/* Responsive Grid Container */
+/* Container */
 .container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1240px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /* ==========================================================================
-   Buttons & Interactive Elements
+   Buttons - Clean Solid Styling (No Gradients)
    ========================================================================== */
 
 .btn {
@@ -177,21 +157,20 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 22px;
+  padding: 10px 20px;
   font-size: 0.95rem;
-  font-weight: 600;
-  border-radius: var(--radius-md);
+  font-weight: 700;
+  border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
   text-align: center;
   white-space: nowrap;
   user-select: none;
-  letter-spacing: -0.01em;
 }
 
 .btn:active {
-  transform: scale(0.98);
+  transform: translateY(1px);
 }
 
 .btn:disabled {
@@ -201,41 +180,37 @@ button, input, select, textarea {
 }
 
 .btn-primary {
-  background: var(--primary-gradient);
+  background-color: var(--primary);
   color: #ffffff;
-  box-shadow: 0 4px 14px var(--primary-glow);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-color: var(--primary);
 }
 
 .btn-primary:hover:not(:disabled) {
-  box-shadow: 0 6px 20px var(--primary-glow);
-  filter: brightness(1.06);
-  transform: translateY(-1px);
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
 }
 
 .btn-secondary {
   background-color: var(--bg-card);
   color: var(--text-main);
   border: 1px solid var(--border);
-  box-shadow: var(--shadow-xs);
 }
 
 .btn-secondary:hover:not(:disabled) {
   background-color: var(--bg-subtle);
   border-color: var(--primary);
   color: var(--primary);
-  transform: translateY(-1px);
 }
 
 .btn-accent {
-  background: var(--accent-gold-gradient);
+  background-color: var(--accent-gold);
   color: #ffffff;
-  box-shadow: 0 4px 14px var(--accent-gold-glow);
+  border-color: var(--accent-gold);
 }
 
 .btn-accent:hover:not(:disabled) {
-  filter: brightness(1.08);
-  transform: translateY(-1px);
+  background-color: var(--accent-gold-hover);
+  border-color: var(--accent-gold-hover);
 }
 
 .btn-ghost {
@@ -250,45 +225,44 @@ button, input, select, textarea {
 }
 
 .btn-danger {
-  background-color: rgba(239, 68, 68, 0.12);
-  color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.25);
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
 }
 
 .btn-danger:hover:not(:disabled) {
-  background-color: #ef4444;
+  background-color: #dc2626;
   color: #ffffff;
+  border-color: #dc2626;
 }
 
 .btn-sm {
   padding: 6px 14px;
   font-size: 0.85rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
 }
 
 .btn-lg {
-  padding: 14px 28px;
-  font-size: 1.05rem;
+  padding: 13px 26px;
+  font-size: 1.02rem;
   border-radius: var(--radius-md);
-  font-weight: 700;
 }
 
 /* ==========================================================================
-   Cards & Surfaces
+   Cards & Surfaces (Solid flat clean cards)
    ========================================================================== */
 
 .card {
   background-color: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
   overflow: hidden;
 }
 
 .card:hover {
   border-color: var(--border-hover);
-  box-shadow: var(--shadow-card-hover);
 }
 
 .card-interactive {
@@ -296,20 +270,12 @@ button, input, select, textarea {
 }
 
 .card-interactive:hover {
-  transform: translateY(-4px);
-}
-
-.card-glass {
-  background: var(--bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-card-hover);
 }
 
 /* ==========================================================================
-   Badges & Pills
+   Badges - Solid / Flat Styling
    ========================================================================== */
 
 .badge {
@@ -320,32 +286,32 @@ button, input, select, textarea {
   font-size: 0.75rem;
   font-weight: 700;
   border-radius: var(--radius-full);
-  letter-spacing: 0.02em;
   text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .badge-success {
-  background-color: var(--accent-emerald-light);
+  background-color: var(--primary-light);
   color: var(--primary);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid var(--border);
 }
 
 .badge-warning {
   background-color: var(--accent-gold-light);
   color: var(--accent-gold);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  border: 1px solid var(--border);
 }
 
 .badge-info {
-  background-color: rgba(14, 165, 233, 0.12);
-  color: #0284c7;
-  border: 1px solid rgba(14, 165, 233, 0.25);
+  background-color: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
 }
 
 .badge-danger {
-  background-color: rgba(239, 68, 68, 0.12);
-  color: #dc2626;
-  border: 1px solid rgba(239, 68, 68, 0.25);
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
 }
 
 .badge-muted {
@@ -367,21 +333,20 @@ button, input, select, textarea {
   font-size: 0.88rem;
   font-weight: 700;
   color: var(--text-main);
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
+  margin-bottom: 7px;
 }
 
 .form-input,
 .form-select,
 .form-textarea {
   width: 100%;
-  padding: 12px 16px;
+  padding: 11px 14px;
   font-size: 0.95rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   background-color: var(--bg-card);
   color: var(--text-main);
-  transition: all 0.2s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
   outline: none;
 }
 
@@ -389,49 +354,11 @@ button, input, select, textarea {
 .form-select:focus,
 .form-textarea:focus {
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px var(--primary-glow);
+  box-shadow: 0 0 0 3px var(--primary-light);
 }
 
 .form-input::placeholder,
 .form-textarea::placeholder {
   color: var(--text-subtle);
-  opacity: 0.7;
-}
-
-/* ==========================================================================
-   Animations & Keyframes
-   ========================================================================== */
-
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes floatSlow {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.animate-float {
-  animation: floatSlow 6s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulseGlow 3s ease-in-out infinite;
-}
-
-/* Shimmer gradient line */
-.shimmer-line {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--primary), var(--accent-gold), transparent);
+  opacity: 0.8;
 }

@@ -1,41 +1,37 @@
 "use client";
 
 import React from "react";
-import { Tractor, MapPin, CalendarCheck, Star, Sparkles, Shield, Cpu, Clock } from "lucide-react";
+import { Tractor, MapPin, CalendarCheck, Star, Sparkles, Shield, IndianRupee } from "lucide-react";
 
 export function FeaturesSection() {
   const features = [
     {
       icon: Tractor,
-      title: "Wide Machinery Fleet",
+      title: "Wide Agricultural Machinery Fleet",
       description:
-        "Access high-horsepower row crop tractors, combine harvesters, air seeders, boom sprayers, and tillage implements from top global and local brands.",
-      tag: "100+ Listings",
-      gradient: "var(--primary-gradient)",
+        "Access top Indian tractors, combine harvesters, rotavators, and super seeders from trusted brands including Mahindra, Swaraj, Sonalika, Preet, Shaktiman, and John Deere.",
+      tag: "500+ Farm Machines",
     },
     {
       icon: MapPin,
-      title: "Hyper-Local Proximity",
+      title: "Local District Proximity",
       description:
-        "Find machines within your district or state to minimize transit haulage, cut freight costs, and deploy immediately when optimal weather windows open.",
-      tag: "Geolocated Search",
-      gradient: "linear-gradient(135deg, #0ea5e9, #0284c7)",
+        "Locate farm machinery in your taluka, district, or state to minimize transit time and save diesel freight costs during peak sowing and harvesting windows.",
+      tag: "Punjab to Maharashtra",
     },
     {
-      icon: CalendarCheck,
-      title: "Frictionless Booking",
+      icon: IndianRupee,
+      title: "Transparent Daily Rates (₹)",
       description:
-        "Choose rental dates, view automated server-calculated totals and transparent security deposits with zero hidden fees.",
-      tag: "Instant Contracts",
-      gradient: "var(--accent-gold-gradient)",
+        "Transparent pricing with automated daily rate calculation and refundable security deposits. Zero hidden charges or broker commissions.",
+      tag: "Zero Middlemen",
     },
     {
       icon: Star,
-      title: "Verified Farmer Reviews",
+      title: "Verified Kisan Reviews",
       description:
-        "Read honest ratings and performance reviews left exclusively by growers who completed actual rental contracts on the platform.",
-      tag: "100% Verified",
-      gradient: "linear-gradient(135deg, #8b5cf6, #6d28d9)",
+        "Read honest feedback and star ratings left exclusively by farmers who rented and operated the machinery in actual field conditions.",
+      tag: "100% Verified Farmers",
     },
   ];
 
@@ -43,46 +39,44 @@ export function FeaturesSection() {
     <section
       id="features"
       style={{
-        paddingTop: "96px",
-        paddingBottom: "96px",
+        paddingTop: "80px",
+        paddingBottom: "80px",
         backgroundColor: "var(--bg-main)",
-        position: "relative",
       }}
     >
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: "center", maxWidth: "640px", margin: "0 auto 64px" }}>
+        <div style={{ textAlign: "center", maxWidth: "640px", margin: "0 auto 56px" }}>
           <div
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "6px",
-              padding: "4px 14px",
+              padding: "4px 12px",
               borderRadius: "var(--radius-full)",
               backgroundColor: "var(--primary-light)",
               color: "var(--primary)",
               fontSize: "0.82rem",
               fontWeight: "700",
               textTransform: "uppercase",
-              letterSpacing: "0.06em",
-              marginBottom: "16px",
+              letterSpacing: "0.04em",
+              marginBottom: "14px",
             }}
           >
-            <Sparkles size={14} /> Core Platform Advantages
+            <Sparkles size={14} /> Core Platform Features
           </div>
           <h2
             style={{
-              fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
-              fontWeight: "900",
-              letterSpacing: "-0.03em",
+              fontSize: "clamp(1.9rem, 3.5vw, 2.5rem)",
+              fontWeight: "800",
               color: "var(--text-main)",
-              marginBottom: "16px",
+              marginBottom: "14px",
             }}
           >
-            Built for Modern Agricultural Productivity
+            Designed for Indian Agriculture & Modern Kisans
           </h2>
-          <p style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: 1.65 }}>
-            AgriShare unites cutting-edge technology with community farming networks to maximize machine efficiency and reduce capital expenditure.
+          <p style={{ color: "var(--text-muted)", fontSize: "1.02rem" }}>
+            AgriShare connects tractor owners with neighboring farmers to boost mechanization and maximize crop yield.
           </p>
         </div>
 
@@ -91,7 +85,7 @@ export function FeaturesSection() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "28px",
+            gap: "24px",
           }}
         >
           {features.map((f, idx) => {
@@ -101,44 +95,44 @@ export function FeaturesSection() {
                 key={idx}
                 className="card card-interactive"
                 style={{
-                  padding: "32px 26px",
+                  padding: "28px 24px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
+                  backgroundColor: "var(--bg-card)",
                 }}
               >
                 <div>
                   <div
                     style={{
-                      width: "56px",
-                      height: "56px",
-                      borderRadius: "var(--radius-md)",
-                      background: f.gradient,
+                      width: "48px",
+                      height: "48px",
+                      borderRadius: "var(--radius-sm)",
+                      backgroundColor: "var(--primary)",
                       color: "#ffffff",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      marginBottom: "24px",
-                      boxShadow: "0 6px 16px rgba(0,0,0,0.12)",
+                      marginBottom: "20px",
                     }}
                   >
-                    <Icon size={28} />
+                    <Icon size={24} />
                   </div>
                   <h3
                     style={{
-                      fontSize: "1.25rem",
+                      fontSize: "1.18rem",
                       fontWeight: "800",
                       color: "var(--text-main)",
-                      marginBottom: "12px",
+                      marginBottom: "10px",
                     }}
                   >
                     {f.title}
                   </h3>
-                  <p style={{ color: "var(--text-muted)", fontSize: "0.92rem", lineHeight: "1.65" }}>
+                  <p style={{ color: "var(--text-muted)", fontSize: "0.92rem", lineHeight: "1.6" }}>
                     {f.description}
                   </p>
                 </div>
-                <div style={{ marginTop: "28px", paddingTop: "16px", borderTop: "1px solid var(--border)" }}>
+                <div style={{ marginTop: "24px", paddingTop: "14px", borderTop: "1px solid var(--border)" }}>
                   <span className="badge badge-success">{f.tag}</span>
                 </div>
               </div>

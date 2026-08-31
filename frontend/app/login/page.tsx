@@ -130,26 +130,26 @@ function LoginForm() {
       </form>
 
       {/* Demo Fast Login Buttons */}
-      <div style={{ marginTop: "32px", borderTop: "1px solid var(--border)", paddingTop: "20px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "0.82rem", fontWeight: "700", color: "var(--primary)", textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "12px" }}>
-          <Sparkles size={14} /> Quick Demo Accounts:
+      <div style={{ marginTop: "28px", borderTop: "1px solid var(--border)", paddingTop: "18px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "0.8rem", fontWeight: "700", color: "var(--primary)", textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "10px" }}>
+          <Sparkles size={14} /> Quick Demo Kisan Accounts:
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
           <button
             type="button"
-            onClick={() => handleQuickDemo("john.farmer@agrishare.com", "password123")}
+            onClick={() => handleQuickDemo("gurpreet.singh@agrishare.com", "password123")}
             className="btn btn-secondary btn-sm"
             style={{ fontSize: "0.78rem" }}
           >
-            Owner (John)
+            Owner (Gurpreet)
           </button>
           <button
             type="button"
-            onClick={() => handleQuickDemo("david.miller@agrishare.com", "password123")}
+            onClick={() => handleQuickDemo("ramesh.sharma@agrishare.com", "password123")}
             className="btn btn-secondary btn-sm"
             style={{ fontSize: "0.78rem" }}
           >
-            Renter (David)
+            Renter (Ramesh)
           </button>
         </div>
       </div>

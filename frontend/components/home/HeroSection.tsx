@@ -7,12 +7,10 @@ import {
   ArrowRight,
   ShieldCheck,
   Star,
-  Users,
   Search,
   Sparkles,
-  CheckCircle2,
   MapPin,
-  Zap,
+  CheckCircle2,
 } from "lucide-react";
 
 export function HeroSection() {
@@ -20,96 +18,69 @@ export function HeroSection() {
     <section
       style={{
         position: "relative",
-        overflow: "hidden",
-        paddingTop: "72px",
-        paddingBottom: "96px",
-        background: `
-          radial-gradient(circle at 85% 20%, var(--primary-light) 0%, transparent 40%),
-          radial-gradient(circle at 15% 70%, var(--accent-gold-light) 0%, transparent 35%),
-          linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-main) 100%)
-        `,
+        paddingTop: "64px",
+        paddingBottom: "80px",
+        backgroundColor: "var(--bg-surface)",
         borderBottom: "1px solid var(--border)",
       }}
     >
-      {/* Background ambient light */}
-      <div
-        style={{
-          position: "absolute",
-          top: "-150px",
-          right: "-100px",
-          width: "500px",
-          height: "500px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, var(--primary-glow) 0%, transparent 70%)",
-          pointerEvents: "none",
-          filter: "blur(40px)",
-        }}
-      />
-
-      <div className="container" style={{ position: "relative", zIndex: 2 }}>
+      <div className="container">
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "1fr",
-            gap: "56px",
+            gap: "48px",
             alignItems: "center",
           }}
           className="hero-grid"
         >
           {/* Hero Left Content */}
-          <div style={{ maxWidth: "680px" }}>
+          <div style={{ maxWidth: "660px" }}>
             <div
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "8px",
-                padding: "6px 16px",
+                padding: "6px 14px",
                 borderRadius: "var(--radius-full)",
-                backgroundColor: "var(--bg-card)",
+                backgroundColor: "var(--primary-light)",
                 border: "1px solid var(--border)",
                 fontSize: "0.85rem",
                 fontWeight: "700",
                 color: "var(--primary)",
-                marginBottom: "24px",
-                boxShadow: "var(--shadow-sm)",
+                marginBottom: "20px",
               }}
             >
-              <Sparkles size={16} />
-              <span>Next-Gen Agricultural Machinery Marketplace</span>
+              <Sparkles size={15} />
+              <span>India&apos;s Agricultural Equipment Sharing Network</span>
             </div>
 
             <h1
               style={{
-                fontSize: "clamp(2.6rem, 5.5vw, 4.2rem)",
+                fontSize: "clamp(2.4rem, 5vw, 3.8rem)",
                 fontWeight: "900",
-                lineHeight: "1.1",
-                letterSpacing: "-0.035em",
+                lineHeight: "1.15",
+                letterSpacing: "-0.03em",
                 color: "var(--text-main)",
-                marginBottom: "20px",
+                marginBottom: "18px",
               }}
             >
               Agricultural Machinery <br />
-              <span
-                style={{
-                  background: "var(--primary-gradient)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                On-Demand.
+              <span style={{ color: "var(--primary)" }}>
+                Directly from Local Farmers.
               </span>
             </h1>
 
             <p
               style={{
-                fontSize: "1.15rem",
-                lineHeight: "1.7",
+                fontSize: "1.1rem",
+                lineHeight: "1.65",
                 color: "var(--text-muted)",
-                marginBottom: "36px",
+                marginBottom: "32px",
               }}
             >
-              Rent high-performance tractors, combine harvesters, precision seeders, and sprayers
-              directly from verified equipment owners in your region.
+              Rent tractors, combine harvesters, rotavators, and super seeders from verified farm owners
+              across Punjab, Haryana, Madhya Pradesh, Gujarat, Maharashtra, and beyond.
             </p>
 
             {/* CTA Buttons */}
@@ -117,42 +88,42 @@ export function HeroSection() {
               style={{
                 display: "flex",
                 flexWrap: "wrap",
-                gap: "16px",
-                marginBottom: "48px",
+                gap: "14px",
+                marginBottom: "40px",
               }}
             >
               <Link href="/equipment" className="btn btn-primary btn-lg">
                 <Search size={18} />
-                <span>Explore Catalog</span>
+                <span>Search Equipment</span>
                 <ArrowRight size={18} />
               </Link>
               <Link href="/equipment/new" className="btn btn-secondary btn-lg">
                 <Tractor size={18} />
-                <span>List Your Machinery</span>
+                <span>List Your Tractor & Implements</span>
               </Link>
             </div>
 
-            {/* Verified Stats Bar */}
+            {/* Solid Verified Stats Bar */}
             <div
-              className="card-glass"
+              className="card"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
-                padding: "20px 24px",
+                padding: "18px 22px",
                 gap: "16px",
-                boxShadow: "var(--shadow-md)",
+                backgroundColor: "var(--bg-main)",
               }}
             >
               <div>
                 <div
                   style={{
-                    fontSize: "1.75rem",
+                    fontSize: "1.6rem",
                     fontWeight: "900",
                     color: "var(--primary)",
                     lineHeight: "1.2",
                   }}
                 >
-                  100+
+                  500+
                 </div>
                 <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "600" }}>
                   Verified Machines
@@ -161,7 +132,7 @@ export function HeroSection() {
               <div style={{ borderLeft: "1px solid var(--border)", paddingLeft: "16px" }}>
                 <div
                   style={{
-                    fontSize: "1.75rem",
+                    fontSize: "1.6rem",
                     fontWeight: "900",
                     color: "var(--accent-gold)",
                     lineHeight: "1.2",
@@ -170,55 +141,40 @@ export function HeroSection() {
                     gap: "4px",
                   }}
                 >
-                  4.9 <Star size={18} fill="var(--accent-gold)" />
+                  4.9 <Star size={16} fill="var(--accent-gold)" />
                 </div>
                 <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "600" }}>
-                  Average Rating
+                  Farmer Rating
                 </div>
               </div>
               <div style={{ borderLeft: "1px solid var(--border)", paddingLeft: "16px" }}>
                 <div
                   style={{
-                    fontSize: "1.75rem",
+                    fontSize: "1.6rem",
                     fontWeight: "900",
                     color: "var(--primary)",
                     lineHeight: "1.2",
                   }}
                 >
-                  100%
+                  ₹0
                 </div>
                 <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "600" }}>
-                  Secure Escrow
+                  Platform Brokerage
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Hero Right Visual Card */}
-          <div style={{ position: "relative" }}>
-            {/* Ambient Backlight */}
+          {/* Hero Right Visual Card - Indian Tractor & Equipment */}
+          <div>
             <div
+              className="card"
               style={{
-                position: "absolute",
-                inset: "-10px",
-                background: "var(--primary-gradient)",
-                opacity: 0.15,
-                borderRadius: "var(--radius-xl)",
-                filter: "blur(24px)",
-                zIndex: 0,
-              }}
-            />
-
-            <div
-              className="card-glass"
-              style={{
-                position: "relative",
-                zIndex: 1,
-                padding: "24px",
+                padding: "20px",
                 display: "flex",
                 flexDirection: "column",
-                gap: "20px",
-                border: "1px solid var(--border)",
+                gap: "16px",
+                backgroundColor: "var(--bg-card)",
               }}
             >
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -227,100 +183,90 @@ export function HeroSection() {
                     style={{
                       width: "36px",
                       height: "36px",
-                      borderRadius: "var(--radius-md)",
-                      background: "var(--primary-gradient)",
+                      borderRadius: "var(--radius-sm)",
+                      backgroundColor: "var(--primary)",
                       color: "#ffffff",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      boxShadow: "0 4px 10px var(--primary-glow)",
                     }}
                   >
-                    <Zap size={18} />
+                    <Tractor size={20} />
                   </div>
                   <div>
-                    <div style={{ fontWeight: "800", fontSize: "0.95rem" }}>Live Machine Network</div>
-                    <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>Instant Availability</div>
+                    <div style={{ fontWeight: "800", fontSize: "0.95rem" }}>Featured Machinery</div>
+                    <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>Available for Booking</div>
                   </div>
                 </div>
-                <span className="badge badge-success">Available Today</span>
+                <span className="badge badge-success">Ready in Field</span>
               </div>
 
-              {/* Real-Life Equipment Photo Preview */}
+              {/* Real Indian Mahindra Tractor Photo */}
               <div
                 style={{
-                  borderRadius: "var(--radius-md)",
+                  borderRadius: "var(--radius-sm)",
                   overflow: "hidden",
                   border: "1px solid var(--border)",
-                  position: "relative",
-                  boxShadow: "var(--shadow-md)",
                 }}
               >
-                <div style={{ height: "200px", position: "relative" }}>
+                <div style={{ height: "220px", position: "relative" }}>
                   <img
-                    src="/images/equipment/tractor_john_deere.jpg"
-                    alt="John Deere 8R 370 Row Crop Tractor"
+                    src="/images/equipment/mahindra_tractor.jpg"
+                    alt="Mahindra Yuvo Tech+ 585 DI Tractor"
                     style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: "linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.6) 100%)",
-                    }}
                   />
                   <span
                     style={{
                       position: "absolute",
-                      top: "12px",
-                      left: "12px",
+                      top: "10px",
+                      left: "10px",
                       fontSize: "0.72rem",
                       fontWeight: "800",
                       padding: "4px 10px",
                       borderRadius: "var(--radius-full)",
-                      backgroundColor: "rgba(5, 150, 105, 0.92)",
+                      backgroundColor: "var(--primary)",
                       color: "#ffffff",
-                      backdropFilter: "blur(4px)",
                     }}
                   >
-                    POPULAR RENTAL
+                    POPULAR IN PUNJAB
                   </span>
                 </div>
 
-                <div style={{ padding: "16px", backgroundColor: "var(--bg-card)" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
-                    <h3 style={{ fontWeight: "800", fontSize: "1.1rem" }}>John Deere 8R 370 HP</h3>
+                <div style={{ padding: "16px", backgroundColor: "var(--bg-main)" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                    <h3 style={{ fontWeight: "800", fontSize: "1.1rem" }}>Mahindra Yuvo 585 DI (49 HP)</h3>
                     <div style={{ color: "var(--primary)", fontWeight: "900", fontSize: "1.15rem" }}>
-                      ₹4,500 <span style={{ fontSize: "0.78rem", color: "var(--text-muted)", fontWeight: "600" }}>/day</span>
+                      ₹2,800 <span style={{ fontSize: "0.78rem", color: "var(--text-muted)", fontWeight: "600" }}>/day</span>
                     </div>
                   </div>
-                  <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "16px" }}>
+                  <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "14px" }}>
                     <span className="badge badge-info"><MapPin size={11} /> Ludhiana, Punjab</span>
-                    <span className="badge badge-success">GPS AutoTrac</span>
-                    <span className="badge badge-muted">Year 2022</span>
+                    <span className="badge badge-success">4WD Power</span>
+                    <span className="badge badge-muted">Year 2023</span>
                   </div>
                   <Link href="/equipment/1" className="btn btn-primary" style={{ width: "100%" }}>
-                    Rent Machine Now <ArrowRight size={16} />
+                    <span>Book This Tractor</span>
+                    <ArrowRight size={16} />
                   </Link>
                 </div>
               </div>
 
-              {/* Trust Callout */}
+              {/* Direct Connection Note */}
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "10px",
-                  padding: "12px 14px",
-                  borderRadius: "var(--radius-md)",
+                  gap: "8px",
+                  padding: "10px 14px",
+                  borderRadius: "var(--radius-sm)",
                   backgroundColor: "var(--primary-light)",
-                  border: "1px solid rgba(16, 185, 129, 0.2)",
+                  border: "1px solid var(--border)",
                   fontSize: "0.82rem",
                   color: "var(--text-main)",
                 }}
               >
-                <ShieldCheck size={20} style={{ color: "var(--primary)", flexShrink: 0 }} />
-                <span><strong>Zero middleman commissions:</strong> Direct owner coordination & transparent deposit escrow.</span>
+                <ShieldCheck size={18} style={{ color: "var(--primary)", flexShrink: 0 }} />
+                <span>Direct farmer-to-farmer rental with zero middleman commissions.</span>
               </div>
             </div>
           </div>

@@ -19,20 +19,20 @@ def run_e2e_flow():
     assert eq_res.status_code == 200, f"Equipment catalog failed: {eq_res.text}"
     eq_data = eq_res.json()
     print(f"  [OK] Fetched {eq_data['count']} equipment listings in directory")
-    # Find equipment owned by John Sterling
-    john_eq = next((eq for eq in eq_data['results'] if "John" in eq["owner_name"]), eq_data['results'][0])
-    target_eq_id = john_eq['id']
+    # Find equipment owned by Gurpreet Singh
+    gurpreet_eq = next((eq for eq in eq_data['results'] if "Gurpreet" in eq["owner_name"] or "Mahindra" in eq["name"]), eq_data['results'][0])
+    target_eq_id = gurpreet_eq['id']
 
     # 2. Test User Registration
     print("\n[Step 2] Testing User Registration...")
     import random
     rand_id = random.randint(1000, 9999)
     new_user_payload = {
-        "username": f"farmer_sam_{rand_id}",
-        "email": f"sam_{rand_id}@agrishare.com",
-        "first_name": "Sam",
-        "last_name": "Hayward",
-        "phone_number": "+1 (555) 789-0123",
+        "username": f"kisan_arjun_{rand_id}",
+        "email": f"arjun_{rand_id}@agrishare.com",
+        "first_name": "Arjun",
+        "last_name": "Verma",
+        "phone_number": "+91 98765 12345",
         "password": "SecurePassword123!",
         "password_confirm": "SecurePassword123!",
     }
@@ -43,21 +43,21 @@ def run_e2e_flow():
     print(f"  [OK] User registered: {reg_data['user']['email']}")
     print(f"  [OK] JWT tokens issued upon registration")
 
-    # 3. Test Owner Login (John)
-    print("\n[Step 3] Testing Owner Login (John)...")
+    # 3. Test Owner Login (Gurpreet)
+    print("\n[Step 3] Testing Owner Login (Gurpreet)...")
     login_res = requests.post(
         f"{BASE_URL}/auth/login/",
-        json={"email": "john.farmer@agrishare.com", "password": "password123"},
+        json={"email": "gurpreet.singh@agrishare.com", "password": "password123"},
     )
     assert login_res.status_code == 200, f"Login failed: {login_res.text}"
     owner_token = login_res.json()["access"]
     print(f"  [OK] Owner authenticated, access token acquired")
 
-    # 4. Test Renter Login (David)
-    print("\n[Step 4] Testing Renter Login (David)...")
+    # 4. Test Renter Login (Ramesh)
+    print("\n[Step 4] Testing Renter Login (Ramesh)...")
     renter_login = requests.post(
         f"{BASE_URL}/auth/login/",
-        json={"email": "david.miller@agrishare.com", "password": "password123"},
+        json={"email": "ramesh.sharma@agrishare.com", "password": "password123"},
     )
     assert renter_login.status_code == 200, f"Renter login failed: {renter_login.text}"
     renter_token = renter_login.json()["access"]

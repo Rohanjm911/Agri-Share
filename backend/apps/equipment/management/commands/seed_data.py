@@ -8,12 +8,12 @@ from apps.reviews.models import Review
 from apps.notifications.models import Notification, NotificationType
 
 class Command(BaseCommand):
-    help = "Seeds database with demo categories, users, equipment, bookings, and reviews."
+    help = "Seeds database with demo Indian categories, kisan users, equipment, bookings, and reviews."
 
     def handle(self, *args, **options):
-        self.stdout.write("Seeding AgriShare data...")
+        self.stdout.write("Seeding AgriShare Indian farm equipment and kisan users...")
 
-        # 1. Create Users
+        # 1. Create Indian Users
         admin_user, _ = User.objects.get_or_create(
             email="admin@agrishare.com",
             defaults={
@@ -22,9 +22,9 @@ class Command(BaseCommand):
                 "last_name": "Admin",
                 "is_staff": True,
                 "is_superuser": True,
-                "phone_number": "+1 (555) 010-0000",
-                "location": "Des Moines, Iowa",
-                "bio": "Platform Administrator for AgriShare.",
+                "phone_number": "+91 98000 00000",
+                "location": "New Delhi, India",
+                "bio": "Platform Administrator for AgriShare India.",
             },
         )
         admin_user.set_password("admin12345")
@@ -33,48 +33,71 @@ class Command(BaseCommand):
         admin_user.save()
 
         owner1, _ = User.objects.get_or_create(
-            email="john.farmer@agrishare.com",
+            email="gurpreet.singh@agrishare.com",
             defaults={
-                "username": "john_farmer",
-                "first_name": "John",
-                "last_name": "Sterling",
+                "username": "gurpreet_singh",
+                "first_name": "Gurpreet",
+                "last_name": "Singh",
                 "phone_number": "+91 98765 43210",
                 "location": "Ludhiana, Punjab",
-                "bio": "Third-generation farmer managing 1,200 acres. Offering modern tractors, combines, and precision implements during non-peak windows.",
+                "bio": "Progressive farmer managing 80 acres in Ludhiana. Offering high-performance 4WD Mahindra and Swaraj tractors and rotavators.",
             },
         )
         owner1.set_password("password123")
+        owner1.first_name = "Gurpreet"
+        owner1.last_name = "Singh"
+        owner1.location = "Ludhiana, Punjab"
         owner1.save()
 
         owner2, _ = User.objects.get_or_create(
-            email="sarah.agri@agrishare.com",
+            email="rajesh.patel@agrishare.com",
             defaults={
-                "username": "sarah_agri",
-                "first_name": "Sarah",
-                "last_name": "Jenkins",
+                "username": "rajesh_patel",
+                "first_name": "Rajesh",
+                "last_name": "Patel",
                 "phone_number": "+91 98765 43211",
-                "location": "Indore, Madhya Pradesh",
-                "bio": "Certified agronomist and custom operator with well-maintained high-clearance sprayers, precision planters, and forage balers.",
+                "location": "Rajkot, Gujarat",
+                "bio": "Custom farm machinery operator in Saurashtra. Renting John Deere 5310 tractors, multi-crop threshers, and heavy disc harrows.",
             },
         )
         owner2.set_password("password123")
+        owner2.first_name = "Rajesh"
+        owner2.last_name = "Patel"
+        owner2.location = "Rajkot, Gujarat"
         owner2.save()
 
-        renter1, _ = User.objects.get_or_create(
-            email="david.miller@agrishare.com",
+        owner3, _ = User.objects.get_or_create(
+            email="vikram.choudhary@agrishare.com",
             defaults={
-                "username": "david_miller",
-                "first_name": "David",
-                "last_name": "Miller",
-                "phone_number": "+91 98765 43212",
+                "username": "vikram_choudhary",
+                "first_name": "Vikram",
+                "last_name": "Choudhary",
+                "phone_number": "+91 98765 43213",
                 "location": "Karnal, Haryana",
-                "bio": "Grower specializing in corn, soybeans, and wheat. Utilizing shared equipment to scale seasonal operations.",
+                "bio": "Agricultural contractor offering Preet combine harvesters and Dasmesh super seeders for paddy and wheat season.",
+            },
+        )
+        owner3.set_password("password123")
+        owner3.save()
+
+        renter1, _ = User.objects.get_or_create(
+            email="ramesh.sharma@agrishare.com",
+            defaults={
+                "username": "ramesh_sharma",
+                "first_name": "Ramesh",
+                "last_name": "Sharma",
+                "phone_number": "+91 98765 43212",
+                "location": "Indore, Madhya Pradesh",
+                "bio": "Soybean and wheat grower utilizing shared high-efficiency farm implements to reduce capital overhead.",
             },
         )
         renter1.set_password("password123")
+        renter1.first_name = "Ramesh"
+        renter1.last_name = "Sharma"
+        renter1.location = "Indore, Madhya Pradesh"
         renter1.save()
 
-        self.stdout.write(self.style.SUCCESS("[OK] Demo users created."))
+        self.stdout.write(self.style.SUCCESS("[OK] Indian kisan demo users created."))
 
         # 2. Categories
         categories_data = [
@@ -82,43 +105,43 @@ class Command(BaseCommand):
                 "name": "Tractors",
                 "slug": "tractors",
                 "icon": "Tractor",
-                "description": "Utility, row-crop, 4WD, and compact tractors for all agricultural tasks.",
+                "description": "Utility, 4WD, heavy-duty, and compact tractors for all field operations.",
             },
             {
                 "name": "Harvesters & Combines",
                 "slug": "harvesters-combines",
                 "icon": "Combine",
-                "description": "Combine harvesters, grain headers, and forage harvesters for peak season.",
+                "description": "Self-propelled combine harvesters and paddy grain headers.",
             },
             {
-                "name": "Tillage & Cultivation",
+                "name": "Tillage & Rotavators",
                 "slug": "tillage-cultivation",
                 "icon": "Layers",
-                "description": "Discs, plows, cultivators, and seedbed prep equipment.",
+                "description": "Rotavators, MB ploughs, disc harrows, and seedbed prep implements.",
             },
             {
-                "name": "Planting & Seeding",
+                "name": "Seeding & Super Seeders",
                 "slug": "planting-seeding",
                 "icon": "Sprout",
-                "description": "Precision air seeders, row crop planters, and grain drills.",
+                "description": "Super seeders, zero-till drills, and precision crop seeders.",
             },
             {
-                "name": "Sprayers & Application",
+                "name": "Sprayers & Protection",
                 "slug": "sprayers-application",
-                "icon": "Droplets",
-                "description": "Self-propelled sprayers, pull-behind rigs, and fertilizer spreaders.",
+                "icon": "Droplet",
+                "description": "Tractor-mounted boom sprayers and high-capacity orchard sprayers.",
             },
             {
-                "name": "Hay & Forage",
+                "name": "Straw Balers & Choppers",
                 "slug": "hay-forage",
-                "icon": "Sun",
-                "description": "Round & square balers, disc mowers, rakes, and tedders.",
+                "icon": "Package",
+                "description": "Paddy straw balers, straw reapers, and residue management tools.",
             },
             {
-                "name": "Trailers & Hauling",
+                "name": "Threshers & Haulage",
                 "slug": "trailers-hauling",
                 "icon": "Truck",
-                "description": "Grain carts, hopper bottom trailers, and heavy equipment haulers.",
+                "description": "Multi-crop threshers, hydraulic tipper trolleys, and grain carts.",
             },
         ]
 
@@ -132,138 +155,138 @@ class Command(BaseCommand):
 
         self.stdout.write(self.style.SUCCESS("[OK] Equipment categories seeded."))
 
-        # 3. Equipment Listings
+        # 3. Indian Machinery Equipment Listings
         equipment_data = [
             {
                 "owner": owner1,
                 "category": cat_objs["tractors"],
-                "name": "John Deere 8R 370 Row Crop Tractor",
-                "brand": "John Deere",
-                "model": "8R 370",
-                "manufacturing_year": 2022,
+                "name": "Mahindra Yuvo Tech+ 585 DI 4WD Tractor (49 HP)",
+                "brand": "Mahindra",
+                "model": "Yuvo Tech+ 585 DI",
+                "manufacturing_year": 2023,
                 "condition": EquipmentCondition.EXCELLENT,
-                "price_per_day": 4500.00,
-                "security_deposit": 10000.00,
+                "price_per_day": 2800.00,
+                "security_deposit": 8000.00,
                 "location": "Ludhiana, Punjab",
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
-                "description": "High-efficiency 370 HP row-crop tractor equipped with AutoTrac guidance, CommandView 4 cab, ILS front suspension, and dual rear wheels. Ideal for heavy tillage, high-speed planting, and grain cart operations.",
-            },
-            {
-                "owner": owner1,
-                "category": cat_objs["harvesters-combines"],
-                "name": "Case IH Axial-Flow 8250 Combine Harvester",
-                "brand": "Case IH",
-                "model": "Axial-Flow 8250",
-                "manufacturing_year": 2021,
-                "condition": EquipmentCondition.EXCELLENT,
-                "price_per_day": 8500.00,
-                "security_deposit": 25000.00,
-                "location": "Karnal, Haryana",
-                "is_available": True,
-                "status": EquipmentStatus.AVAILABLE,
-                "description": "Tier 4B engine with 480 HP rated power, 410-bushel grain tank capacity, automated crop flow monitoring, and luxury cab package. Comes with 12-row corn head connection option.",
-            },
-            {
-                "owner": owner2,
-                "category": cat_objs["planting-seeding"],
-                "name": "Kinze 3600 16-Row Precision Planter",
-                "brand": "Kinze",
-                "model": "3600 Pivot Fold",
-                "manufacturing_year": 2020,
-                "condition": EquipmentCondition.GOOD,
-                "price_per_day": 3200.00,
-                "security_deposit": 8000.00,
-                "location": "Indore, Madhya Pradesh",
-                "is_available": True,
-                "status": EquipmentStatus.AVAILABLE,
-                "description": "16-row 30-inch spacing planter with bulk fill seed hoppers, hydraulic row weight transfer, electric row clutches, and precision seed meters.",
-            },
-            {
-                "owner": owner2,
-                "category": cat_objs["sprayers-application"],
-                "name": "Hagie STS12 Self-Propelled High-Clearance Sprayer",
-                "brand": "Hagie",
-                "model": "STS12",
-                "manufacturing_year": 2023,
-                "condition": EquipmentCondition.NEW,
-                "price_per_day": 6500.00,
-                "security_deposit": 15000.00,
-                "location": "Nashik, Maharashtra",
-                "is_available": True,
-                "status": EquipmentStatus.AVAILABLE,
-                "description": "120-foot carbon fiber boom, 1200-gallon stainless steel tank, front-boom visibility, all-wheel steer, and high crop clearance for late-season nitrogen and fungicide applications.",
-            },
-            {
-                "owner": owner1,
-                "category": cat_objs["tillage-cultivation"],
-                "name": "Great Plains 3000TM Turbo-Max Vertical Tillage",
-                "brand": "Great Plains",
-                "model": "3000TM",
-                "manufacturing_year": 2019,
-                "condition": EquipmentCondition.GOOD,
-                "price_per_day": 2600.00,
-                "security_deposit": 6000.00,
-                "location": "Bathinda, Punjab",
-                "is_available": True,
-                "status": EquipmentStatus.AVAILABLE,
-                "description": "30-foot working width, hydraulic gang angle adjustment from 0 to 6 degrees, rolling spider tines, and heavy-duty rear reel for optimal residue sizing and seedbed preparation.",
-            },
-            {
-                "owner": owner2,
-                "category": cat_objs["hay-forage"],
-                "name": "New Holland Roll-Belt 560 Round Baler",
-                "brand": "New Holland",
-                "model": "Roll-Belt 560",
-                "manufacturing_year": 2021,
-                "condition": EquipmentCondition.EXCELLENT,
-                "price_per_day": 2900.00,
-                "security_deposit": 7000.00,
-                "location": "Rajkot, Gujarat",
-                "is_available": True,
-                "status": EquipmentStatus.AVAILABLE,
-                "description": "Produces 5x6 foot dense round bales with EdgeWrap net wrap system, wide pickup with dual gauge wheels, and moisture sensing kit.",
+                "description": "49 HP 4-cylinder mZIP engine, 4WD traction, 12 Forward + 3 Reverse gears, and 1,700 kg hydraulic lift capacity. Ideal for heavy rotavator, laser land leveler, and super seeder operations in Punjab fields.",
             },
             {
                 "owner": owner1,
                 "category": cat_objs["tractors"],
-                "name": "Kubota M7-172 Deluxe Heavy Utility Tractor",
-                "brand": "Kubota",
-                "model": "M7-172",
+                "name": "Swaraj 855 FE Heavy Duty Tractor (52 HP)",
+                "brand": "Swaraj",
+                "model": "855 FE",
                 "manufacturing_year": 2022,
                 "condition": EquipmentCondition.EXCELLENT,
-                "price_per_day": 3400.00,
-                "security_deposit": 8500.00,
-                "location": "Amritsar, Punjab",
+                "price_per_day": 2500.00,
+                "security_deposit": 7500.00,
+                "location": "Sangrur, Punjab",
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
-                "description": "168 HP 4-cylinder engine, K-VT continuously variable transmission, front loader attachment included with quick-attach grapple bucket.",
+                "description": "52 HP 3-cylinder reliable engine with multi-speed reverse PTO, dual clutch, and heavy-duty front axle. Outstanding fuel efficiency for continuous threshing, haulage, and field preparation.",
+            },
+            {
+                "owner": owner3,
+                "category": cat_objs["harvesters-combines"],
+                "name": "Preet 987 Self-Propelled Combine Harvester",
+                "brand": "Preet",
+                "model": "987 Harvester",
+                "manufacturing_year": 2022,
+                "condition": EquipmentCondition.EXCELLENT,
+                "price_per_day": 6500.00,
+                "security_deposit": 20000.00,
+                "location": "Karnal, Haryana",
+                "is_available": True,
+                "status": EquipmentStatus.AVAILABLE,
+                "description": "101 HP Ashok Leyland turbo engine, 14-foot cutter bar width with hydraulic reel adjustment and large grain tank. Designed for rapid, low-grain-loss harvesting of wheat, paddy, mustard, and soybeans in northern India.",
+            },
+            {
+                "owner": owner1,
+                "category": cat_objs["tillage-cultivation"],
+                "name": "Shaktiman Semi-Champion Rotary Tiller (Rotavator 7 Ft)",
+                "brand": "Shaktiman",
+                "model": "Semi-Champion 7 Ft",
+                "manufacturing_year": 2023,
+                "condition": EquipmentCondition.NEW,
+                "price_per_day": 1400.00,
+                "security_deposit": 4000.00,
+                "location": "Indore, Madhya Pradesh",
+                "is_available": True,
+                "status": EquipmentStatus.AVAILABLE,
+                "description": "Heavy-duty multi-speed gearbox with Boron steel L-type blades. Delivers superior pulverization and soil aerating in dry and wet field conditions with minimal tractor load.",
+            },
+            {
+                "owner": owner2,
+                "category": cat_objs["tractors"],
+                "name": "John Deere 5310 PowerTech CRDI Tractor (55 HP)",
+                "brand": "John Deere",
+                "model": "5310 GearPro",
+                "manufacturing_year": 2023,
+                "condition": EquipmentCondition.NEW,
+                "price_per_day": 3200.00,
+                "security_deposit": 9000.00,
+                "location": "Rajkot, Gujarat",
+                "is_available": True,
+                "status": EquipmentStatus.AVAILABLE,
+                "description": "55 HP Turbocharged PowerTech engine with dual torque mode, power steering, oil immersed disc brakes, and 2,000 kg heavy lift. Perfect for cotton, groundnut, and sugarcane operations across Gujarat.",
+            },
+            {
+                "owner": owner3,
+                "category": cat_objs["planting-seeding"],
+                "name": "Dasmesh 912 Paddy Straw Chopper & Super Seeder",
+                "brand": "Dasmesh",
+                "model": "912 Super Seeder",
+                "manufacturing_year": 2022,
+                "condition": EquipmentCondition.GOOD,
+                "price_per_day": 2200.00,
+                "security_deposit": 6000.00,
+                "location": "Bathinda, Punjab",
+                "is_available": True,
+                "status": EquipmentStatus.AVAILABLE,
+                "description": "Simultaneous paddy stubble mulching and wheat seed drilling in a single pass. Prevents stubble burning while saving seedbed prep time and moisture.",
+            },
+            {
+                "owner": owner1,
+                "category": cat_objs["tillage-cultivation"],
+                "name": "Lemken Opal 090 Hydraulic Reversible MB Plough",
+                "brand": "Lemken",
+                "model": "Opal 090 (3 Furrow)",
+                "manufacturing_year": 2021,
+                "condition": EquipmentCondition.GOOD,
+                "price_per_day": 1600.00,
+                "security_deposit": 5000.00,
+                "location": "Nashik, Maharashtra",
+                "is_available": True,
+                "status": EquipmentStatus.AVAILABLE,
+                "description": "3-furrow hydraulic reversible mouldboard plough. Deep soil inversion, burying weeds and previous crop residues for enhanced soil fertility in grape, onion, and sugarcane belts.",
             },
             {
                 "owner": owner2,
                 "category": cat_objs["trailers-hauling"],
-                "name": "Brent 882 Avalanche Grain Cart (850 Bushel)",
-                "brand": "Brent / Unverferth",
-                "model": "882",
-                "manufacturing_year": 2020,
+                "name": "Fieldking Multi-Crop High-Yield Thresher & Tipper Trolley",
+                "brand": "Fieldking",
+                "model": "FK-TH-100",
+                "manufacturing_year": 2022,
                 "condition": EquipmentCondition.GOOD,
-                "price_per_day": 2100.00,
+                "price_per_day": 1800.00,
                 "security_deposit": 5000.00,
-                "location": "Nagpur, Maharashtra",
+                "location": "Guntur, Andhra Pradesh",
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
-                "description": "850-bushel capacity grain cart with 20-inch corner auger, hydraulic spout control, roll tarp, and scale indicator for field weight recording.",
+                "description": "High output multi-crop thresher for wheat, maize, pulses, and paddy with pneumatic blower and 5-ton hydraulic tipping trailer attachment.",
             },
         ]
 
         images_map = [
+            "equipment/mahindra_tractor.jpg",
+            "equipment/swaraj_tractor.jpg",
+            "equipment/preet_harvester.jpg",
+            "equipment/shaktiman_rotavator.jpg",
             "equipment/tractor_john_deere.jpg",
-            "equipment/combine_harvester.jpg",
             "equipment/precision_planter.jpg",
-            "equipment/crop_sprayer.jpg",
             "equipment/vertical_tillage.jpg",
-            "equipment/round_baler.jpg",
-            "equipment/kubota_tractor.jpg",
             "equipment/grain_cart.jpg",
         ]
 
@@ -288,13 +311,13 @@ class Command(BaseCommand):
                     defaults={"is_primary": True},
                 )
 
-        self.stdout.write(self.style.SUCCESS(f"[OK] {len(created_equipment)} Equipment listings seeded with real photos."))
+        self.stdout.write(self.style.SUCCESS(f"[OK] {len(created_equipment)} Indian Equipment listings seeded with photos."))
 
         # 4. Seed sample completed booking and review
         today = timezone.now().date()
         past_start = today - timedelta(days=14)
         past_end = today - timedelta(days=10)
-        
+
         booking1, _ = Booking.objects.get_or_create(
             equipment=created_equipment[0],
             renter=renter1,
@@ -302,7 +325,7 @@ class Command(BaseCommand):
             end_date=past_end,
             defaults={
                 "status": BookingStatus.COMPLETED,
-                "notes": "Rented for spring pre-plant field preparation.",
+                "notes": "Rented for 4 days of field rotavation and laser leveling in Ludhiana.",
             },
         )
         if booking1.status != BookingStatus.COMPLETED:
@@ -312,36 +335,23 @@ class Command(BaseCommand):
         # Review for booking1
         Review.objects.get_or_create(
             booking=booking1,
+            reviewer=renter1,
+            equipment=created_equipment[0],
             defaults={
-                "reviewer": renter1,
-                "equipment": created_equipment[0],
                 "rating": 5,
-                "comment": "Outstanding tractor! John had the John Deere 8R clean, fully fueled, and GPS calibrated upon delivery. Saved us over three days on our corn fields. Highly recommend!",
+                "comment": "Outstanding Mahindra Yuvo tractor! Flawless 4WD pulling power for all 4 days. Gurpreet paaji was very helpful with implement hitching.",
             },
         )
 
-        # Seed sample pending booking request
-        future_start = today + timedelta(days=5)
-        future_end = today + timedelta(days=8)
-        Booking.objects.get_or_create(
-            equipment=created_equipment[1],
-            renter=renter1,
-            start_date=future_start,
-            end_date=future_end,
-            defaults={
-                "status": BookingStatus.PENDING,
-                "notes": "Looking to rent for wheat harvest next week.",
-            },
-        )
-
-        # Seed sample notification
+        # 5. Seed initial notifications
         Notification.objects.get_or_create(
             recipient=owner1,
-            sender=renter1,
-            notification_type=NotificationType.BOOKING_REQUESTED,
-            title="New Rental Request Received",
-            message=f"David Miller has requested to rent '{created_equipment[1].name}' from {future_start} to {future_end}.",
-            link="/bookings",
+            notification_type=NotificationType.BOOKING_COMPLETED,
+            defaults={
+                "title": "Rental Contract Completed",
+                "message": f"Rental for {created_equipment[0].name} by Ramesh Sharma has been completed successfully.",
+                "link": "/bookings",
+            },
         )
 
         self.stdout.write(self.style.SUCCESS("[OK] Seed data complete! Ready for local dev & testing."))

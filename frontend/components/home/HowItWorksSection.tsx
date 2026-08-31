@@ -9,23 +9,23 @@ export function HowItWorksSection() {
     {
       step: "01",
       icon: Search,
-      title: "Discover Machinery",
+      title: "Search Nearby Machinery",
       description:
-        "Filter farm equipment by category, proximity, condition, and daily rate to find precisely what matches your seasonal field work.",
+        "Select category, state/district, brand, condition, and daily budget to discover farm equipment in your farming cluster.",
     },
     {
       step: "02",
       icon: Calendar,
-      title: "Schedule Rental",
+      title: "Pick Rental Dates",
       description:
-        "Select your rental duration. Our system calculates total days, daily cost, and security deposit automatically with no hidden charges.",
+        "Choose start and end dates. Total days, rental fees, and security deposit are automatically calculated upfront in Indian Rupees (₹).",
     },
     {
       step: "03",
       icon: CheckCircle2,
-      title: "Deploy & Farm",
+      title: "Confirm & Start Fieldwork",
       description:
-        "Submit the reservation. Once approved by the owner, coordinate equipment pickup or field delivery and begin operations.",
+        "The equipment owner reviews and approves your request. Coordinate field pickup or implement delivery to begin your operations.",
     },
   ];
 
@@ -33,47 +33,45 @@ export function HowItWorksSection() {
     <section
       id="how-it-works"
       style={{
-        paddingTop: "96px",
-        paddingBottom: "96px",
-        backgroundColor: "var(--bg-subtle)",
+        paddingTop: "80px",
+        paddingBottom: "80px",
+        backgroundColor: "var(--bg-surface)",
         borderTop: "1px solid var(--border)",
         borderBottom: "1px solid var(--border)",
-        position: "relative",
       }}
     >
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto 64px" }}>
+        <div style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto 56px" }}>
           <div
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "6px",
-              padding: "4px 14px",
+              padding: "4px 12px",
               borderRadius: "var(--radius-full)",
               backgroundColor: "var(--primary-light)",
               color: "var(--primary)",
               fontSize: "0.82rem",
               fontWeight: "700",
               textTransform: "uppercase",
-              letterSpacing: "0.06em",
-              marginBottom: "16px",
+              letterSpacing: "0.04em",
+              marginBottom: "14px",
             }}
           >
-            <Sparkles size={14} /> Intuitive 3-Step Process
+            <Sparkles size={14} /> Simple 3-Step Process
           </div>
           <h2
             style={{
-              fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
-              fontWeight: "900",
-              letterSpacing: "-0.03em",
+              fontSize: "clamp(1.9rem, 3.5vw, 2.5rem)",
+              fontWeight: "800",
               color: "var(--text-main)",
-              marginBottom: "16px",
+              marginBottom: "14px",
             }}
           >
             How AgriShare Works
           </h2>
-          <p style={{ color: "var(--text-muted)", fontSize: "1.05rem" }}>
+          <p style={{ color: "var(--text-muted)", fontSize: "1.02rem" }}>
             From search to field operations in three straightforward steps.
           </p>
         </div>
@@ -83,8 +81,7 @@ export function HowItWorksSection() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "32px",
-            position: "relative",
+            gap: "24px",
           }}
         >
           {steps.map((s, idx) => {
@@ -94,8 +91,7 @@ export function HowItWorksSection() {
                 key={idx}
                 className="card card-interactive"
                 style={{
-                  padding: "36px 28px",
-                  position: "relative",
+                  padding: "32px 24px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -108,31 +104,29 @@ export function HowItWorksSection() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      marginBottom: "24px",
+                      marginBottom: "20px",
                     }}
                   >
                     <div
                       style={{
-                        width: "52px",
-                        height: "52px",
-                        borderRadius: "var(--radius-md)",
-                        background: "var(--primary-gradient)",
+                        width: "48px",
+                        height: "48px",
+                        borderRadius: "var(--radius-sm)",
+                        backgroundColor: "var(--primary)",
                         color: "#ffffff",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        boxShadow: "0 6px 14px var(--primary-glow)",
                       }}
                     >
                       <Icon size={24} />
                     </div>
                     <span
                       style={{
-                        fontSize: "2.2rem",
+                        fontSize: "2rem",
                         fontWeight: "900",
                         color: "var(--primary)",
                         opacity: 0.25,
-                        fontFamily: "var(--font-family-heading)",
                       }}
                     >
                       {s.step}
@@ -141,15 +135,15 @@ export function HowItWorksSection() {
 
                   <h3
                     style={{
-                      fontSize: "1.3rem",
+                      fontSize: "1.2rem",
                       fontWeight: "800",
                       color: "var(--text-main)",
-                      marginBottom: "12px",
+                      marginBottom: "10px",
                     }}
                   >
                     {s.title}
                   </h3>
-                  <p style={{ color: "var(--text-muted)", fontSize: "0.92rem", lineHeight: "1.65" }}>
+                  <p style={{ color: "var(--text-muted)", fontSize: "0.92rem", lineHeight: "1.6" }}>
                     {s.description}
                   </p>
                 </div>
@@ -158,10 +152,10 @@ export function HowItWorksSection() {
           })}
         </div>
 
-        {/* Call to action below steps */}
-        <div style={{ marginTop: "56px", textAlign: "center" }}>
+        {/* CTA below steps */}
+        <div style={{ marginTop: "48px", textAlign: "center" }}>
           <Link href="/equipment" className="btn btn-primary btn-lg">
-            <span>Start Exploring Machinery</span>
+            <span>Browse All Machinery</span>
             <ArrowRight size={18} />
           </Link>
         </div>
