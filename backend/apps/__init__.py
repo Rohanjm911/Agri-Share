@@ -1,0 +1,1 @@
+# AgriShare Django apps package
