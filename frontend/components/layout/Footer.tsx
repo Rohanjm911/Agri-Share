@@ -2,16 +2,25 @@
 
 import React from "react";
 import Link from "next/link";
-import { Tractor, ShieldCheck, Heart, Mail, Phone, MapPin } from "lucide-react";
+import { Logo } from "@/components/ui/Logo";
+import {
+  Tractor,
+  Mail,
+  Phone,
+  MapPin,
+  Heart,
+  ShieldCheck,
+  Award,
+  Clock,
+} from "lucide-react";
 
 export function Footer() {
   return (
     <footer
       style={{
-        backgroundColor: "var(--bg-card)",
+        backgroundColor: "var(--surface)",
         borderTop: "1px solid var(--border)",
-        paddingTop: "64px",
-        paddingBottom: "32px",
+        padding: "64px 0 32px",
         marginTop: "auto",
       }}
     >
@@ -24,40 +33,21 @@ export function Footer() {
             marginBottom: "48px",
           }}
         >
-          {/* Brand Col */}
-          <div>
-            <Link
-              href="/"
+          {/* Col 1: Brand & Bio */}
+          <div style={{ maxWidth: "340px" }}>
+            <div style={{ marginBottom: "16px" }}>
+              <Logo size="md" />
+            </div>
+            <p
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "10px",
-                fontSize: "1.3rem",
-                fontWeight: "800",
-                color: "var(--text-main)",
-                marginBottom: "16px",
+                color: "var(--text-muted)",
+                fontSize: "0.92rem",
+                lineHeight: 1.6,
+                marginBottom: "20px",
               }}
             >
-              <div
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "var(--radius-md)",
-                  backgroundColor: "var(--primary)",
-                  color: "#ffffff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Tractor size={20} />
-              </div>
-              <span>
-                Agri<span style={{ color: "var(--primary)" }}>Share</span>
-              </span>
-            </Link>
-            <p style={{ color: "var(--text-muted)", fontSize: "0.9rem", lineHeight: "1.6", marginBottom: "16px" }}>
-              Empowering farmers with on-demand access to premium agricultural equipment and machinery rentals directly from local owners.
+              AgriShare is India&apos;s leading agricultural equipment sharing and rental marketplace.
+              Empowering farmers with scalable farm machinery on-demand.
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--primary)", fontSize: "0.85rem", fontWeight: "600" }}>
               <ShieldCheck size={16} /> Verified Owners & Machinery

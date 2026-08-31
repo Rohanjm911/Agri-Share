@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { NotificationDrawer } from "@/components/notifications/NotificationDrawer";
+import { Logo } from "@/components/ui/Logo";
 import {
   Tractor,
   Menu,
@@ -61,37 +62,7 @@ export function Navbar() {
         }}
       >
         {/* Brand Logo */}
-        <Link
-          href="/"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            fontSize: "1.35rem",
-            fontWeight: "800",
-            color: "var(--text-main)",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          <div
-            style={{
-              width: "40px",
-              height: "40px",
-              borderRadius: "var(--radius-md)",
-              backgroundColor: "var(--primary)",
-              color: "#ffffff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 4px 10px var(--primary-glow)",
-            }}
-          >
-            <Tractor size={22} />
-          </div>
-          <span>
-            Agri<span style={{ color: "var(--primary)" }}>Share</span>
-          </span>
-        </Link>
+        <Logo size="md" />
 
         {/* Desktop Navigation Links */}
         <nav

@@ -228,23 +228,53 @@ export function HeroSection() {
               <span className="badge badge-success">Instant Booking</span>
             </div>
 
-            {/* Interactive Preview Item */}
+            {/* Interactive Real-Life Equipment Preview Card */}
             <div
               style={{
                 backgroundColor: "var(--bg-card)",
-                padding: "16px",
-                borderRadius: "var(--radius-md)",
+                borderRadius: "var(--radius-lg)",
                 border: "1px solid var(--border)",
+                overflow: "hidden",
+                boxShadow: "0 8px 24px rgba(0, 0, 0, 0.08)",
               }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
-                <span style={{ fontWeight: "700", fontSize: "0.95rem" }}>John Deere 8R 370 HP</span>
-                <span style={{ color: "var(--primary)", fontWeight: "800" }}>₹4,500 / day</span>
+              <div style={{ height: "180px", position: "relative", overflow: "hidden" }}>
+                <img
+                  src="/images/equipment/tractor_john_deere.jpg"
+                  alt="John Deere 8R 370 Row Crop Tractor"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+                <span
+                  style={{
+                    position: "absolute",
+                    top: "12px",
+                    left: "12px",
+                    fontSize: "0.75rem",
+                    fontWeight: "800",
+                    padding: "4px 10px",
+                    borderRadius: "var(--radius-full)",
+                    backgroundColor: "rgba(16, 185, 129, 0.95)",
+                    color: "#ffffff",
+                    backdropFilter: "blur(4px)",
+                  }}
+                >
+                  FEATURED MACHINERY
+                </span>
               </div>
-              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-                <span className="badge badge-info">Cedar Rapids, IA</span>
-                <span className="badge badge-success">AutoTrac GPS</span>
-                <span className="badge badge-muted">Year 2022</span>
+
+              <div style={{ padding: "16px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
+                  <span style={{ fontWeight: "800", fontSize: "1.05rem" }}>John Deere 8R 370 HP</span>
+                  <span style={{ color: "var(--primary)", fontWeight: "900", fontSize: "1.1rem" }}>₹4,500 / day</span>
+                </div>
+                <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "12px" }}>
+                  <span className="badge badge-info">Ludhiana, Punjab</span>
+                  <span className="badge badge-success">AutoTrac GPS</span>
+                  <span className="badge badge-muted">Year 2022</span>
+                </div>
+                <Link href="/equipment/1" className="btn btn-primary btn-sm" style={{ width: "100%" }}>
+                  View Machinery & Rent
+                </Link>
               </div>
             </div>
 

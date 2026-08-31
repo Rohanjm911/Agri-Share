@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from django.utils import timezone
 from datetime import timedelta
 from apps.accounts.models import User
-from apps.equipment.models import Category, Equipment, EquipmentCondition, EquipmentStatus
+from apps.equipment.models import Category, Equipment, EquipmentCondition, EquipmentStatus, EquipmentImage
 from apps.bookings.models import Booking, BookingStatus
 from apps.reviews.models import Review
 from apps.notifications.models import Notification, NotificationType
@@ -256,15 +256,39 @@ class Command(BaseCommand):
             },
         ]
 
+        images_map = [
+            "equipment/tractor_john_deere.jpg",
+            "equipment/combine_harvester.jpg",
+            "equipment/precision_planter.jpg",
+            "equipment/crop_sprayer.jpg",
+            "equipment/vertical_tillage.jpg",
+            "equipment/round_baler.jpg",
+            "equipment/kubota_tractor.jpg",
+            "equipment/grain_cart.jpg",
+        ]
+
         created_equipment = []
-        for eq_dict in equipment_data:
-            eq, _ = Equipment.objects.get_or_create(
+        for i, eq_dict in enumerate(equipment_data):
+            eq, created = Equipment.objects.get_or_create(
                 name=eq_dict["name"],
                 defaults=eq_dict,
             )
+            # Update fields in case they changed
+            for k, v in eq_dict.items():
+                setattr(eq, k, v)
+            eq.save()
             created_equipment.append(eq)
 
-        self.stdout.write(self.style.SUCCESS(f"[OK] {len(created_equipment)} Equipment listings seeded."))
+            # Seed Real Equipment Image
+            if i < len(images_map):
+                img_path = images_map[i]
+                EquipmentImage.objects.get_or_create(
+                    equipment=eq,
+                    image=img_path,
+                    defaults={"is_primary": True},
+                )
+
+        self.stdout.write(self.style.SUCCESS(f"[OK] {len(created_equipment)} Equipment listings seeded with real photos."))
 
         # 4. Seed sample completed booking and review
         today = timezone.now().date()

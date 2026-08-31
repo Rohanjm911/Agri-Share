@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { Tractor, Mail, Lock, User, Phone, AlertCircle, ArrowRight } from "lucide-react";
+import { Logo } from "@/components/ui/Logo";
+import { Mail, Lock, User, Phone, AlertCircle, ArrowRight } from "lucide-react";
 
 export default function RegisterPage() {
   const { register, isAuthenticated } = useAuth();
@@ -71,24 +72,11 @@ export default function RegisterPage() {
       <div className="card" style={{ width: "100%", maxWidth: "540px", padding: "40px 32px" }}>
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "32px" }}>
-          <div
-            style={{
-              width: "52px",
-              height: "52px",
-              borderRadius: "var(--radius-lg)",
-              backgroundColor: "var(--primary)",
-              color: "#ffffff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "0 auto 16px",
-              boxShadow: "0 4px 10px var(--primary-glow)",
-            }}
-          >
-            <Tractor size={28} />
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: "16px" }}>
+            <Logo size="lg" />
           </div>
-          <h1 style={{ fontSize: "1.75rem", fontWeight: "800", color: "var(--text-main)", marginBottom: "6px" }}>
-            Create Your AgriShare Account
+          <h1 style={{ fontSize: "1.6rem", fontWeight: "800", color: "var(--text-main)", marginBottom: "6px" }}>
+            Create Your Account
           </h1>
           <p style={{ color: "var(--text-muted)", fontSize: "0.92rem" }}>
             Join our community of farmers and agricultural machinery owners.

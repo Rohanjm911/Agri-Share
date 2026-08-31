@@ -1,0 +1,18 @@
+<svg width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="leafGrad" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58a053" />
+      <stop offset="0.6" stop-color="#3f7d3a" />
+      <stop offset="1" stop-color="#2c5c28" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="12" y1="20" x2="36" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f59e0b" />
+      <stop offset="1" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+  <rect x="5" y="5" width="38" height="38" rx="12" fill="url(#leafGrad)" />
+  <path d="M24 11C24 11 29 16 29 23C29 27.4183 25.4183 31 21 31C16.5817 31 13 27.4183 13 23C13 18 19 13 24 11Z" fill="#ffffff" fill-opacity="0.95" />
+  <path d="M24 14C24 14 35 17 35 27C35 32 30.5 36 25 36C21.5 36 18.5 34.5 17 32C22 33 27 30 28 25C29 20 25 16 24 14Z" fill="url(#goldGrad)" />
+  <circle cx="24" cy="24" r="3" fill="#ffffff" />
+  <path d="M24 21V16M24 32V27M16 24H21M27 24H32" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+</svg>
