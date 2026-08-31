@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { EquipmentListItem } from "@/types";
 import { formatCurrency, getConditionColor } from "@/lib/utils";
-import { MapPin, Star, Tractor, Calendar } from "lucide-react";
+import { MapPin, Star, Tractor, ArrowRight } from "lucide-react";
 
 interface EquipmentCardProps {
   equipment: EquipmentListItem;
@@ -12,15 +12,26 @@ interface EquipmentCardProps {
 
 export function EquipmentCard({ equipment }: EquipmentCardProps) {
   const condColor = getConditionColor(equipment.condition);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="card card-hover" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <div
+      className="card card-interactive"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        position: "relative",
+      }}
+    >
       {/* Card Image Banner */}
       <div
         style={{
           position: "relative",
           width: "100%",
-          height: "210px",
+          height: "220px",
           backgroundColor: "var(--bg-subtle)",
           overflow: "hidden",
           borderBottom: "1px solid var(--border)",
@@ -34,7 +45,8 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              transition: "transform 0.3s ease",
+              transform: isHovered ? "scale(1.06)" : "scale(1)",
+              transition: "transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           />
         ) : (
@@ -51,7 +63,7 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
             }}
           >
             <Tractor size={48} style={{ opacity: 0.4 }} />
-            <span style={{ fontSize: "0.85rem", fontWeight: "500" }}>{equipment.category_name}</span>
+            <span style={{ fontSize: "0.85rem", fontWeight: "600" }}>{equipment.category_name}</span>
           </div>
         )}
 
@@ -64,24 +76,26 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
             display: "flex",
             gap: "6px",
             flexWrap: "wrap",
+            zIndex: 2,
           }}
         >
           <span
             style={{
               fontSize: "0.72rem",
-              fontWeight: "700",
-              padding: "3px 8px",
+              fontWeight: "800",
+              padding: "3px 10px",
               borderRadius: "var(--radius-full)",
               backgroundColor: condColor.bg,
               color: condColor.text,
               border: `1px solid ${condColor.border}`,
-              backdropFilter: "blur(6px)",
+              backdropFilter: "blur(8px)",
+              letterSpacing: "0.02em",
             }}
           >
             {equipment.condition}
           </span>
           {!equipment.is_available && (
-            <span className="badge badge-warning" style={{ backdropFilter: "blur(6px)" }}>
+            <span className="badge badge-warning" style={{ backdropFilter: "blur(8px)" }}>
               Reserved
             </span>
           )}
@@ -94,38 +108,49 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
               position: "absolute",
               top: "12px",
               right: "12px",
-              backgroundColor: "rgba(13, 20, 14, 0.8)",
+              backgroundColor: "rgba(12, 20, 14, 0.85)",
               color: "#ffffff",
-              padding: "4px 8px",
+              padding: "4px 10px",
               borderRadius: "var(--radius-full)",
-              fontSize: "0.75rem",
-              fontWeight: "700",
+              fontSize: "0.78rem",
+              fontWeight: "800",
               display: "flex",
               alignItems: "center",
               gap: "4px",
-              backdropFilter: "blur(4px)",
+              backdropFilter: "blur(8px)",
+              border: "1px solid rgba(255, 255, 255, 0.15)",
+              zIndex: 2,
             }}
           >
-            <Star size={12} fill="#f59e0b" color="#f59e0b" />
+            <Star size={13} fill="#f59e0b" color="#f59e0b" />
             <span>{equipment.average_rating}</span>
-            <span style={{ opacity: 0.7 }}>({equipment.total_reviews})</span>
+            <span style={{ opacity: 0.7, fontSize: "0.72rem" }}>({equipment.total_reviews})</span>
           </div>
         )}
       </div>
 
       {/* Card Body */}
-      <div style={{ padding: "20px", display: "flex", flexDirection: "column", flex: 1 }}>
-        <div style={{ fontSize: "0.8rem", color: "var(--primary)", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "4px" }}>
+      <div style={{ padding: "22px", display: "flex", flexDirection: "column", flex: 1 }}>
+        <div
+          style={{
+            fontSize: "0.78rem",
+            color: "var(--primary)",
+            fontWeight: "800",
+            textTransform: "uppercase",
+            letterSpacing: "0.06em",
+            marginBottom: "6px",
+          }}
+        >
           {equipment.brand} &bull; {equipment.category_name}
         </div>
 
         <h3
           style={{
-            fontSize: "1.1rem",
-            fontWeight: "700",
+            fontSize: "1.15rem",
+            fontWeight: "800",
             color: "var(--text-main)",
             lineHeight: "1.35",
-            marginBottom: "12px",
+            marginBottom: "10px",
           }}
         >
           <Link href={`/equipment/${equipment.id}`} style={{ color: "inherit" }}>
@@ -133,7 +158,16 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
           </Link>
         </h3>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "var(--text-muted)", fontSize: "0.85rem", marginBottom: "16px" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            color: "var(--text-muted)",
+            fontSize: "0.85rem",
+            marginBottom: "20px",
+          }}
+        >
           <MapPin size={15} style={{ color: "var(--primary)", flexShrink: 0 }} />
           <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
             {equipment.location}
@@ -152,19 +186,27 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
           }}
         >
           <div>
-            <div style={{ fontSize: "1.25rem", fontWeight: "800", color: "var(--primary)" }}>
+            <div
+              style={{
+                fontSize: "1.3rem",
+                fontWeight: "900",
+                color: "var(--primary)",
+                fontFamily: "var(--font-family-heading)",
+              }}
+            >
               {formatCurrency(equipment.price_per_day)}
-              <span style={{ fontSize: "0.8rem", fontWeight: "500", color: "var(--text-muted)" }}> / day</span>
+              <span style={{ fontSize: "0.78rem", fontWeight: "600", color: "var(--text-muted)" }}> / day</span>
             </div>
             {Number(equipment.security_deposit) > 0 && (
-              <div style={{ fontSize: "0.72rem", color: "var(--text-muted)" }}>
+              <div style={{ fontSize: "0.72rem", color: "var(--text-muted)", marginTop: "2px" }}>
                 Deposit: {formatCurrency(equipment.security_deposit)}
               </div>
             )}
           </div>
 
           <Link href={`/equipment/${equipment.id}`} className="btn btn-primary btn-sm">
-            View Details
+            <span>View</span>
+            <ArrowRight size={14} />
           </Link>
         </div>
       </div>
