@@ -1,121 +1,274 @@
-# AgriShare 🚜🌾
+🚜 AgriShare
 
-> **Agricultural Equipment & Machinery Rental Marketplace**  
-> *Connecting farmers with reliable, local agricultural equipment owners to optimize field operations and machinery utilization.*
+Agricultural Equipment & Machinery Rental Marketplace
 
----
+AgriShare is a web-based agricultural equipment rental platform that connects farmers who need machinery with equipment owners who want to rent out their idle machines.
 
-## 🌟 Table of Contents
-- [Project Milestones Status](#-project-milestones-status)
-- [Overview](#-overview)
-- [Key Features](#-key-features)
-- [Tech Stack](#%EF%B8%8F-tech-stack)
-- [Monorepo Architecture](#-monorepo-architecture)
-- [Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Backend Setup (Django + DRF)](#backend-setup-django--drf)
-  - [Frontend Setup (Next.js 16+ App Router)](#frontend-setup-nextjs-16-app-router)
-- [Environment Variables](#-environment-variables)
-- [Seed Data & Kisan Demo Accounts](#-seed-data--kisan-demo-accounts)
-- [Indian Farm Machinery Fleet](#-indian-farm-machinery-fleet)
-- [API Documentation (Swagger / OpenAPI)](#-api-documentation-swagger--openapi)
-- [Core Business Rules & Workflows](#-core-business-rules--workflows)
-- [Automated Testing & Quality Checks](#-automated-testing--quality-checks)
-- [Production Deployment Preparation](#-production-deployment-preparation)
-- [Push to GitHub](#-push-to-github)
-- [License](#-license)
+The platform makes agricultural machinery more accessible by allowing farmers to find, compare, and book equipment locally without the need to purchase expensive machinery or depend on middlemen.
 
 ---
 
-## 🎯 Project Milestones Status
+📌 Project Status
 
-| Milestone | Description | Status |
-| :--- | :--- | :--- |
-| **Milestone 1: Backend Architecture & Auth** | Django 5.1, DRF, SimpleJWT, Custom User model (email as username), Profile & Password Management. | ✅ **COMPLETED** |
-| **Milestone 2: Equipment Catalog & Search** | Categories, Equipment, EquipmentImage, multi-filter search, sorting, pagination, Swagger/OpenAPI docs. | ✅ **COMPLETED** |
-| **Milestone 3: Booking Engine & Pricing** | Server-side pricing engine, date overlap prevention, self-rental blocking, approval workflow. | ✅ **COMPLETED** |
-| **Milestone 4: Reviews & Notifications** | Verified 1-5 star reviews for completed bookings, average rating recalculation, in-app notification drawer. | ✅ **COMPLETED** |
-| **Milestone 5: Role-Based Dashboard** | Analytics for both Owners (earnings, active rentals, inventory) and Renters (expenditure, booking status). | ✅ **COMPLETED** |
-| **Milestone 6: Modern Next.js Frontend** | Next.js 16+ App Router, TypeScript, Custom SVG Logo, Google Fonts (Outfit & Inter), Dark/Light mode toggle. | ✅ **COMPLETED** |
-| **Milestone 7: Indian Localization & Flat UI** | INR (`₹`) formatting, Indian machinery brands & real photography, Indian agricultural hubs, clean solid flat UI. | ✅ **COMPLETED** |
-| **Milestone 8: Automated Test Suite** | 19 Django unit tests (`OK`) + 10-step automated end-to-end integration test (`100% Passed`). | ✅ **COMPLETED** |
+Milestone| Description| Status
+Backend & Authentication| Django, DRF, JWT, Custom User Model| ✅ Completed
+Equipment Catalog| Categories, search, filters, sorting & pagination| ✅ Completed
+Booking System| Pricing, availability & approval workflow| ✅ Completed
+Reviews & Notifications| Verified reviews, ratings & notifications| ✅ Completed
+Role-Based Dashboard| Owner & renter analytics| ✅ Completed
+Next.js Frontend| Modern responsive frontend with App Router| ✅ Completed
+Indian Localization| INR, Indian machinery & locations| ✅ Completed
+Automated Testing| Unit tests & end-to-end testing| ✅ Completed
 
----
-
-## 📖 Overview
-
-**AgriShare** solves the high capital expenditure barrier in agricultural mechanization. Tractor and implement owners can monetize idle machinery (tractors, combine harvesters, rotavators, super seeders, reversible ploughs, threshers) during seasonal gaps, while renting farmers access high-performance equipment on-demand without heavy loan burdens or middleman brokerages.
+Current status: Fully functional MVP with automated testing.
 
 ---
 
-## ✨ Key Features
+🌾 Why AgriShare?
 
-1. **Clean Solid Modern Flat UI**:
-   - High-contrast **Agricultural Forest Green** (`#236f41`) and **Harvest Amber** (`#d97706`) solid design system with zero bloated gradients.
-   - Seamless **Light / Dark Mode** toggling with local storage persistence.
-   - Clean solid cards, responsive grid layouts, and interactive drawer navigation.
+Agricultural machinery can be expensive to purchase and may remain unused for long periods.
 
-2. **Secure User Authentication**:
-   - Custom Django `User` model with email-as-username.
-   - Secure JWT lifecycle (`access_token` with auto-refresh on 401 via `refresh_token`).
-   - Registration, login, profile management, and password change with Django password validators.
+AgriShare solves this problem by creating a rental marketplace where:
 
-3. **Equipment Directory & Advanced Search**:
-   - Dynamic search by machine name, brand, model, and location.
-   - Multi-facet filters: Category, Condition (`NEW`, `EXCELLENT`, `GOOD`, `FAIR`), Status, and Max Daily Price.
-   - Sorting by newest, price low-to-high, price high-to-low, and name.
-   - Multiple image uploads and owner equipment inventory management.
+👨‍🌾 Farmers / Renters
 
-4. **Robust Booking & Rental Lifecycle**:
-   - Server-side price computation: `total_amount = (price_per_day * total_days) + security_deposit`.
-   - Self-rental prevention and overlap conflict checks.
-   - Full status lifecycle: `PENDING` &rarr; `APPROVED` &rarr; `REJECTED` &rarr; `CANCELLED` &rarr; `COMPLETED`.
+- Find machinery when they need it
+- Compare equipment and rental prices
+- Book equipment for specific dates
+- Avoid the high cost of purchasing machinery
 
-5. **Verified Reviews & Star Ratings**:
-   - Only renters with `COMPLETED` bookings can submit reviews (1 review per booking).
-   - Real-time average equipment rating calculation.
+🚜 Equipment Owners
 
-6. **In-App Notifications & Role-Based Dashboard**:
-   - Instant notifications on booking requests, approvals, cancellations, and reviews.
-   - Aggregated metrics: Active listings, total earnings, pending requests, and expenditure totals.
+- List tractors and agricultural implements
+- Earn money from unused machinery
+- Manage rental requests
+- Track bookings and earnings
 
 ---
 
-## 🛠️ Tech Stack
+✨ Key Features
 
-### Frontend
-- **Framework**: [Next.js 16+](https://nextjs.org/) (App Router, Turbopack)
-- **Language**: TypeScript 5+
-- **Styling**: Vanilla CSS Design Tokens (Clean flat modern architecture)
-- **Fonts**: Google Fonts (`Outfit` for headings, `Inter` for body)
-- **Icons**: Lucide React
-- **Client Architecture**: Service layer (`services/`) + Centralized API client (`lib/api.ts`) + Context API (`AuthContext`, `ThemeContext`)
+🔐 Authentication
 
-### Backend
-- **Framework**: [Django 5.1](https://www.djangoproject.com/)
-- **API**: [Django REST Framework 3.15+](https://www.django-rest-framework.org/)
-- **Authentication**: `djangorestframework-simplejwt` (JWT Access & Refresh)
-- **Filtering**: `django-filter`
-- **Documentation**: `drf-spectacular` (OpenAPI 3.0 & Swagger UI)
-- **CORS**: `django-cors-headers`
-- **Image Handling**: Pillow
-- **Database**: SQLite (default local development) / PostgreSQL (production-ready)
+- Custom Django User model
+- Email-based authentication
+- JWT access & refresh tokens
+- Automatic token refresh
+- User registration and login
+- Profile management
+- Secure password change
 
 ---
 
-## 📁 Monorepo Architecture
+🚜 Equipment Marketplace
 
-```
+Users can browse agricultural machinery and search for equipment using:
+
+- Machine name
+- Brand
+- Model
+- Location
+- Category
+- Condition
+- Availability status
+- Maximum daily rental price
+
+Sorting Options
+
+- Newest listings
+- Price: Low → High
+- Price: High → Low
+- Name
+
+Equipment owners can also:
+
+- Add equipment
+- Upload multiple images
+- Edit listings
+- Delete listings
+- Manage their equipment inventory
+
+---
+
+📅 Booking & Rental System
+
+AgriShare includes a complete rental workflow.
+
+Booking Flow
+
+Renter
+  │
+  ▼
+Select Equipment
+  │
+  ▼
+Choose Rental Dates
+  │
+  ▼
+Booking Request
+  │
+  ▼
+Equipment Owner
+  │
+  ├── Approve ──► Rental
+  │
+  └── Reject
+
+Booking Rules
+
+The backend automatically:
+
+- Calculates the rental price
+- Prevents overlapping bookings
+- Prevents users from renting their own equipment
+- Validates rental dates
+- Handles booking approval and rejection
+
+Price Calculation
+
+Total Amount =
+(Rental Price × Number of Days) + Security Deposit
+
+Booking Status
+
+PENDING
+   ↓
+APPROVED
+   ↓
+COMPLETED
+
+Bookings can also be:
+
+PENDING / APPROVED → CANCELLED
+PENDING → REJECTED
+
+---
+
+⭐ Reviews & Ratings
+
+Only renters who have completed a booking can submit a review.
+
+Features include:
+
+- 1–5 star ratings
+- Written reviews
+- One review per completed booking
+- Verified rental reviews
+- Automatic equipment rating calculation
+
+This helps farmers identify reliable equipment and owners.
+
+---
+
+🔔 Notifications
+
+Users receive in-app notifications for important events such as:
+
+- New booking requests
+- Booking approvals
+- Booking rejections
+- Booking cancellations
+- Completed rentals
+- New reviews
+
+Notifications can be marked as read individually or all at once.
+
+---
+
+📊 Role-Based Dashboard
+
+AgriShare provides different dashboards depending on the user's role.
+
+🚜 Equipment Owner
+
+Owners can view:
+
+- Total earnings
+- Active equipment listings
+- Rental activity
+- Pending booking requests
+- Booking statistics
+- Inventory
+
+👨‍🌾 Renter
+
+Renters can view:
+
+- Total expenditure
+- Current bookings
+- Booking history
+- Pending requests
+- Rental activity
+
+---
+
+🎨 Frontend
+
+The frontend uses a clean, modern flat UI designed around agricultural colors.
+
+UI Features
+
+- 🌞 Light mode
+- 🌙 Dark mode
+- 📱 Responsive layouts
+- 🟩 Forest Green primary color
+- 🟨 Harvest Amber accent color
+- Solid cards and components
+- Responsive navigation drawer
+- Interactive booking and review modals
+
+Design System
+
+Primary Green  → #236f41
+Harvest Amber  → #d97706
+
+Heading Font  → Outfit
+Body Font     → Inter
+
+---
+
+🛠️ Tech Stack
+
+Frontend
+
+Technology| Purpose
+Next.js 16+| React framework
+TypeScript| Type safety
+Vanilla CSS| UI styling
+Lucide React| Icons
+Context API| Authentication & theme state
+App Router| Application routing
+
+Backend
+
+Technology| Purpose
+Django 5.1| Backend framework
+Django REST Framework| REST API
+SimpleJWT| Authentication
+django-filter| Filtering
+drf-spectacular| API documentation
+django-cors-headers| CORS handling
+Pillow| Image processing
+
+Database
+
+Development → SQLite
+Production  → PostgreSQL
+
+---
+
+📁 Project Structure
+
+AgriShare uses a monorepo structure.
+
 AgriShare/
+│
 ├── backend/
 │   ├── manage.py
 │   ├── requirements.txt
-│   ├── .env.example
-│   ├── .env
-│   ├── media/equipment/    # Real equipment photography assets
+│   │
 │   ├── config/
 │   │   ├── settings/
-│   │   │   ├── __init__.py
 │   │   │   ├── base.py
 │   │   │   ├── development.py
 │   │   │   └── production.py
@@ -124,248 +277,352 @@ AgriShare/
 │   │   └── asgi.py
 │   │
 │   └── apps/
-│       ├── accounts/       # Custom user, JWT auth, profile, change password
-│       ├── equipment/      # Category, Equipment, EquipmentImage, search & filters
-│       ├── bookings/       # Booking model, pricing engine, availability & approval
-│       ├── reviews/        # Rating & reviews for completed bookings
-│       ├── notifications/  # Notification events & unread count
-│       └── dashboard/      # Aggregated metrics & activity feeds
+│       ├── accounts/
+│       ├── equipment/
+│       ├── bookings/
+│       ├── reviews/
+│       ├── notifications/
+│       └── dashboard/
 │
 ├── frontend/
 │   ├── app/
-│   │   ├── layout.tsx      # Root layout with ThemeProvider, AuthProvider & Google Fonts
-│   │   ├── page.tsx        # Homepage landing page
-│   │   ├── login/          # Auth login with 1-click Kisan demo buttons
-│   │   ├── register/       # Auth register
-│   │   ├── profile/        # User profile & password settings
-│   │   ├── equipment/      # Catalog, filters, and [id] details
-│   │   ├── my-equipment/   # Owner inventory management
-│   │   ├── bookings/       # Renter bookings & Owner incoming requests
-│   │   ├── dashboard/      # Role-based analytics & stats
-│   │   └── globals.css     # Clean solid flat design tokens & CSS classes
 │   ├── components/
-│   │   ├── layout/         # Navbar, Footer
-│   │   ├── home/           # HeroSection, FeaturesSection, HowItWorksSection, CTASection
-│   │   ├── equipment/      # EquipmentCard, Filters, Gallery
-│   │   ├── booking/        # BookingModal with live price calculation
-│   │   ├── reviews/        # ReviewModal & StarRating
-│   │   ├── notifications/  # NotificationDrawer
-│   │   └── ui/             # Logo, ThemeToggle, Button, Badges
-│   ├── context/            # AuthContext, ThemeContext
-│   ├── services/           # authService, equipmentService, bookingService, reviewService, notificationService, dashboardService
-│   ├── lib/                # api.ts, utils.ts
-│   ├── public/             # Static assets & machinery photos
-│   └── types/              # Domain interfaces & API types
+│   ├── context/
+│   ├── services/
+│   ├── lib/
+│   ├── public/
+│   └── types/
 │
 ├── scripts/
-│   └── test_e2e_flow.py    # Complete automated integration workflow test
-├── GITHUB_PUSH_GUIDE.md    # Step-by-step instructions to push to GitHub
-├── .gitignore
+│   └── test_e2e_flow.py
+│
 ├── README.md
+├── .gitignore
 └── LICENSE
-```
 
 ---
 
-## 🚀 Getting Started
+🚀 Getting Started
 
-### Prerequisites
-- **Python**: 3.12+ (tested with Python 3.13 / 3.14)
-- **Node.js**: 18.x+ (tested with Node v24) & npm
-- **Git**
+Prerequisites
 
----
+Make sure the following are installed:
 
-### Backend Setup (Django + DRF)
-
-1. Open terminal and navigate to `backend/`:
-   ```bash
-   cd backend
-   ```
-
-2. Create and activate a Python virtual environment:
-   ```bash
-   # Windows (PowerShell)
-   py -3.13 -m venv venv
-   .\venv\Scripts\Activate.ps1
-
-   # macOS / Linux
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Configure environment:
-   ```bash
-   cp .env.example .env
-   ```
-
-5. Apply database migrations:
-   ```bash
-   python manage.py migrate
-   ```
-
-6. Seed demo Indian kisan users, machinery, and categories:
-   ```bash
-   python manage.py seed_data
-   ```
-
-7. Start Django development server on `http://127.0.0.1:8000`:
-   ```bash
-   python manage.py runserver 127.0.0.1:8000
-   ```
+- Python 3.12+
+- Node.js 18+
+- npm
+- Git
 
 ---
 
-### Frontend Setup (Next.js 16+ App Router)
+⚙️ Backend Setup
 
-1. Open a new terminal and navigate to `frontend/`:
-   ```bash
-   cd frontend
-   ```
+1. Open the backend directory
 
-2. Install npm packages:
-   ```bash
-   npm install
-   ```
-
-3. Validate build compilation:
-   ```bash
-   npm run build
-   ```
-
-4. Start Next.js development server on `http://localhost:3000`:
-   ```bash
-   npm run dev
-   ```
-
----
-
-## 🔑 Seed Data & Kisan Demo Accounts
-
-The database comes pre-seeded with realistic Indian agricultural machinery across 7 categories.
-
-| Role | Email | Password | Details & Location |
-| :--- | :--- | :--- | :--- |
-| **Admin** | `admin@agrishare.com` | `admin12345` | Platform Administrator (New Delhi) |
-| **Owner (Punjab)** | `gurpreet.singh@agrishare.com` | `password123` | Gurpreet Singh: Mahindra 585 DI, Swaraj 855 FE (Ludhiana, Punjab) |
-| **Owner (Gujarat)** | `rajesh.patel@agrishare.com` | `password123` | Rajesh Patel: John Deere 5310, Fieldking Thresher (Rajkot, Gujarat) |
-| **Owner (Haryana)** | `vikram.choudhary@agrishare.com` | `password123` | Vikram Choudhary: Preet 987 Harvester, Dasmesh Super Seeder (Karnal, Haryana) |
-| **Renter (MP)** | `ramesh.sharma@agrishare.com` | `password123` | Ramesh Sharma: Active grower & renter (Indore, Madhya Pradesh) |
-
-*(Quick demo buttons are also built directly into the `/login` page for 1-click testing).*
-
----
-
-## 🌾 Indian Farm Machinery Fleet
-
-| Machinery Model | Category | Owner & Location | Daily Rate | Refundable Deposit |
-| :--- | :--- | :--- | :--- | :--- |
-| **Mahindra Yuvo Tech+ 585 DI (49 HP)** | Tractors | Gurpreet Singh &bull; **Ludhiana, Punjab** | **₹2,800/day** | ₹8,000 |
-| **Swaraj 855 FE Heavy Duty (52 HP)** | Tractors | Gurpreet Singh &bull; **Sangrur, Punjab** | **₹2,500/day** | ₹7,500 |
-| **Preet 987 Self-Propelled Combine Harvester** | Harvesters | Vikram Choudhary &bull; **Karnal, Haryana** | **₹6,500/day** | ₹20,000 |
-| **Shaktiman Semi-Champion Rotavator (7 Ft)** | Tillage | Ramesh Sharma &bull; **Indore, Madhya Pradesh** | **₹1,400/day** | ₹4,000 |
-| **John Deere 5310 PowerTech CRDI (55 HP)** | Tractors | Rajesh Patel &bull; **Rajkot, Gujarat** | **₹3,200/day** | ₹9,000 |
-| **Dasmesh 912 Super Seeder & Straw Chopper** | Seeding | Vikram Choudhary &bull; **Bathinda, Punjab** | **₹2,200/day** | ₹6,000 |
-| **Lemken Opal 090 Hydraulic Reversible Plough** | Tillage | Ramesh Sharma &bull; **Nashik, Maharashtra** | **₹1,600/day** | ₹5,000 |
-| **Fieldking Multi-Crop High-Yield Thresher** | Threshing | Rajesh Patel &bull; **Guntur, Andhra Pradesh** | **₹1,800/day** | ₹5,000 |
-
----
-
-## 📚 API Documentation (Swagger / OpenAPI)
-
-Interactive documentation and OpenAPI 3.0 schemas are generated via `drf-spectacular`:
-
-- **Swagger UI**: [http://127.0.0.1:8000/api/docs/](http://127.0.0.1:8000/api/docs/)
-- **OpenAPI Schema (JSON)**: [http://127.0.0.1:8000/api/schema/](http://127.0.0.1:8000/api/schema/)
-
-### Core API Endpoints
-
-#### Authentication (`/api/auth/`)
-- `POST /api/auth/register/` - Create account & receive JWT tokens
-- `POST /api/auth/login/` - Authenticate with email & password
-- `POST /api/auth/token/refresh/` - Refresh expired access token
-- `GET /api/auth/profile/` - Fetch authenticated user profile
-- `PUT /api/auth/profile/` - Update profile details & avatar
-- `POST /api/auth/change-password/` - Update password securely
-
-#### Equipment Catalog (`/api/equipment/`)
-- `GET /api/equipment/categories/` - List all machinery categories
-- `GET /api/equipment/` - Search, filter, and paginate machinery listings
-- `POST /api/equipment/` - Create equipment listing (Authenticated)
-- `GET /api/equipment/{id}/` - Retrieve full specifications & reviews
-- `PUT /api/equipment/{id}/` - Update machinery details (Owner only)
-- `DELETE /api/equipment/{id}/` - Delete machinery listing (Owner only)
-- `GET /api/equipment/my_equipment/` - List all machinery owned by current user
-
-#### Bookings (`/api/bookings/`)
-- `POST /api/bookings/` - Create rental booking request (Auto-calculates pricing & validates availability)
-- `GET /api/bookings/my_rentals/` - List bookings placed by current user as renter
-- `GET /api/bookings/incoming_requests/` - List booking requests received by current user as owner
-- `POST /api/bookings/{id}/approve/` - Approve booking request (Owner only)
-- `POST /api/bookings/{id}/reject/` - Reject booking request (Owner only)
-- `POST /api/bookings/{id}/cancel/` - Cancel booking request
-- `POST /api/bookings/{id}/complete/` - Complete rental period
-
-#### Reviews (`/api/reviews/`)
-- `POST /api/reviews/` - Submit 1-5 star review (Requires completed booking)
-- `GET /api/reviews/?equipment={id}` - List verified reviews for equipment
-
-#### Notifications & Dashboard (`/api/notifications/`, `/api/dashboard/`)
-- `GET /api/notifications/` - List user notifications with unread count
-- `POST /api/notifications/{id}/read/` - Mark notification as read
-- `POST /api/notifications/mark_all_read/` - Mark all notifications as read
-- `GET /api/dashboard/stats/` - Aggregate metrics for Owner & Renter
-
----
-
-## 🧪 Automated Testing & Quality Checks
-
-### Run Django Unit Tests (19 Tests)
-```bash
 cd backend
-python manage.py test
-```
-*Output: `Ran 19 tests in 18.8s -> OK`*
 
-### Run Automated End-to-End Integration Flow
-```bash
-# Ensure Django server is running on 127.0.0.1:8000
-python scripts/test_e2e_flow.py
-```
-*Output: `10 / 10 steps passed with 100% success`*
+2. Create a virtual environment
 
-### Run Frontend Production Build Check
-```bash
+Windows
+
+py -3.13 -m venv venv
+.\venv\Scripts\Activate.ps1
+
+macOS / Linux
+
+python3 -m venv venv
+source venv/bin/activate
+
+3. Install dependencies
+
+pip install -r requirements.txt
+
+4. Configure environment variables
+
+cp .env.example .env
+
+«On Windows, you can also manually copy ".env.example" to ".env".»
+
+5. Run migrations
+
+python manage.py migrate
+
+6. Add demo data
+
+python manage.py seed_data
+
+This creates demo users, equipment categories and agricultural machinery.
+
+7. Start the backend
+
+python manage.py runserver 127.0.0.1:8000
+
+Backend:
+
+http://127.0.0.1:8000
+
+---
+
+💻 Frontend Setup
+
+Open another terminal.
+
+1. Navigate to frontend
+
 cd frontend
+
+2. Install dependencies
+
+npm install
+
+3. Start development server
+
+npm run dev
+
+Frontend:
+
+http://localhost:3000
+
+4. Check production build
+
 npm run build
-```
-*Output: `✓ Compiled successfully (11/11 static and dynamic routes)`*
 
 ---
 
-## 🚢 Production Deployment Preparation
+🔑 Demo Accounts
 
-1. **Environment Configuration**: Set `DJANGO_ENV=production` and `DEBUG=False` in `backend/.env`.
-2. **Database**: Switch from SQLite to PostgreSQL by providing `DATABASE_URL` or individual Postgres variables.
-3. **Static Files & Media Storage**: Run `python manage.py collectstatic` and configure AWS S3 / Cloudinary for `MEDIA_ROOT`.
-4. **CORS & CSRF**: Set `CORS_ALLOWED_ORIGINS` and `CSRF_TRUSTED_ORIGINS` to your production frontend domain (e.g., `https://agrishare.com`).
-5. **WSGI/ASGI Server**: Deploy backend with **Gunicorn** / **Uvicorn** behind Nginx reverse proxy.
-6. **Frontend**: Deploy `frontend/` to **Vercel** or containerized Docker service with `NEXT_PUBLIC_API_URL=https://api.agrishare.com/api`.
+AgriShare includes ready-to-use demo accounts for testing.
+
+Role| Email| Password| Location
+Admin| "admin@agrishare.com"| "admin12345"| New Delhi
+Owner| "gurpreet.singh@agrishare.com"| "password123"| Ludhiana, Punjab
+Owner| "rajesh.patel@agrishare.com"| "password123"| Rajkot, Gujarat
+Owner| "vikram.choudhary@agrishare.com"| "password123"| Karnal, Haryana
+Renter| "ramesh.sharma@agrishare.com"| "password123"| Indore, MP
+
+⚡ Quick Login
+
+The login page also contains one-click demo login buttons for easier testing.
+
+«Important: These credentials are for local/demo use only. Do not use them in production.»
 
 ---
 
-## 📤 Push to GitHub
+🚜 Sample Indian Machinery
 
-For detailed instructions on pushing this monorepo to your GitHub account, please see:
-👉 [**GITHUB_PUSH_GUIDE.md**](file:///d:/projects%20and%20certificates/projects/web/AgriShare/GITHUB_PUSH_GUIDE.md)
+AgriShare comes with realistic agricultural equipment data.
+
+Equipment| Category| Location| Daily Rate| Deposit
+Mahindra Yuvo Tech+ 585 DI| Tractor| Ludhiana, Punjab| ₹2,800| ₹8,000
+Swaraj 855 FE| Tractor| Sangrur, Punjab| ₹2,500| ₹7,500
+Preet 987 Combine Harvester| Harvester| Karnal, Haryana| ₹6,500| ₹20,000
+Shaktiman Rotavator| Tillage| Indore, MP| ₹1,400| ₹4,000
+John Deere 5310| Tractor| Rajkot, Gujarat| ₹3,200| ₹9,000
+Dasmesh 912 Super Seeder| Seeding| Bathinda, Punjab| ₹2,200| ₹6,000
+Lemken Opal 090 Plough| Tillage| Nashik, Maharashtra| ₹1,600| ₹5,000
+Fieldking Multi-Crop Thresher| Threshing| Guntur, Andhra Pradesh| ₹1,800| ₹5,000
 
 ---
 
-## 📄 License
+📚 API Documentation
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+AgriShare provides interactive API documentation using Swagger / OpenAPI.
+
+Once the backend is running:
+
+Swagger UI
+
+http://127.0.0.1:8000/api/docs/
+
+OpenAPI Schema
+
+http://127.0.0.1:8000/api/schema/
+
+---
+
+🔌 API Overview
+
+Authentication
+
+POST   /api/auth/register/
+POST   /api/auth/login/
+POST   /api/auth/token/refresh/
+GET    /api/auth/profile/
+PUT    /api/auth/profile/
+POST   /api/auth/change-password/
+
+Equipment
+
+GET    /api/equipment/
+POST   /api/equipment/
+GET    /api/equipment/{id}/
+PUT    /api/equipment/{id}/
+DELETE /api/equipment/{id}/
+GET    /api/equipment/categories/
+GET    /api/equipment/my_equipment/
+
+Bookings
+
+POST   /api/bookings/
+GET    /api/bookings/my_rentals/
+GET    /api/bookings/incoming_requests/
+POST   /api/bookings/{id}/approve/
+POST   /api/bookings/{id}/reject/
+POST   /api/bookings/{id}/cancel/
+POST   /api/bookings/{id}/complete/
+
+Reviews
+
+POST   /api/reviews/
+GET    /api/reviews/?equipment={id}
+
+Notifications
+
+GET    /api/notifications/
+POST   /api/notifications/{id}/read/
+POST   /api/notifications/mark_all_read/
+
+Dashboard
+
+GET    /api/dashboard/stats/
+
+---
+
+🧪 Testing
+
+AgriShare includes automated backend and integration tests.
+
+Django Unit Tests
+
+The project currently contains 19 unit tests.
+
+cd backend
+
+python manage.py test
+
+Expected result:
+
+Ran 19 tests
+OK
+
+---
+
+🔄 End-to-End Test
+
+The project also includes an automated integration flow covering the main application workflow.
+
+Make sure the Django server is running first.
+
+python scripts/test_e2e_flow.py
+
+Expected result:
+
+10 / 10 steps passed
+100% success
+
+---
+
+🏗️ Production Deployment
+
+AgriShare is structured to support production deployment.
+
+Before deploying:
+
+Backend
+
+- Set "DJANGO_ENV=production"
+- Set "DEBUG=False"
+- Use PostgreSQL
+- Configure production secrets
+- Configure CORS and CSRF
+- Run database migrations
+- Run "collectstatic"
+
+Media Storage
+
+For production equipment images, use a dedicated storage service such as:
+
+- AWS S3
+- Cloudinary
+
+Backend Server
+
+Recommended setup:
+
+Internet
+   │
+   ▼
+Nginx
+   │
+   ▼
+Gunicorn / Uvicorn
+   │
+   ▼
+Django + DRF
+   │
+   ▼
+PostgreSQL
+
+Frontend
+
+The Next.js frontend can be deployed using:
+
+- Vercel
+- Docker
+- Other Node.js-compatible hosting platforms
+
+Set:
+
+NEXT_PUBLIC_API_URL=https://api.example.com/api
+
+---
+
+🔒 Security Considerations
+
+For production deployment, make sure to:
+
+- Disable Django "DEBUG"
+- Use strong secret keys
+- Never commit ".env" files
+- Use HTTPS
+- Configure CORS correctly
+- Configure CSRF trusted origins
+- Use PostgreSQL
+- Store media files outside the application server
+- Use secure JWT configuration
+- Rotate production credentials regularly
+
+---
+
+🗺️ Future Improvements
+
+Possible future versions of AgriShare could include:
+
+- 📍 GPS-based equipment discovery
+- 🗺️ Interactive map search
+- 💳 Online payments
+- 📱 Mobile application
+- 💬 Owner–renter messaging
+- 📸 Equipment verification
+- 🪪 KYC verification
+- 🤖 AI-based equipment recommendations
+- 📈 Advanced owner analytics
+- 🔔 Push notifications
+- 🌐 Multi-language support for Indian languages
+- 🧑‍🌾 Farmer-specific recommendations based on crop and season
+
+---
+
+📄 License
+
+AgriShare is licensed under the MIT License.
+
+See the "LICENSE" file for more information.
+
+---
+
+🌾 AgriShare
+
+«Making agricultural machinery more accessible, one rental at a time. 🚜»
+
+Built with Django + Django REST Framework + Next.js + TypeScript.
