@@ -11,21 +11,21 @@ export function HowItWorksSection() {
       icon: Search,
       title: "Search Nearby Machinery",
       description:
-        "Select category, state/district, brand, condition, and daily budget to discover farm equipment in your farming cluster.",
+        "Filter by machinery category, state/district, horsepower, condition, and daily budget to discover equipment in your farming cluster.",
     },
     {
       step: "02",
       icon: Calendar,
       title: "Pick Rental Dates",
       description:
-        "Choose start and end dates. Total days, rental fees, and security deposit are automatically calculated upfront in Indian Rupees (₹).",
+        "Select start and end dates. Total rental duration, daily rates, and refundable security deposits are automatically calculated in Indian Rupees (₹).",
     },
     {
       step: "03",
       icon: CheckCircle2,
       title: "Confirm & Start Fieldwork",
       description:
-        "The equipment owner reviews and approves your request. Coordinate field pickup or implement delivery to begin your operations.",
+        "The equipment owner reviews and approves your request. Coordinate field pickup or implement delivery to begin your farming operations.",
     },
   ];
 
@@ -38,6 +38,7 @@ export function HowItWorksSection() {
         backgroundColor: "var(--bg-surface)",
         borderTop: "1px solid var(--border)",
         borderBottom: "1px solid var(--border)",
+        transition: "background-color 0.15s ease, border-color 0.15s ease",
       }}
     >
       <div className="container">
@@ -57,9 +58,10 @@ export function HowItWorksSection() {
               textTransform: "uppercase",
               letterSpacing: "0.04em",
               marginBottom: "14px",
+              border: "1px solid var(--border)",
             }}
           >
-            <Sparkles size={14} /> Simple 3-Step Process
+            <Sparkles size={14} style={{ color: "var(--accent)" }} /> Simple 3-Step Process
           </div>
           <h2
             style={{
@@ -96,6 +98,7 @@ export function HowItWorksSection() {
                   flexDirection: "column",
                   justifyContent: "space-between",
                   backgroundColor: "var(--bg-card)",
+                  border: "1px solid var(--border)",
                 }}
               >
                 <div>
@@ -123,10 +126,11 @@ export function HowItWorksSection() {
                     </div>
                     <span
                       style={{
-                        fontSize: "2rem",
+                        fontSize: "2.2rem",
                         fontWeight: "900",
-                        color: "var(--primary)",
-                        opacity: 0.25,
+                        fontFamily: "var(--font-family-heading)",
+                        color: "var(--accent)",
+                        opacity: 0.8,
                       }}
                     >
                       {s.step}

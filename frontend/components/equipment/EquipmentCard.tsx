@@ -21,6 +21,7 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
         flexDirection: "column",
         height: "100%",
         backgroundColor: "var(--bg-card)",
+        border: "1px solid var(--border)",
       }}
     >
       {/* Card Image Banner */}
@@ -57,8 +58,8 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
               gap: "8px",
             }}
           >
-            <Tractor size={48} style={{ opacity: 0.4 }} />
-            <span style={{ fontSize: "0.85rem", fontWeight: "600" }}>{equipment.category_name}</span>
+            <Tractor size={48} style={{ opacity: 0.3 }} />
+            <span style={{ fontSize: "0.85rem", fontWeight: "700" }}>{equipment.category_name}</span>
           </div>
         )}
 
@@ -77,12 +78,13 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
           <span
             style={{
               fontSize: "0.72rem",
-              fontWeight: "700",
-              padding: "3px 8px",
+              fontWeight: "800",
+              padding: "4px 8px",
               borderRadius: "var(--radius-sm)",
               backgroundColor: condColor.bg,
               color: condColor.text,
               border: `1px solid ${condColor.border}`,
+              letterSpacing: "0.03em",
             }}
           >
             {equipment.condition}
@@ -101,21 +103,22 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
               position: "absolute",
               top: "10px",
               right: "10px",
-              backgroundColor: "#1c241e",
-              color: "#ffffff",
+              backgroundColor: "var(--bg-surface)",
+              border: "1px solid var(--border)",
+              color: "var(--text-main)",
               padding: "3px 8px",
               borderRadius: "var(--radius-sm)",
               fontSize: "0.75rem",
-              fontWeight: "700",
+              fontWeight: "800",
               display: "flex",
               alignItems: "center",
               gap: "4px",
               zIndex: 2,
             }}
           >
-            <Star size={12} fill="#f59e0b" color="#f59e0b" />
+            <Star size={12} fill="var(--accent)" color="var(--accent)" />
             <span>{equipment.average_rating}</span>
-            <span style={{ opacity: 0.7, fontSize: "0.7rem" }}>({equipment.total_reviews})</span>
+            <span style={{ color: "var(--text-muted)", fontSize: "0.7rem" }}>({equipment.total_reviews})</span>
           </div>
         )}
       </div>

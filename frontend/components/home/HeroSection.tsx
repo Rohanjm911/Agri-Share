@@ -10,7 +10,6 @@ import {
   Search,
   Sparkles,
   MapPin,
-  CheckCircle2,
 } from "lucide-react";
 
 export function HeroSection() {
@@ -22,6 +21,7 @@ export function HeroSection() {
         paddingBottom: "80px",
         backgroundColor: "var(--bg-surface)",
         borderBottom: "1px solid var(--border)",
+        transition: "background-color 0.15s ease, border-color 0.15s ease",
       }}
     >
       <div className="container">
@@ -51,8 +51,8 @@ export function HeroSection() {
                 marginBottom: "20px",
               }}
             >
-              <Sparkles size={15} />
-              <span>India&apos;s Agricultural Equipment Sharing Network</span>
+              <Sparkles size={15} style={{ color: "var(--accent)" }} />
+              <span>India&apos;s Agricultural Machinery Sharing Network</span>
             </div>
 
             <h1
@@ -79,11 +79,11 @@ export function HeroSection() {
                 marginBottom: "32px",
               }}
             >
-              Rent tractors, combine harvesters, rotavators, and super seeders from verified farm owners
-              across Punjab, Haryana, Madhya Pradesh, Gujarat, Maharashtra, and beyond.
+              Rent high-capacity tractors, combine harvesters, rotavators, and laser levelers from verified equipment
+              owners across Punjab, Haryana, Madhya Pradesh, Gujarat, Maharashtra, and beyond.
             </p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Solid Dual-Tone Pair */}
             <div
               style={{
                 display: "flex",
@@ -103,21 +103,22 @@ export function HeroSection() {
               </Link>
             </div>
 
-            {/* Solid Verified Stats Bar */}
+            {/* Solid Verified Metric Bar */}
             <div
               className="card"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
-                padding: "18px 22px",
+                padding: "18px 24px",
                 gap: "16px",
-                backgroundColor: "var(--bg-main)",
+                backgroundColor: "var(--bg-subtle)",
+                border: "1px solid var(--border)",
               }}
             >
               <div>
                 <div
                   style={{
-                    fontSize: "1.6rem",
+                    fontSize: "1.65rem",
                     fontWeight: "900",
                     color: "var(--primary)",
                     lineHeight: "1.2",
@@ -125,32 +126,32 @@ export function HeroSection() {
                 >
                   500+
                 </div>
-                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "600" }}>
+                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "700" }}>
                   Verified Machines
                 </div>
               </div>
-              <div style={{ borderLeft: "1px solid var(--border)", paddingLeft: "16px" }}>
+              <div style={{ borderLeft: "1px solid var(--border)", paddingLeft: "18px" }}>
                 <div
                   style={{
-                    fontSize: "1.6rem",
+                    fontSize: "1.65rem",
                     fontWeight: "900",
-                    color: "var(--accent-gold)",
+                    color: "var(--accent)",
                     lineHeight: "1.2",
                     display: "flex",
                     alignItems: "center",
                     gap: "4px",
                   }}
                 >
-                  4.9 <Star size={16} fill="var(--accent-gold)" />
+                  4.9 <Star size={16} fill="var(--accent)" color="var(--accent)" />
                 </div>
-                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "600" }}>
+                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "700" }}>
                   Farmer Rating
                 </div>
               </div>
-              <div style={{ borderLeft: "1px solid var(--border)", paddingLeft: "16px" }}>
+              <div style={{ borderLeft: "1px solid var(--border)", paddingLeft: "18px" }}>
                 <div
                   style={{
-                    fontSize: "1.6rem",
+                    fontSize: "1.65rem",
                     fontWeight: "900",
                     color: "var(--primary)",
                     lineHeight: "1.2",
@@ -158,14 +159,14 @@ export function HeroSection() {
                 >
                   ₹0
                 </div>
-                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "600" }}>
+                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "700" }}>
                   Platform Brokerage
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Hero Right Visual Card - Indian Tractor & Equipment */}
+          {/* Hero Right Visual Card */}
           <div>
             <div
               className="card"
@@ -175,6 +176,8 @@ export function HeroSection() {
                 flexDirection: "column",
                 gap: "16px",
                 backgroundColor: "var(--bg-card)",
+                border: "1px solid var(--border)",
+                boxShadow: "var(--shadow-lg)",
               }}
             >
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -194,14 +197,18 @@ export function HeroSection() {
                     <Tractor size={20} />
                   </div>
                   <div>
-                    <div style={{ fontWeight: "800", fontSize: "0.95rem" }}>Featured Machinery</div>
-                    <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>Available for Booking</div>
+                    <div style={{ fontWeight: "800", fontSize: "0.95rem", color: "var(--text-main)" }}>
+                      Featured Machinery
+                    </div>
+                    <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>
+                      Ready for Immediate Field Work
+                    </div>
                   </div>
                 </div>
-                <span className="badge badge-success">Ready in Field</span>
+                <span className="badge badge-success">Available</span>
               </div>
 
-              {/* Real Indian Mahindra Tractor Photo */}
+              {/* Machinery Photo */}
               <div
                 style={{
                   borderRadius: "var(--radius-sm)",
@@ -209,7 +216,7 @@ export function HeroSection() {
                   border: "1px solid var(--border)",
                 }}
               >
-                <div style={{ height: "220px", position: "relative" }}>
+                <div style={{ height: "220px", position: "relative", backgroundColor: "var(--bg-subtle)" }}>
                   <img
                     src="/images/equipment/mahindra_tractor.jpg"
                     alt="Mahindra Yuvo Tech+ 585 DI Tractor"
@@ -226,16 +233,19 @@ export function HeroSection() {
                       borderRadius: "var(--radius-full)",
                       backgroundColor: "var(--primary)",
                       color: "#ffffff",
+                      letterSpacing: "0.04em",
                     }}
                   >
                     POPULAR IN PUNJAB
                   </span>
                 </div>
 
-                <div style={{ padding: "16px", backgroundColor: "var(--bg-main)" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
-                    <h3 style={{ fontWeight: "800", fontSize: "1.1rem" }}>Mahindra Yuvo 585 DI (49 HP)</h3>
-                    <div style={{ color: "var(--primary)", fontWeight: "900", fontSize: "1.15rem" }}>
+                <div style={{ padding: "16px", backgroundColor: "var(--bg-subtle)" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
+                    <h3 style={{ fontWeight: "800", fontSize: "1.1rem", color: "var(--text-main)" }}>
+                      Mahindra Yuvo 585 DI (49 HP)
+                    </h3>
+                    <div style={{ color: "var(--primary)", fontWeight: "900", fontSize: "1.2rem" }}>
                       ₹2,800 <span style={{ fontSize: "0.78rem", color: "var(--text-muted)", fontWeight: "600" }}>/day</span>
                     </div>
                   </div>
@@ -251,12 +261,12 @@ export function HeroSection() {
                 </div>
               </div>
 
-              {/* Direct Connection Note */}
+              {/* Direct Note */}
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "8px",
+                  gap: "10px",
                   padding: "10px 14px",
                   borderRadius: "var(--radius-sm)",
                   backgroundColor: "var(--primary-light)",
@@ -266,7 +276,7 @@ export function HeroSection() {
                 }}
               >
                 <ShieldCheck size={18} style={{ color: "var(--primary)", flexShrink: 0 }} />
-                <span>Direct farmer-to-farmer rental with zero middleman commissions.</span>
+                <span>Direct kisan-to-kisan rental with 100% verified identities and zero broker fees.</span>
               </div>
             </div>
           </div>

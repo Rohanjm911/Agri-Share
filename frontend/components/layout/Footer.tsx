@@ -4,24 +4,22 @@ import React from "react";
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import {
-  Tractor,
   Mail,
   Phone,
   MapPin,
   Heart,
   ShieldCheck,
-  Award,
-  Clock,
 } from "lucide-react";
 
 export function Footer() {
   return (
     <footer
       style={{
-        backgroundColor: "var(--surface)",
+        backgroundColor: "var(--bg-surface)",
         borderTop: "1px solid var(--border)",
         padding: "64px 0 32px",
         marginTop: "auto",
+        transition: "background-color 0.15s ease, border-color 0.15s ease",
       }}
     >
       <div className="container">
@@ -47,74 +45,119 @@ export function Footer() {
               }}
             >
               AgriShare is India&apos;s leading agricultural equipment sharing and rental marketplace.
-              Empowering farmers with scalable farm machinery on-demand.
+              Connecting tractor owners with neighboring kisans with zero middlemen.
             </p>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--primary)", fontSize: "0.85rem", fontWeight: "600" }}>
-              <ShieldCheck size={16} /> Verified Owners & Machinery
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                color: "var(--primary)",
+                backgroundColor: "var(--primary-light)",
+                padding: "6px 12px",
+                borderRadius: "var(--radius-sm)",
+                border: "1px solid var(--border)",
+                fontSize: "0.82rem",
+                fontWeight: "700",
+              }}
+            >
+              <ShieldCheck size={16} /> Verified Indian Farmers & Machinery
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Col 2: Marketplace */}
           <div>
-            <h4 style={{ fontSize: "1rem", fontWeight: "700", marginBottom: "16px", color: "var(--text-main)" }}>
+            <h4
+              style={{
+                fontSize: "0.95rem",
+                fontWeight: "800",
+                marginBottom: "16px",
+                color: "var(--text-main)",
+                textTransform: "uppercase",
+                letterSpacing: "0.04em",
+              }}
+            >
               Marketplace
             </h4>
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px" }}>
               <li>
-                <Link href="/equipment" style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
-                  Browse All Equipment
+                <Link href="/equipment" style={{ color: "var(--text-muted)", fontSize: "0.9rem", transition: "color 0.15s" }}>
+                  Browse All Machinery
                 </Link>
               </li>
               <li>
-                <Link href="/equipment?category_slug=tractors" style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
-                  Tractors & Loaders
+                <Link href="/equipment?category_slug=tractors" style={{ color: "var(--text-muted)", fontSize: "0.9rem", transition: "color 0.15s" }}>
+                  Tractors & Loaders (4WD/2WD)
                 </Link>
               </li>
               <li>
-                <Link href="/equipment?category_slug=harvesters-combines" style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
-                  Harvesters & Combines
+                <Link href="/equipment?category_slug=harvesters-combines" style={{ color: "var(--text-muted)", fontSize: "0.9rem", transition: "color 0.15s" }}>
+                  Combine Harvesters
                 </Link>
               </li>
               <li>
-                <Link href="/equipment/new" style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
-                  List Your Equipment
+                <Link href="/equipment/new" style={{ color: "var(--text-muted)", fontSize: "0.9rem", transition: "color 0.15s" }}>
+                  List Your Tractor or Implements
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* How it Works */}
+          {/* Col 3: Platform */}
           <div>
-            <h4 style={{ fontSize: "1rem", fontWeight: "700", marginBottom: "16px", color: "var(--text-main)" }}>
+            <h4
+              style={{
+                fontSize: "0.95rem",
+                fontWeight: "800",
+                marginBottom: "16px",
+                color: "var(--text-main)",
+                textTransform: "uppercase",
+                letterSpacing: "0.04em",
+              }}
+            >
               Platform
             </h4>
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px" }}>
               <li>
-                <Link href="/#how-it-works" style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
+                <Link href="/#how-it-works" style={{ color: "var(--text-muted)", fontSize: "0.9rem", transition: "color 0.15s" }}>
                   How It Works
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard" style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
-                  Farmer Dashboard
+                <Link href="/dashboard" style={{ color: "var(--text-muted)", fontSize: "0.9rem", transition: "color 0.15s" }}>
+                  Kisan Dashboard
                 </Link>
               </li>
               <li>
-                <Link href="/bookings" style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
+                <Link href="/bookings" style={{ color: "var(--text-muted)", fontSize: "0.9rem", transition: "color 0.15s" }}>
                   Rental Management
                 </Link>
               </li>
               <li>
-                <a href="http://127.0.0.1:8000/api/docs/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
-                  API Documentation (Swagger)
+                <a
+                  href="http://127.0.0.1:8000/api/docs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--text-muted)", fontSize: "0.9rem", transition: "color 0.15s" }}
+                >
+                  REST API Docs (Swagger)
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Col 4: Contact & Support */}
           <div>
-            <h4 style={{ fontSize: "1rem", fontWeight: "700", marginBottom: "16px", color: "var(--text-main)" }}>
+            <h4
+              style={{
+                fontSize: "0.95rem",
+                fontWeight: "800",
+                marginBottom: "16px",
+                color: "var(--text-main)",
+                textTransform: "uppercase",
+                letterSpacing: "0.04em",
+              }}
+            >
               Contact & Support
             </h4>
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px", color: "var(--text-muted)", fontSize: "0.9rem" }}>
@@ -124,16 +167,17 @@ export function Footer() {
               </li>
               <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <Phone size={16} style={{ color: "var(--primary)" }} />
-                <span>+1 (800) 555-AGRI</span>
+                <span>+91 1800 180 1551 (Toll-Free)</span>
               </li>
               <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <MapPin size={16} style={{ color: "var(--primary)" }} />
-                <span>Des Moines, Iowa, USA</span>
+                <span>Ludhiana, Punjab & New Delhi, India</span>
               </li>
             </ul>
           </div>
         </div>
 
+        {/* Bottom Bar */}
         <div
           style={{
             borderTop: "1px solid var(--border)",
@@ -148,10 +192,11 @@ export function Footer() {
           }}
         >
           <div>
-            &copy; {new Date().getFullYear()} AgriShare Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} AgriShare India. All rights reserved.
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            Built with modern agricultural tech <Heart size={14} style={{ color: "var(--primary)" }} />
+            <span>Built for Modern Indian Agriculture</span>
+            <Heart size={14} style={{ color: "var(--accent)" }} />
           </div>
         </div>
       </div>

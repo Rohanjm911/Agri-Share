@@ -8,7 +8,6 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { NotificationDrawer } from "@/components/notifications/NotificationDrawer";
 import { Logo } from "@/components/ui/Logo";
 import {
-  Tractor,
   Menu,
   X,
   User as UserIcon,
@@ -45,11 +44,9 @@ export function Navbar() {
         position: "sticky",
         top: 0,
         zIndex: 50,
-        backgroundColor: "var(--bg-glass)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
+        backgroundColor: "var(--bg-surface)",
         borderBottom: "1px solid var(--border)",
-        transition: "all 0.2s ease",
+        transition: "background-color 0.15s ease, border-color 0.15s ease",
       }}
     >
       <div
@@ -68,7 +65,7 @@ export function Navbar() {
         <nav
           style={{
             display: "none",
-            gap: "28px",
+            gap: "24px",
             alignItems: "center",
           }}
           className="desktop-nav"
@@ -81,23 +78,31 @@ export function Navbar() {
                 href={link.href}
                 style={{
                   fontSize: "0.95rem",
-                  fontWeight: isActive ? "700" : "500",
+                  fontWeight: isActive ? "800" : "600",
                   color: isActive ? "var(--primary)" : "var(--text-muted)",
-                  transition: "color 0.15s ease",
+                  padding: "6px 12px",
+                  borderRadius: "var(--radius-sm)",
+                  backgroundColor: isActive ? "var(--primary-light)" : "transparent",
+                  transition: "all 0.15s ease",
                 }}
               >
                 {link.name}
               </Link>
             );
           })}
+
           {isAuthenticated && (
             <>
               <Link
                 href="/bookings"
                 style={{
                   fontSize: "0.95rem",
-                  fontWeight: pathname === "/bookings" ? "700" : "500",
+                  fontWeight: pathname === "/bookings" ? "800" : "600",
                   color: pathname === "/bookings" ? "var(--primary)" : "var(--text-muted)",
+                  padding: "6px 12px",
+                  borderRadius: "var(--radius-sm)",
+                  backgroundColor: pathname === "/bookings" ? "var(--primary-light)" : "transparent",
+                  transition: "all 0.15s ease",
                 }}
               >
                 Bookings
@@ -106,8 +111,12 @@ export function Navbar() {
                 href="/dashboard"
                 style={{
                   fontSize: "0.95rem",
-                  fontWeight: pathname === "/dashboard" ? "700" : "500",
+                  fontWeight: pathname === "/dashboard" ? "800" : "600",
                   color: pathname === "/dashboard" ? "var(--primary)" : "var(--text-muted)",
+                  padding: "6px 12px",
+                  borderRadius: "var(--radius-sm)",
+                  backgroundColor: pathname === "/dashboard" ? "var(--primary-light)" : "transparent",
+                  transition: "all 0.15s ease",
                 }}
               >
                 Dashboard
@@ -145,7 +154,7 @@ export function Navbar() {
                     display: "flex",
                     alignItems: "center",
                     gap: "8px",
-                    padding: "6px 12px",
+                    padding: "6px 14px",
                     borderRadius: "var(--radius-full)",
                   }}
                 >
@@ -154,18 +163,18 @@ export function Navbar() {
                       width: "26px",
                       height: "26px",
                       borderRadius: "50%",
-                      backgroundColor: "var(--primary-light)",
-                      color: "var(--primary)",
+                      backgroundColor: "var(--primary)",
+                      color: "#ffffff",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontWeight: "700",
-                      fontSize: "0.8rem",
+                      fontWeight: "800",
+                      fontSize: "0.78rem",
                     }}
                   >
                     {user?.first_name ? user.first_name[0].toUpperCase() : "U"}
                   </div>
-                  <span style={{ fontSize: "0.88rem", fontWeight: "600" }}>
+                  <span style={{ fontSize: "0.88rem", fontWeight: "700" }}>
                     {user?.first_name || user?.username}
                   </span>
                 </button>
@@ -182,15 +191,21 @@ export function Navbar() {
                         position: "absolute",
                         top: "calc(100% + 8px)",
                         right: 0,
-                        width: "220px",
+                        width: "230px",
                         zIndex: 91,
                         padding: "8px",
-                        boxShadow: "var(--shadow-xl)",
+                        backgroundColor: "var(--bg-surface)",
+                        border: "1px solid var(--border)",
+                        boxShadow: "var(--shadow-lg)",
                       }}
                     >
                       <div style={{ padding: "8px 12px", borderBottom: "1px solid var(--border)", marginBottom: "4px" }}>
-                        <div style={{ fontWeight: "700", fontSize: "0.9rem" }}>{user?.first_name} {user?.last_name}</div>
-                        <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", overflow: "hidden", textOverflow: "ellipsis" }}>{user?.email}</div>
+                        <div style={{ fontWeight: "800", fontSize: "0.92rem", color: "var(--text-main)" }}>
+                          {user?.first_name} {user?.last_name}
+                        </div>
+                        <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", overflow: "hidden", textOverflow: "ellipsis" }}>
+                          {user?.email}
+                        </div>
                       </div>
 
                       <Link
@@ -234,7 +249,7 @@ export function Navbar() {
                       <button
                         onClick={handleLogout}
                         className="btn btn-ghost btn-sm"
-                        style={{ width: "100%", justifyContent: "flex-start", color: "#ef4444" }}
+                        style={{ width: "100%", justifyContent: "flex-start", color: "#dc2626" }}
                       >
                         <LogOut size={16} /> Logout
                       </button>
@@ -255,21 +270,21 @@ export function Navbar() {
           )}
         </div>
 
-        {/* Mobile menu trigger */}
+        {/* Mobile Toggle */}
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }} className="mobile-toggle">
           <ThemeToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="btn btn-secondary btn-sm"
             style={{ padding: "8px" }}
-            aria-label="Open menu"
+            aria-label="Open navigation menu"
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Dropdown Drawer */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div
           style={{
@@ -278,7 +293,7 @@ export function Navbar() {
             padding: "16px 20px 24px",
             display: "flex",
             flexDirection: "column",
-            gap: "12px",
+            gap: "10px",
           }}
         >
           {navLinks.map((link) => (
@@ -288,9 +303,11 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 fontSize: "1rem",
-                fontWeight: pathname === link.href ? "700" : "500",
+                fontWeight: pathname === link.href ? "800" : "600",
                 color: pathname === link.href ? "var(--primary)" : "var(--text-main)",
-                padding: "8px 0",
+                padding: "8px 12px",
+                borderRadius: "var(--radius-sm)",
+                backgroundColor: pathname === link.href ? "var(--primary-light)" : "transparent",
               }}
             >
               {link.name}

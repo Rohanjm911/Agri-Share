@@ -11,6 +11,7 @@ export function CTASection() {
         paddingTop: "80px",
         paddingBottom: "80px",
         backgroundColor: "var(--bg-main)",
+        transition: "background-color 0.15s ease",
       }}
     >
       <div className="container">
@@ -22,6 +23,7 @@ export function CTASection() {
             borderRadius: "var(--radius-lg)",
             textAlign: "center",
             boxShadow: "var(--shadow-lg)",
+            border: "1px solid var(--primary-hover)",
           }}
         >
           <div style={{ maxWidth: "660px", margin: "0 auto" }}>
@@ -39,7 +41,8 @@ export function CTASection() {
                 marginBottom: "20px",
               }}
             >
-              <Sparkles size={16} /> Empowering Indian Kisans & Machinery Owners
+              <Sparkles size={16} style={{ color: "var(--accent)" }} />
+              <span>Empowering Indian Kisans & Machinery Owners</span>
             </div>
 
             <h2
@@ -53,13 +56,13 @@ export function CTASection() {
               }}
             >
               Maximize Crop Output. <br />
-              Save on Capital Costs.
+              Save on Capital Equipment Costs.
             </h2>
 
             <p
               style={{
                 fontSize: "1.1rem",
-                color: "rgba(255, 255, 255, 0.92)",
+                color: "rgba(255, 255, 255, 0.9)",
                 lineHeight: "1.65",
                 marginBottom: "36px",
               }}
@@ -82,9 +85,9 @@ export function CTASection() {
                 className="btn btn-lg"
                 style={{
                   backgroundColor: "#ffffff",
-                  color: "var(--primary)",
+                  color: "#0f3d24",
                   fontWeight: "800",
-                  border: "none",
+                  border: "1px solid #ffffff",
                 }}
               >
                 <span>Create Free Account</span>
@@ -115,7 +118,8 @@ export function CTASection() {
                 fontWeight: "600",
               }}
             >
-              <ShieldCheck size={16} /> Free signup &bull; Verified Indian Farmers &bull; Direct Coordination
+              <ShieldCheck size={16} style={{ color: "var(--accent)" }} />
+              <span>Free registration &bull; 100% Verified Indian Farmers &bull; Direct Coordination</span>
             </div>
           </div>
         </div>

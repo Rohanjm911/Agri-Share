@@ -1,0 +1,118 @@
+================================================================================
+           AGRISHARE — REQUIRED EXTENSIONS & RUNTIME PREREQUISITES
+================================================================================
+
+This document lists all system runtimes, software tools, and recommended VS Code 
+extensions required to develop, run, and debug the AgriShare platform.
+
+--------------------------------------------------------------------------------
+1. SYSTEM RUNTIME PREREQUISITES (Required to Run the Project)
+--------------------------------------------------------------------------------
+
+Make sure the following tools are installed and added to your system PATH:
+
+* Python 3.12+ (Python 3.13 recommended)
+  - Purpose: Runs Django REST Framework Backend, virtual environment & migrations.
+  - Check: `python --version` or `py --version`
+  - Download: https://www.python.org/downloads/
+  - Note: During installation, ensure "Add python.exe to PATH" is checked.
+
+* Node.js 18+ LTS (v20+ recommended)
+  - Purpose: Runs the Next.js 16 frontend development server and SSR compiler.
+  - Check: `node --version`
+  - Download: https://nodejs.org/
+
+* npm (v9.0+ or newer)
+  - Purpose: Manages frontend JavaScript/TypeScript packages.
+  - Check: `npm --version`
+  - Bundled automatically with Node.js.
+
+* Git (v2.x+)
+  - Purpose: Source code version control.
+  - Check: `git --version`
+  - Download: https://git-scm.com/
+
+--------------------------------------------------------------------------------
+2. RECOMMENDED VS CODE / IDE EXTENSIONS (For Development & Debugging)
+--------------------------------------------------------------------------------
+
+To get the best developer experience, syntax highlighting, linting, and 
+auto-formatting, install the following extensions in VS Code:
+
+A. Python & Backend Extensions:
+------------------------------
+1. Python (ms-python.python)
+   - Official Python extension for VS Code: IntelliSense, linting, debugging,
+     and Jupyter support.
+
+2. Pylance (ms-python.vscode-pylance)
+   - High-performance language server for Python with rich type checking.
+
+3. Django (batisteo.vscode-django)
+   - Django template syntax highlighting, tags, filters, and code completion.
+
+4. SQLite Viewer (qwtel.sqlite-viewer)
+   - Allows opening and exploring the SQLite database file (`backend/db.sqlite3`)
+     directly inside VS Code without external database software.
+
+B. Frontend & JavaScript / TypeScript Extensions:
+-------------------------------------------------
+5. ESLint (dbaeumer.vscode-eslint)
+   - Integrates ESLint into VS Code to catch code quality and formatting issues.
+
+6. Prettier - Code Formatter (esbenp.prettier-vscode)
+   - Consistent code styling for HTML, CSS, JavaScript, TypeScript, and JSON.
+
+7. Tailwind CSS IntelliSense (bradlc.vscode-tailwindcss)
+   - Autocompletion and syntax highlighting for Tailwind CSS classes.
+
+8. ES7+ React/Redux/React-Native snippets (dsznajder.es7-react-js-snippets)
+   - High-productivity snippets for React components, hooks, and TypeScript props.
+
+C. Environment & Productivity Extensions:
+-----------------------------------------
+9. DotENV (mikestead.dotenv)
+   - Syntax highlighting for `.env` and `.env.example` files.
+
+10. Thunder Client (rangav.vscode-thunder-client) OR REST Client (humao.rest-client)
+    - Lightweight REST API client inside VS Code for testing backend endpoints.
+
+--------------------------------------------------------------------------------
+3. QUICK COMMAND TO INSTALL ALL EXTENSIONS VIA TERMINAL
+--------------------------------------------------------------------------------
+
+If you have the `code` CLI command available in your terminal, you can install 
+all recommended extensions in one go:
+
+code --install-extension ms-python.python
+code --install-extension ms-python.vscode-pylance
+code --install-extension batisteo.vscode-django
+code --install-extension qwtel.sqlite-viewer
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension esbenp.prettier-vscode
+code --install-extension bradlc.vscode-tailwindcss
+code --install-extension dsznajder.es7-react-js-snippets
+code --install-extension mikestead.dotenv
+code --install-extension rangav.vscode-thunder-client
+
+--------------------------------------------------------------------------------
+4. HOW TO RUN & STOP THE AGRISHARE PROJECT
+--------------------------------------------------------------------------------
+
+* To Launch Servers (1-Click Master Control):
+  Double-click `run.bat` in the project root directory, or run from terminal:
+    run.bat
+
+  Interactive Menu Options in `run.bat`:
+    [1] Start Full Stack Platform (Backend on :8000 + Frontend on :3000)
+    [2] Start Backend Only (Django REST Framework)
+    [3] Start Frontend Only (Next.js)
+    [4] Stop All AgriShare Servers
+    [5] Apply Migrations & Seed Demo Data
+    [6] Open Web App in Browser (http://localhost:3000)
+    [0] Exit
+
+* To Stop All Servers (1-Click Instant Shutdown):
+  Double-click `stop.bat` in the project root directory, or run from terminal:
+    stop.bat
+================================================================================

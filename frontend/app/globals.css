@@ -1,90 +1,118 @@
 /* ==========================================================================
-   AgriShare Clean, Solid Modern Agricultural Design System
-   (Zero gradients, high contrast, clean solid borders and colors)
+   AgriShare Professional Dual-Tone Design System
+   Architecture: Pure Solid Dual-Tone Palette (Strictly ZERO Gradients)
+   Tone 1: Deep Forest Pine (#0f3d24 / #10b981)
+   Tone 2: Warm Harvest Amber (#d97706 / #f59e0b)
    ========================================================================== */
 
 :root {
-  /* Font Families */
+  /* Font Stacks */
   --font-family-heading: var(--font-outfit), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-family-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  /* Light Mode - Clean Flat Agricultural Palette */
-  --bg-main: #f4f6f4;
-  --bg-surface: #ffffff;
-  --bg-subtle: #eaf1eb;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f9fbf9;
+  /* Tone 1 - Deep Forest Pine */
+  --primary: #0f3d24;
+  --primary-hover: #0b2d1a;
+  --primary-active: #071f12;
+  --primary-light: #eaf3ed;
+  --primary-text: #ffffff;
 
-  --text-main: #141c16;
-  --text-muted: #4e5e52;
-  --text-subtle: #738477;
+  /* Tone 2 - Warm Harvest Amber */
+  --accent: #d97706;
+  --accent-hover: #b45309;
+  --accent-active: #92400e;
+  --accent-light: #fef3c7;
+  --accent-text: #ffffff;
+
+  /* Backward Compatibility Aliases */
+  --accent-gold: var(--accent);
+  --accent-gold-hover: var(--accent-hover);
+  --accent-gold-light: var(--accent-light);
+
+  /* Architectural Canvas & Neutrals (Light Mode) */
+  --bg-main: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --bg-glass: #ffffff;
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-subtle: #64748b;
   --text-inverse: #ffffff;
 
-  --primary: #236f41;
-  --primary-hover: #1a5632;
-  --primary-active: #144327;
-  --primary-light: #ebf4ee;
+  --border: #e2e8f0;
+  --border-focus: #0f3d24;
+  --border-hover: #cbd5e1;
 
-  --accent-gold: #d97706;
-  --accent-gold-hover: #b45309;
-  --accent-gold-light: #fef3c7;
+  /* Crisp Architectural Shadows (Solid-feel elevation) */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-card-hover: 0 8px 16px -2px rgba(15, 23, 42, 0.09);
 
-  --border: #dbe3dc;
-  --border-focus: #236f41;
-  --border-hover: #88a892;
-
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 10px 0 rgba(0, 0, 0, 0.07);
-  --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.08);
-  --shadow-card: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
-  --shadow-card-hover: 0 8px 20px 0 rgba(0, 0, 0, 0.1);
-
+  /* Geometry */
   --radius-xs: 4px;
-  --radius-sm: 8px;
+  --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
-  --radius-xl: 18px;
+  --radius-xl: 20px;
   --radius-full: 9999px;
 }
 
 [data-theme="dark"],
 .dark {
-  /* Dark Mode - Clean Solid Charcoal & Green Palette */
-  --bg-main: #111613;
-  --bg-surface: #181f1b;
-  --bg-subtle: #212b25;
-  --bg-card: #1a221d;
-  --bg-card-hover: #222d26;
+  /* Tone 1 - Crisp Luminous Emerald (Dark counterpart) */
+  --primary: #10b981;
+  --primary-hover: #34d399;
+  --primary-active: #059669;
+  --primary-light: #07281c;
+  --primary-text: #041a12;
 
-  --text-main: #f0f5f1;
-  --text-muted: #9db0a1;
-  --text-subtle: #6c7f70;
-  --text-inverse: #111613;
+  /* Tone 2 - Luminous Harvest Amber */
+  --accent: #f59e0b;
+  --accent-hover: #fbbf24;
+  --accent-active: #d97706;
+  --accent-light: #2e1d05;
+  --accent-text: #1c1102;
 
-  --primary: #38a169;
-  --primary-hover: #48bb78;
-  --primary-active: #2f855a;
-  --primary-light: #1f3326;
+  /* Backward Compatibility Aliases */
+  --accent-gold: var(--accent);
+  --accent-gold-hover: var(--accent-hover);
+  --accent-gold-light: var(--accent-light);
 
-  --accent-gold: #f59e0b;
-  --accent-gold-hover: #fbbf24;
-  --accent-gold-light: #332812;
+  /* Architectural Canvas & Neutrals (Dark Mode) */
+  --bg-main: #090d0b;
+  --bg-surface: #111814;
+  --bg-subtle: #17231c;
+  --bg-card: #131c16;
+  --bg-card-hover: #19261e;
+  --bg-glass: #111814;
 
-  --border: #28362d;
-  --border-focus: #38a169;
-  --border-hover: #4a6353;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+  --text-inverse: #090d0b;
 
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 10px 0 rgba(0, 0, 0, 0.6);
-  --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.7);
-  --shadow-card: 0 2px 8px 0 rgba(0, 0, 0, 0.45);
-  --shadow-card-hover: 0 8px 20px 0 rgba(0, 0, 0, 0.6);
+  --border: #1e3126;
+  --border-focus: #10b981;
+  --border-hover: #294435;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.7);
+  --shadow-xl: 0 20px 30px rgba(0, 0, 0, 0.8);
+  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 8px 20px rgba(0, 0, 0, 0.65);
 }
 
 /* ==========================================================================
-   Base Styles & Typography
+   CSS Reset & Base Typography
    ========================================================================== */
 
 * {
@@ -102,13 +130,14 @@ body {
   line-height: 1.6;
   transition: background-color 0.15s ease, color 0.15s ease;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-heading);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--text-main);
-  line-height: 1.25;
+  line-height: 1.2;
   font-weight: 800;
 }
 
@@ -122,7 +151,7 @@ button, input, select, textarea {
   font-size: inherit;
 }
 
-/* Scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -138,7 +167,7 @@ button, input, select, textarea {
   background: var(--primary);
 }
 
-/* Container */
+/* Main Container */
 .container {
   width: 100%;
   max-width: 1240px;
@@ -149,7 +178,7 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   Buttons - Clean Solid Styling (No Gradients)
+   Buttons - Solid Dual-Tone Precision (Strictly ZERO Gradients)
    ========================================================================== */
 
 .btn {
@@ -163,10 +192,11 @@ button, input, select, textarea {
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
   text-align: center;
   white-space: nowrap;
   user-select: none;
+  background-image: none !important;
 }
 
 .btn:active {
@@ -179,10 +209,16 @@ button, input, select, textarea {
   transform: none !important;
 }
 
+/* Primary Button (Tone 1: Deep Forest Pine) */
 .btn-primary {
   background-color: var(--primary);
   color: #ffffff;
   border-color: var(--primary);
+}
+
+[data-theme="dark"] .btn-primary,
+.dark .btn-primary {
+  color: var(--primary-text);
 }
 
 .btn-primary:hover:not(:disabled) {
@@ -190,6 +226,7 @@ button, input, select, textarea {
   border-color: var(--primary-hover);
 }
 
+/* Secondary Button (Solid Architectural Border) */
 .btn-secondary {
   background-color: var(--bg-card);
   color: var(--text-main);
@@ -202,17 +239,19 @@ button, input, select, textarea {
   color: var(--primary);
 }
 
+/* Accent Button (Tone 2: Warm Harvest Amber) */
 .btn-accent {
-  background-color: var(--accent-gold);
+  background-color: var(--accent);
   color: #ffffff;
-  border-color: var(--accent-gold);
+  border-color: var(--accent);
 }
 
 .btn-accent:hover:not(:disabled) {
-  background-color: var(--accent-gold-hover);
-  border-color: var(--accent-gold-hover);
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 
+/* Ghost Button */
 .btn-ghost {
   background-color: transparent;
   color: var(--text-main);
@@ -224,9 +263,10 @@ button, input, select, textarea {
   color: var(--primary);
 }
 
+/* Danger Button */
 .btn-danger {
   background-color: #fee2e2;
-  color: #b91c1c;
+  color: #991b1b;
   border: 1px solid #fca5a5;
 }
 
@@ -249,7 +289,7 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   Cards & Surfaces (Solid flat clean cards)
+   Cards & Architectural Surfaces (Solid, 1px Precision Lines)
    ========================================================================== */
 
 .card {
@@ -257,12 +297,9 @@ button, input, select, textarea {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
   overflow: hidden;
-}
-
-.card:hover {
-  border-color: var(--border-hover);
+  background-image: none !important;
 }
 
 .card-interactive {
@@ -270,12 +307,12 @@ button, input, select, textarea {
 }
 
 .card-interactive:hover {
-  border-color: var(--primary);
+  border-color: var(--border-hover);
   box-shadow: var(--shadow-card-hover);
 }
 
 /* ==========================================================================
-   Badges - Solid / Flat Styling
+   Badges & Tags - Solid Dual-Tone
    ========================================================================== */
 
 .badge {
@@ -287,7 +324,8 @@ button, input, select, textarea {
   font-weight: 700;
   border-radius: var(--radius-full);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
+  background-image: none !important;
 }
 
 .badge-success {
@@ -297,8 +335,8 @@ button, input, select, textarea {
 }
 
 .badge-warning {
-  background-color: var(--accent-gold-light);
-  color: var(--accent-gold);
+  background-color: var(--accent-light);
+  color: var(--accent);
   border: 1px solid var(--border);
 }
 
@@ -308,10 +346,24 @@ button, input, select, textarea {
   border: 1px solid #bae6fd;
 }
 
+[data-theme="dark"] .badge-info,
+.dark .badge-info {
+  background-color: #0c253b;
+  color: #38bdf8;
+  border-color: #1e3a5f;
+}
+
 .badge-danger {
   background-color: #fee2e2;
-  color: #b91c1c;
+  color: #991b1b;
   border: 1px solid #fecaca;
+}
+
+[data-theme="dark"] .badge-danger,
+.dark .badge-danger {
+  background-color: #2b1212;
+  color: #f87171;
+  border-color: #4c1d1d;
 }
 
 .badge-muted {
@@ -321,7 +373,7 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   Forms & Inputs
+   Forms & Controls
    ========================================================================== */
 
 .form-group {
@@ -348,13 +400,14 @@ button, input, select, textarea {
   color: var(--text-main);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
   outline: none;
+  background-image: none !important;
 }
 
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px var(--primary-light);
+  box-shadow: 0 0 0 2px var(--primary-light);
 }
 
 .form-input::placeholder,

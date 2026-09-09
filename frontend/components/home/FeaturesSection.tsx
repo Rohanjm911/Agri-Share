@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Tractor, MapPin, CalendarCheck, Star, Sparkles, Shield, IndianRupee } from "lucide-react";
+import { Tractor, MapPin, Star, Sparkles, IndianRupee } from "lucide-react";
 
 export function FeaturesSection() {
   const features = [
@@ -23,7 +23,7 @@ export function FeaturesSection() {
       icon: IndianRupee,
       title: "Transparent Daily Rates (₹)",
       description:
-        "Transparent pricing with automated daily rate calculation and refundable security deposits. Zero hidden charges or broker commissions.",
+        "Clear pricing with automated daily rate calculation and refundable security deposits. Zero hidden charges, broker fees, or middleman markups.",
       tag: "Zero Middlemen",
     },
     {
@@ -42,6 +42,7 @@ export function FeaturesSection() {
         paddingTop: "80px",
         paddingBottom: "80px",
         backgroundColor: "var(--bg-main)",
+        transition: "background-color 0.15s ease",
       }}
     >
       <div className="container">
@@ -61,9 +62,10 @@ export function FeaturesSection() {
               textTransform: "uppercase",
               letterSpacing: "0.04em",
               marginBottom: "14px",
+              border: "1px solid var(--border)",
             }}
           >
-            <Sparkles size={14} /> Core Platform Features
+            <Sparkles size={14} style={{ color: "var(--accent)" }} /> Core Platform Features
           </div>
           <h2
             style={{
@@ -100,6 +102,7 @@ export function FeaturesSection() {
                   flexDirection: "column",
                   justifyContent: "space-between",
                   backgroundColor: "var(--bg-card)",
+                  border: "1px solid var(--border)",
                 }}
               >
                 <div>

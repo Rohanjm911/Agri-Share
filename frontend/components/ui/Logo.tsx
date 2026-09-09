@@ -19,9 +19,9 @@ export function LogoIcon({ size = 32, className = "" }: { size?: number; classNa
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      style={{ display: "block" }}
+      style={{ display: "block", flexShrink: 0 }}
     >
-      {/* Solid Forest Green Background Shield */}
+      {/* Solid Forest Pine Background Shield (Tone 1) */}
       <rect
         x="4"
         y="4"
@@ -37,16 +37,16 @@ export function LogoIcon({ size = 32, className = "" }: { size?: number; classNa
         fill="#ffffff"
       />
 
-      {/* Solid Amber Growth Leaf */}
+      {/* Solid Warm Harvest Amber Growth Leaf (Tone 2) */}
       <path
         d="M24 14C24 14 35 17 35 27C35 32 30.5 36 25 36C21.5 36 18.5 34.5 17 32C22 33 27 30 28 25C29 20 25 16 24 14Z"
-        fill="var(--accent-gold)"
+        fill="var(--accent)"
       />
 
-      {/* Center Pin Node */}
+      {/* Center Pin & Precision Crosshairs */}
       <circle cx="24" cy="24" r="3" fill="#ffffff" />
       <path
-        d="M24 20V16M24 32V28M16 24H20M28 24H32"
+        d="M24 20V15M24 33V28M15 24H20M28 24H33"
         stroke="#ffffff"
         strokeWidth="2.5"
         strokeLinecap="round"
@@ -58,7 +58,6 @@ export function LogoIcon({ size = 32, className = "" }: { size?: number; classNa
 export function Logo({
   size = "md",
   showText = true,
-  variant = "full",
   className = "",
 }: LogoProps) {
   const iconSizes = {
@@ -106,7 +105,7 @@ export function Logo({
           <span style={{ color: "var(--primary)" }}>AGRI</span>
           <span
             style={{
-              color: "var(--accent-gold)",
+              color: "var(--accent)",
               marginLeft: "1px",
             }}
           >
