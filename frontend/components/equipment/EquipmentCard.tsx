@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { EquipmentListItem } from "@/types";
 import { formatCurrency, getConditionColor } from "@/lib/utils";
-import { MapPin, Star, Tractor, ArrowRight } from "lucide-react";
+import { MapPin, Star, Tractor, ArrowRight, User } from "lucide-react";
 
 interface EquipmentCardProps {
   equipment: EquipmentListItem;
@@ -96,24 +96,24 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
           )}
         </div>
 
-        {/* Rating Badge */}
+        {/* Rating Badge - Frosted Glass Float */}
         {equipment.total_reviews > 0 && (
           <div
+            className="glass-panel"
             style={{
               position: "absolute",
               top: "10px",
               right: "10px",
-              backgroundColor: "var(--bg-surface)",
-              border: "1px solid var(--border)",
               color: "var(--text-main)",
-              padding: "3px 8px",
-              borderRadius: "var(--radius-sm)",
+              padding: "4px 10px",
+              borderRadius: "9999px",
               fontSize: "0.75rem",
               fontWeight: "800",
               display: "flex",
               alignItems: "center",
               gap: "4px",
               zIndex: 2,
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
             }}
           >
             <Star size={12} fill="var(--accent)" color="var(--accent)" />
@@ -159,12 +159,34 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
             gap: "5px",
             color: "var(--text-muted)",
             fontSize: "0.85rem",
-            marginBottom: "16px",
+            marginBottom: "8px",
           }}
         >
           <MapPin size={14} style={{ color: "var(--primary)", flexShrink: 0 }} />
           <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
             {equipment.location}
+          </span>
+        </div>
+
+        {/* Small placeholder badge showing the respective Owner's Name */}
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "6px",
+            padding: "4px 10px",
+            borderRadius: "var(--radius-full)",
+            backgroundColor: "var(--bg-subtle)",
+            border: "1px solid var(--border)",
+            fontSize: "0.78rem",
+            color: "var(--text-muted)",
+            width: "fit-content",
+            marginBottom: "16px",
+          }}
+        >
+          <User size={12} style={{ color: "var(--primary)" }} />
+          <span>
+            Owner: <strong style={{ color: "var(--text-main)", fontWeight: "600" }}>{equipment.owner_name || "Verified Farmer"}</strong>
           </span>
         </div>
 
@@ -197,7 +219,16 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
             )}
           </div>
 
-          <Link href={`/equipment/${equipment.id}`} className="btn btn-primary btn-sm">
+          <Link
+            href={`/equipment/${equipment.id}`}
+            className="btn btn-primary btn-sm"
+            style={{
+              borderRadius: "9999px",
+              padding: "6px 14px",
+              fontSize: "0.82rem",
+              fontWeight: "600",
+            }}
+          >
             <span>View</span>
             <ArrowRight size={13} />
           </Link>

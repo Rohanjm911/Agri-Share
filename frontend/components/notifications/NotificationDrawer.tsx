@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { notificationService } from "@/services/notificationService";
@@ -33,7 +33,7 @@ export function NotificationDrawer() {
     setIsOpen(!isOpen);
   };
 
-  const handleMarkRead = async (id: number, link?: string) => {
+  const handleMarkRead = async (id: number) => {
     try {
       await notificationService.markRead(id);
       setNotifications((prev) =>
@@ -62,11 +62,12 @@ export function NotificationDrawer() {
         className="btn btn-ghost btn-sm"
         style={{
           position: "relative",
-          width: "38px",
-          height: "38px",
+          width: "36px",
+          height: "36px",
           padding: "0",
-          borderRadius: "var(--radius-full)",
+          borderRadius: "50%",
           border: "1px solid var(--border)",
+          backgroundColor: "var(--bg-card)",
         }}
         aria-label="Notifications"
       >

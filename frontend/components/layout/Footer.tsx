@@ -4,9 +4,6 @@ import React from "react";
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import {
-  Mail,
-  Phone,
-  MapPin,
   Heart,
   ShieldCheck,
 } from "lucide-react";
@@ -142,36 +139,6 @@ export function Footer() {
                 >
                   REST API Docs (Swagger)
                 </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Contact & Support */}
-          <div>
-            <h4
-              style={{
-                fontSize: "0.95rem",
-                fontWeight: "800",
-                marginBottom: "16px",
-                color: "var(--text-main)",
-                textTransform: "uppercase",
-                letterSpacing: "0.04em",
-              }}
-            >
-              Contact & Support
-            </h4>
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px", color: "var(--text-muted)", fontSize: "0.9rem" }}>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <Mail size={16} style={{ color: "var(--primary)" }} />
-                <span>support@agrishare.com</span>
-              </li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <Phone size={16} style={{ color: "var(--primary)" }} />
-                <span>+91 1800 180 1551 (Toll-Free)</span>
-              </li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <MapPin size={16} style={{ color: "var(--primary)" }} />
-                <span>Ludhiana, Punjab & New Delhi, India</span>
               </li>
             </ul>
           </div>

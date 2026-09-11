@@ -2,9 +2,17 @@
 
 import React from "react";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 import { ArrowRight, ShieldCheck, Sparkles, Tractor } from "lucide-react";
 
 export function CTASection() {
+  const { isAuthenticated } = useAuth();
+
+  // Hide the registration CTA banner completely when user is logged in
+  if (isAuthenticated) {
+    return null;
+  }
+
   return (
     <section
       style={{

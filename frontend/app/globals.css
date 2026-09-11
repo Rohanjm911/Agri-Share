@@ -1,8 +1,9 @@
 /* ==========================================================================
    AgriShare Professional Dual-Tone Design System
    Architecture: Pure Solid Dual-Tone Palette (Strictly ZERO Gradients)
-   Tone 1: Deep Forest Pine (#0f3d24 / #10b981)
-   Tone 2: Warm Harvest Amber (#d97706 / #f59e0b)
+   Tone 1: Fresh Modern Emerald (#15803d / #16a34a / #10b981)
+   Tone 2: Warm Honey & Amber (#d97706 / #f59e0b)
+   Canvas: Crisp Mint & Organic Light Neutral (#f4f9f5)
    ========================================================================== */
 
 :root {
@@ -10,14 +11,14 @@
   --font-family-heading: var(--font-outfit), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-family-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  /* Tone 1 - Deep Forest Pine */
-  --primary: #0f3d24;
-  --primary-hover: #0b2d1a;
-  --primary-active: #071f12;
-  --primary-light: #eaf3ed;
+  /* Tone 1 - Fresh Modern Emerald */
+  --primary: #15803d;
+  --primary-hover: #166534;
+  --primary-active: #14532d;
+  --primary-light: #dcfce7;
   --primary-text: #ffffff;
 
-  /* Tone 2 - Warm Harvest Amber */
+  /* Tone 2 - Warm Honey & Amber */
   --accent: #d97706;
   --accent-hover: #b45309;
   --accent-active: #92400e;
@@ -29,86 +30,93 @@
   --accent-gold-hover: var(--accent-hover);
   --accent-gold-light: var(--accent-light);
 
-  /* Architectural Canvas & Neutrals (Light Mode) */
-  --bg-main: #f8fafc;
+  /* Architectural Canvas & Neutrals (Light Mode - Fresh Mint Organic Tone) */
+  --bg-main: #f4f8f5;
   --bg-surface: #ffffff;
-  --bg-subtle: #f1f5f9;
+  --bg-subtle: #eaf3ec;
   --bg-card: #ffffff;
-  --bg-card-hover: #f8fafc;
-  --bg-glass: #ffffff;
+  --bg-card-hover: #f0f7f2;
+  --bg-glass: rgba(255, 255, 255, 0.82);
+  --bg-glass-card: rgba(255, 255, 255, 0.75);
 
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --text-subtle: #64748b;
+  --text-main: #132418;
+  --text-muted: #3d5945;
+  --text-subtle: #5f7a67;
   --text-inverse: #ffffff;
 
-  --border: #e2e8f0;
-  --border-focus: #0f3d24;
-  --border-hover: #cbd5e1;
+  --border: #d5e5d9;
+  --border-focus: #15803d;
+  --border-hover: #b8d4bf;
+  --border-glass: rgba(21, 128, 61, 0.12);
 
-  /* Crisp Architectural Shadows (Solid-feel elevation) */
-  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
-  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.05);
-  --shadow-card-hover: 0 8px 16px -2px rgba(15, 23, 42, 0.09);
+  /* Crisp Architectural Minimal Shadows (Clean, subtle ambient elevation) */
+  --shadow-xs: 0 1px 2px rgba(19, 36, 24, 0.03);
+  --shadow-sm: 0 1px 3px rgba(19, 36, 24, 0.04), 0 1px 2px rgba(19, 36, 24, 0.02);
+  --shadow-md: 0 4px 8px -2px rgba(19, 36, 24, 0.05), 0 2px 4px -2px rgba(19, 36, 24, 0.03);
+  --shadow-lg: 0 12px 24px -4px rgba(19, 36, 24, 0.06), 0 4px 6px -2px rgba(19, 36, 24, 0.02);
+  --shadow-xl: 0 20px 32px -6px rgba(19, 36, 24, 0.08), 0 8px 12px -4px rgba(19, 36, 24, 0.03);
+  --shadow-card: 0 1px 3px rgba(19, 36, 24, 0.04), 0 1px 2px rgba(19, 36, 24, 0.02);
+  --shadow-card-hover: 0 10px 25px -4px rgba(19, 36, 24, 0.08), 0 4px 8px -2px rgba(19, 36, 24, 0.03);
 
-  /* Geometry */
-  --radius-xs: 4px;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
+  /* Geometry - Modern Minimal Soft Radii */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --radius-full: 9999px;
 }
 
 [data-theme="dark"],
 .dark {
-  /* Tone 1 - Crisp Luminous Emerald (Dark counterpart) */
+  /* Tone 1 - Luminous Neon Emerald (Tone 1: Agri Core) */
   --primary: #10b981;
   --primary-hover: #34d399;
   --primary-active: #059669;
-  --primary-light: #07281c;
-  --primary-text: #041a12;
+  --primary-light: rgba(16, 185, 129, 0.14);
+  --primary-text: #052317;
 
-  /* Tone 2 - Luminous Harvest Amber */
+  /* Tone 2 - Radiant Golden Amber (Tone 2: Harvest Core) */
   --accent: #f59e0b;
   --accent-hover: #fbbf24;
   --accent-active: #d97706;
-  --accent-light: #2e1d05;
-  --accent-text: #1c1102;
+  --accent-light: rgba(245, 158, 11, 0.14);
+  --accent-text: #211303;
 
   /* Backward Compatibility Aliases */
   --accent-gold: var(--accent);
   --accent-gold-hover: var(--accent-hover);
   --accent-gold-light: var(--accent-light);
 
-  /* Architectural Canvas & Neutrals (Dark Mode) */
-  --bg-main: #090d0b;
-  --bg-surface: #111814;
-  --bg-subtle: #17231c;
-  --bg-card: #131c16;
-  --bg-card-hover: #19261e;
-  --bg-glass: #111814;
+  /* Dual-Tone Architectural Canvas & Surfaces (Obsidian Slate + Forest Deep) */
+  --bg-main: #0a0f0d;         /* Deepest dual-tone obsidian dark base */
+  --bg-surface: #111a15;      /* Rich elevated dark forest tone */
+  --bg-card: #15221b;         /* Dual-tone card surface with emerald undertone */
+  --bg-card-hover: #1c2e24;   /* Illuminated interactive hover layer */
+  --bg-subtle: #192820;       /* Secondary architectural neutral */
+  --bg-glass: rgba(17, 26, 21, 0.82);
+  --bg-glass-card: rgba(21, 34, 27, 0.72);
 
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-subtle: #64748b;
-  --text-inverse: #090d0b;
+  /* Crisp Typography for Maximum Contrast & Readability */
+  --text-main: #f1f5f3;       /* Ultra-crisp, clear reading tone */
+  --text-muted: #9bb5a5;      /* Soft sage-mint muted tone (harmonious with dark forest) */
+  --text-subtle: #678473;     /* Architectural hints */
+  --text-inverse: #0a0f0d;
 
-  --border: #1e3126;
-  --border-focus: #10b981;
-  --border-hover: #294435;
+  /* Dual-Tone Architectural Borders & Subtle Highlights */
+  --border: #22372c;          /* Deep pine-slate border */
+  --border-hover: #325342;    /* Glowing interactive hover outline */
+  --border-focus: #10b981;    /* Precision neon emerald focus */
+  --border-glass: rgba(16, 185, 129, 0.2);
 
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.6);
-  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.7);
-  --shadow-xl: 0 20px 30px rgba(0, 0, 0, 0.8);
-  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.45);
-  --shadow-card-hover: 0 8px 20px rgba(0, 0, 0, 0.65);
+  /* Sleek Dark Mode Ambient Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.65);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.75);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.85);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 12px 28px rgba(0, 0, 0, 0.65), 0 0 0 1px #325342;
 }
 
 /* ==========================================================================
@@ -151,20 +159,20 @@ button, input, select, textarea {
   font-size: inherit;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+/* Hide scrollbar for Chrome, Safari, Edge, Opera, Firefox */
+html,
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
-::-webkit-scrollbar-track {
-  background: var(--bg-main);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: var(--radius-full);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent;
 }
 
 /* Main Container */
@@ -189,13 +197,14 @@ button, input, select, textarea {
   padding: 10px 20px;
   font-size: 0.95rem;
   font-weight: 700;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-align: center;
   white-space: nowrap;
   user-select: none;
+  box-shadow: 0 1px 2px rgba(19, 36, 24, 0.04);
   background-image: none !important;
 }
 
@@ -209,7 +218,7 @@ button, input, select, textarea {
   transform: none !important;
 }
 
-/* Primary Button (Tone 1: Deep Forest Pine) */
+/* Primary Button (Tone 1: Deep Forest Pine in Light, Radiant Emerald in Dark) */
 .btn-primary {
   background-color: var(--primary);
   color: #ffffff;
@@ -218,7 +227,8 @@ button, input, select, textarea {
 
 [data-theme="dark"] .btn-primary,
 .dark .btn-primary {
-  color: var(--primary-text);
+  color: #041f14;
+  font-weight: 700;
 }
 
 .btn-primary:hover:not(:disabled) {
@@ -244,6 +254,12 @@ button, input, select, textarea {
   background-color: var(--accent);
   color: #ffffff;
   border-color: var(--accent);
+}
+
+[data-theme="dark"] .btn-accent,
+.dark .btn-accent {
+  color: #1c1102;
+  font-weight: 700;
 }
 
 .btn-accent:hover:not(:disabled) {
@@ -289,16 +305,19 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   Cards & Architectural Surfaces (Solid, 1px Precision Lines)
+   Cards & Architectural Surfaces (Modern Minimal Aesthetic)
    ========================================================================== */
 
 .card {
   background-color: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease;
   overflow: hidden;
+  position: relative;
   background-image: none !important;
 }
 
@@ -309,7 +328,30 @@ button, input, select, textarea {
 .card-interactive:hover {
   border-color: var(--border-hover);
   box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
 }
+
+[data-theme="dark"] .card-interactive:hover,
+.dark .card-interactive:hover {
+  border-color: #345c48;
+  box-shadow: 0 16px 32px -4px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(16, 185, 129, 0.2);
+}
+
+/* Glassmorphism Accents (Applied deliberately to select key components) */
+.glass-panel {
+  background-color: var(--bg-glass-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+}
+
+.glass-nav {
+  background-color: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
 
 /* ==========================================================================
    Badges & Tags - Solid Dual-Tone
@@ -392,14 +434,15 @@ button, input, select, textarea {
 .form-select,
 .form-textarea {
   width: 100%;
-  padding: 11px 14px;
+  padding: 12px 16px;
   font-size: 0.95rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   border: 1px solid var(--border);
   background-color: var(--bg-card);
   color: var(--text-main);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
+  box-shadow: 0 1px 2px rgba(19, 36, 24, 0.02);
   background-image: none !important;
 }
 
@@ -407,11 +450,133 @@ button, input, select, textarea {
 .form-select:focus,
 .form-textarea:focus {
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 2px var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.15);
+  background-color: var(--bg-surface);
 }
 
 .form-input::placeholder,
 .form-textarea::placeholder {
   color: var(--text-subtle);
-  opacity: 0.8;
+  opacity: 0.75;
 }
+
+/* ==========================================================================
+   Modals & Dialog Overlays
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-card {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  animation: modalScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Theme Toggle Click Animations */
+@keyframes themeRotateIn {
+  0% {
+    transform: rotate(-90deg) scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: rotate(15deg) scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes themeBtnPress {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.85);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.theme-toggle-animate {
+  animation: themeBtnPress 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-icon-animate {
+  animation: themeRotateIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Circular Radial Spread Transition (From Theme Button across whole site)
+   ========================================================================== */
+
+::view-transition-image-pair(root) {
+  isolation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  display: block;
+  height: 100%;
+}
+
+/* When switching to dark mode: dark view (new root) expands on top */
+[data-theme="dark"]::view-transition-old(root) {
+  z-index: 1;
+}
+[data-theme="dark"]::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* When reverting to light mode: dark view (old root) stays on top and shrinks into the button */
+:root:not([data-theme="dark"])::view-transition-old(root) {
+  z-index: 9999;
+}
+:root:not([data-theme="dark"])::view-transition-new(root) {
+  z-index: 1;
+}
+

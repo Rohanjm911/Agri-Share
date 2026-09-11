@@ -36,6 +36,10 @@ class EquipmentFilter(django_filters.FilterSet):
     owner = django_filters.NumberFilter(
         field_name="owner_id",
     )
+    exclude_owner = django_filters.NumberFilter(
+        field_name="owner_id",
+        exclude=True,
+    )
 
     class Meta:
         model = Equipment
@@ -50,4 +54,5 @@ class EquipmentFilter(django_filters.FilterSet):
             "min_price",
             "max_price",
             "owner",
+            "exclude_owner",
         ]

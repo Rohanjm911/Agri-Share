@@ -5,9 +5,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { equipmentService } from "@/services/equipmentService";
 import { reviewService } from "@/services/reviewService";
-import { EquipmentDetail, Review } from "@/types";
+import { bookingService } from "@/services/bookingService";
+import { EquipmentDetail, Review, Booking } from "@/types";
 import { formatCurrency, formatDate, getConditionColor } from "@/lib/utils";
 import { BookingModal } from "@/components/booking/BookingModal";
+import { ReviewModal } from "@/components/reviews/ReviewModal";
 import { useAuth } from "@/context/AuthContext";
 import {
   Tractor,
@@ -37,6 +39,21 @@ export default function EquipmentDetailPage({ params }: { params: Promise<{ id: 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [reviewableBooking, setReviewableBooking] = useState<Booking | null>(null);
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+
+  const fetchReviewsAndEquipment = async (eqId: number) => {
+    try {
+      const [eqData, revData] = await Promise.all([
+        equipmentService.getEquipmentDetail(equipmentId),
+        reviewService.getReviews({ equipment: eqId }),
+      ]);
+      setEquipment(eqData);
+      setReviews(revData.results);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   useEffect(() => {
     async function loadData() {
@@ -56,6 +73,21 @@ export default function EquipmentDetailPage({ params }: { params: Promise<{ id: 
         } catch {
           // reviews optional
         }
+
+        // Check if current user has a completed booking that can be reviewed
+        if (user) {
+          try {
+            const userBookings = await bookingService.getBookings({
+              role: "renter",
+              status: "COMPLETED",
+              equipment: eqData.id,
+            });
+            const canReviewBooking = userBookings.results.find((b) => b.can_review);
+            setReviewableBooking(canReviewBooking || null);
+          } catch {
+            // optional check
+          }
+        }
       } catch (err: any) {
         setError(err.message || "Failed to load equipment details.");
       } finally {
@@ -63,7 +95,7 @@ export default function EquipmentDetailPage({ params }: { params: Promise<{ id: 
       }
     }
     loadData();
-  }, [equipmentId]);
+  }, [equipmentId, user]);
 
   if (isLoading) {
     return (
@@ -247,13 +279,25 @@ export default function EquipmentDetailPage({ params }: { params: Promise<{ id: 
 
             {/* Reviews Section */}
             <div className="card" style={{ padding: "28px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px", flexWrap: "wrap", gap: "12px" }}>
                 <h3 style={{ fontSize: "1.2rem", fontWeight: "700", display: "flex", alignItems: "center", gap: "8px" }}>
-                  <Star size={20} fill="var(--accent-gold)" color="var(--accent-gold)" /> Farmer Reviews & Ratings
+                  <Star size={20} fill="var(--accent-gold)" color="var(--accent-gold)" /> Farmer Reviews &amp; Ratings
                 </h3>
-                <span style={{ fontSize: "0.9rem", color: "var(--text-muted)", fontWeight: "600" }}>
-                  {reviews.length} {reviews.length === 1 ? "Review" : "Reviews"}
-                </span>
+                <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                  <span style={{ fontSize: "0.9rem", color: "var(--text-muted)", fontWeight: "600" }}>
+                    {reviews.length} {reviews.length === 1 ? "Review" : "Reviews"}
+                  </span>
+                  {reviewableBooking && (
+                    <button
+                      onClick={() => setIsReviewModalOpen(true)}
+                      className="btn btn-primary btn-sm"
+                      style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+                    >
+                      <Star size={15} fill="#ffffff" />
+                      <span>Write a Review</span>
+                    </button>
+                  )}
+                </div>
               </div>
 
               {reviews.length === 0 ? (
@@ -297,9 +341,11 @@ export default function EquipmentDetailPage({ params }: { params: Promise<{ id: 
                           ))}
                         </div>
                       </div>
-                      <p style={{ color: "var(--text-main)", fontSize: "0.92rem", lineHeight: "1.6" }}>
-                        {r.comment}
-                      </p>
+                      {r.comment && (
+                        <p style={{ color: "var(--text-main)", fontSize: "0.92rem", lineHeight: "1.6" }}>
+                          {r.comment}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -403,14 +449,31 @@ export default function EquipmentDetailPage({ params }: { params: Promise<{ id: 
       </div>
 
       {/* Booking Rental Modal */}
-      <BookingModal
-        equipment={equipment}
-        isOpen={isBookingOpen}
-        onClose={() => setIsBookingOpen(false)}
-        onSuccess={() => {
-          // refresh or state update
-        }}
-      />
+      {isBookingOpen && (
+        <BookingModal
+          equipment={equipment}
+          isOpen={isBookingOpen}
+          onClose={() => setIsBookingOpen(false)}
+          onSuccess={() => {
+            // refresh or state update
+          }}
+        />
+      )}
+
+      {/* Review Modal for Verified Renters */}
+      {isReviewModalOpen && reviewableBooking && (
+        <ReviewModal
+          booking={reviewableBooking}
+          isOpen={isReviewModalOpen}
+          onClose={() => setIsReviewModalOpen(false)}
+          onSuccess={() => {
+            setReviewableBooking(null);
+            if (equipment) {
+              fetchReviewsAndEquipment(equipment.id);
+            }
+          }}
+        />
+      )}
 
       <style jsx>{`
         @media (min-width: 992px) {

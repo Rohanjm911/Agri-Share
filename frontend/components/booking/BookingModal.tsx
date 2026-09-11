@@ -19,15 +19,17 @@ export function BookingModal({ equipment, isOpen, onClose, onSuccess }: BookingM
   const { user, isAuthenticated } = useAuth();
   const router = useRouter();
 
-  const todayStr = useMemo(() => {
-    return new Date().toISOString().split("T")[0];
-  }, []);
-
-  const tomorrowStr = useMemo(() => {
+  const getLocalDateString = (offsetDays = 0) => {
     const d = new Date();
-    d.setDate(d.getDate() + 1);
-    return d.toISOString().split("T")[0];
-  }, []);
+    d.setDate(d.getDate() + offsetDays);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  const todayStr = useMemo(() => getLocalDateString(0), []);
+  const tomorrowStr = useMemo(() => getLocalDateString(1), []);
 
   const [startDate, setStartDate] = useState(todayStr);
   const [endDate, setEndDate] = useState(tomorrowStr);
@@ -46,6 +48,7 @@ export function BookingModal({ equipment, isOpen, onClose, onSuccess }: BookingM
   const grandTotal = rentalSubtotal + securityDeposit;
 
   if (!isOpen) return null;
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

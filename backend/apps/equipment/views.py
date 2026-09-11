@@ -13,7 +13,7 @@ from .serializers import (
     EquipmentImageSerializer,
 )
 from .filters import EquipmentFilter
-from .permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly
+from .permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly, IsRegisteredOwner
 
 @extend_schema_view(
     list=extend_schema(summary="List all categories", description="Returns active equipment categories."),
@@ -40,7 +40,20 @@ class EquipmentViewSet(viewsets.ModelViewSet):
     search_fields = ["name", "description", "brand", "model", "location"]
     ordering_fields = ["created_at", "price_per_day", "name"]
     ordering = ["-created_at"]
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly, IsRegisteredOwner]
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        # When browsing general equipment catalog (action == 'list'),
+        # if user is authenticated and hasn't explicitly filtered by owner,
+        # exclude their own equipment listings so they only see others' machinery to rent.
+        if self.action == "list" and self.request.user.is_authenticated:
+            # Check if user specifically requested a specific owner via query params
+            owner_param = self.request.query_params.get("owner")
+            include_mine = self.request.query_params.get("include_mine")
+            if not owner_param and not include_mine:
+                qs = qs.exclude(owner=self.request.user)
+        return qs
 
     def get_serializer_class(self):
         if self.action in ["create", "update", "partial_update"]:

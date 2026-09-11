@@ -157,7 +157,7 @@ export default function MyEquipmentPage() {
               No Equipment Listed Yet
             </h3>
             <p style={{ color: "var(--text-muted)", maxWidth: "460px", marginBottom: "24px" }}>
-              You haven't listed any farm machinery yet. Start generating revenue from your idle equipment today.
+              You haven&apos;t listed any farm machinery yet. Start generating revenue from your idle equipment today.
             </p>
             <Link href="/equipment/new" className="btn btn-primary">
               <PlusCircle size={18} /> Add Your First Machine

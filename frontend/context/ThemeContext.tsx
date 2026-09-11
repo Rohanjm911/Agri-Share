@@ -6,7 +6,7 @@ type Theme = "light" | "dark";
 
 interface ThemeContextType {
   theme: Theme;
-  toggleTheme: () => void;
+  toggleTheme: (origin?: { x: number; y: number }) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -33,8 +33,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const toggleTheme = () => {
-    const nextTheme: Theme = theme === "light" ? "dark" : "light";
+  const applyTheme = (nextTheme: Theme) => {
     setTheme(nextTheme);
     localStorage.setItem("agrishare_theme", nextTheme);
     document.documentElement.setAttribute("data-theme", nextTheme);
@@ -42,6 +41,79 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
+    }
+  };
+
+  const toggleTheme = (origin?: { x: number; y: number }) => {
+    const nextTheme: Theme = theme === "light" ? "dark" : "light";
+
+    // If browser supports Modern View Transition API
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (typeof document !== "undefined" && "startViewTransition" in document) {
+      const x = origin?.x ?? window.innerWidth / 2;
+      const y = origin?.y ?? window.innerHeight / 2;
+
+      // Calculate max radius to furthest corner
+      const endRadius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+      );
+
+      document.documentElement.style.setProperty("--theme-origin-x", `${x}px`);
+      document.documentElement.style.setProperty("--theme-origin-y", `${y}px`);
+      document.documentElement.classList.add("theme-transitioning");
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const transition = (document as any).startViewTransition(() => {
+        applyTheme(nextTheme);
+      });
+
+      transition.ready
+        .then(() => {
+          // Buttery smooth organic wave animation originating directly from button center
+          if (nextTheme === "dark") {
+            // Expanding Dark Wave outward from button across whole screen
+            document.documentElement.animate(
+              {
+                clipPath: [
+                  `circle(0px at ${x}px ${y}px)`,
+                  `circle(${endRadius}px at ${x}px ${y}px)`,
+                ],
+              },
+              {
+                duration: 650,
+                easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+                pseudoElement: "::view-transition-new(root)",
+              }
+            );
+          } else {
+            // Reverting to Light: Dark screen shrinks back directly into button revealing light mode
+            document.documentElement.animate(
+              {
+                clipPath: [
+                  `circle(${endRadius}px at ${x}px ${y}px)`,
+                  `circle(0px at ${x}px ${y}px)`,
+                ],
+              },
+              {
+                duration: 650,
+                easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+                pseudoElement: "::view-transition-old(root)",
+              }
+            );
+          }
+        })
+        .catch(() => {
+          // Fallback if rejected
+        })
+        .finally(() => {
+          transition.finished.finally(() => {
+            document.documentElement.classList.remove("theme-transitioning");
+          });
+        });
+    } else {
+      // Fallback for browsers without View Transitions
+      applyTheme(nextTheme);
     }
   };
 

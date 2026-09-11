@@ -29,11 +29,12 @@ class ReviewViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         review = serializer.save()
         # Notify equipment owner
+        comment_snippet = f": \"{review.comment[:60]}...\"" if review.comment else "."
         Notification.objects.create(
             recipient=review.equipment.owner,
             sender=self.request.user,
             notification_type=NotificationType.REVIEW_RECEIVED,
             title=f"New {review.rating}★ Review Received",
-            message=f"{self.request.user.get_full_name() or self.request.user.username} left a {review.rating}-star review on '{review.equipment.name}': \"{review.comment[:60]}...\"",
+            message=f"{self.request.user.get_full_name() or self.request.user.username} left a {review.rating}-star review on '{review.equipment.name}'{comment_snippet}",
             link=f"/equipment/{review.equipment_id}",
         )

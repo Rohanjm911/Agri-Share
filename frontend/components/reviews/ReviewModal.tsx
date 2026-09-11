@@ -5,6 +5,8 @@ import { reviewService } from "@/services/reviewService";
 import { Booking } from "@/types";
 import { X, Star, AlertCircle, CheckCircle2 } from "lucide-react";
 
+import { formatErrorMessage } from "@/lib/api";
+
 interface ReviewModalProps {
   booking: Booking;
   isOpen: boolean;
@@ -24,10 +26,6 @@ export function ReviewModal({ booking, isOpen, onClose, onSuccess }: ReviewModal
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!comment.trim()) {
-      setError("Please provide feedback in your review comment.");
-      return;
-    }
 
     setIsSubmitting(true);
     setError(null);
@@ -40,8 +38,12 @@ export function ReviewModal({ booking, isOpen, onClose, onSuccess }: ReviewModal
       });
       setIsSuccess(true);
       if (onSuccess) onSuccess();
+      // Automatically close modal after brief confirmation
+      setTimeout(() => {
+        onClose();
+      }, 1200);
     } catch (err: any) {
-      setError(err.message || "Failed to submit review.");
+      setError(formatErrorMessage(err) || "Failed to submit review.");
     } finally {
       setIsSubmitting(false);
     }
@@ -60,7 +62,7 @@ export function ReviewModal({ booking, isOpen, onClose, onSuccess }: ReviewModal
               Rate Your Rental Experience
             </h2>
             <p style={{ fontSize: "0.85rem", color: "var(--text-muted)" }}>
-              {booking.equipment_detail.name}
+              {booking.equipment_detail?.name || "Equipment Rental"}
             </p>
           </div>
           <button onClick={onClose} className="btn btn-ghost btn-sm" style={{ padding: "6px" }}>
@@ -144,16 +146,18 @@ export function ReviewModal({ booking, isOpen, onClose, onSuccess }: ReviewModal
               </span>
             </div>
 
-            {/* Comment Textarea */}
+            {/* Comment Textarea (Optional) */}
             <div className="form-group" style={{ marginBottom: "24px" }}>
-              <label className="form-label">Review Details</label>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                <label className="form-label" style={{ marginBottom: 0 }}>Review Details</label>
+                <span style={{ fontSize: "0.78rem", color: "var(--text-muted)", fontWeight: "500" }}>Optional</span>
+              </div>
               <textarea
-                placeholder="Share details on equipment performance, machine cleanliness, fuel efficiency, or owner communication..."
+                placeholder="Share details on equipment performance, machine cleanliness, fuel efficiency, or owner communication (optional)..."
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 className="form-textarea"
                 rows={4}
-                required
               />
             </div>
 

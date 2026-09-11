@@ -28,7 +28,9 @@ class Review(models.Model):
         help_text="Star rating from 1 to 5",
     )
     comment = models.TextField(
-        help_text="Detailed feedback and review comment",
+        blank=True,
+        default="",
+        help_text="Detailed feedback and review comment (optional)",
     )
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     updated_at = models.DateTimeField(auto_now=True)

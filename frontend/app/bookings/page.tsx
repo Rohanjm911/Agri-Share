@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { bookingService } from "@/services/bookingService";
+import { equipmentService } from "@/services/equipmentService";
 import { Booking } from "@/types";
 import { formatCurrency, formatDate, getStatusBadge } from "@/lib/utils";
 import { ReviewModal } from "@/components/reviews/ReviewModal";
@@ -26,10 +27,30 @@ export default function BookingsManagementPage() {
   const router = useRouter();
 
   const [activeTab, setActiveTab] = useState<"renter" | "owner">("renter");
+  const [hasOwnedEquipment, setHasOwnedEquipment] = useState<boolean>(false);
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [actionSuccess, setActionSuccess] = useState<string | null>(null);
+
+  // Check if current user has any listed equipment for rental
+  useEffect(() => {
+    async function checkOwnerStatus() {
+      if (!isAuthenticated) return;
+      try {
+        const res: any = await equipmentService.getMyEquipment();
+        const items = Array.isArray(res) ? res : res.results || [];
+        const isOwner = items.length > 0;
+        setHasOwnedEquipment(isOwner);
+        if (!isOwner && activeTab === "owner") {
+          setActiveTab("renter");
+        }
+      } catch {
+        setHasOwnedEquipment(false);
+      }
+    }
+    checkOwnerStatus();
+  }, [isAuthenticated, activeTab]);
 
   // Review modal state
   const [reviewBooking, setReviewBooking] = useState<Booking | null>(null);
@@ -170,6 +191,8 @@ export default function BookingsManagementPage() {
             borderBottom: "1px solid var(--border)",
             paddingBottom: "12px",
             marginBottom: "32px",
+            flexWrap: "wrap",
+            alignItems: "center",
           }}
         >
           <button
@@ -179,13 +202,16 @@ export default function BookingsManagementPage() {
             <CalendarDays size={18} />
             <span>My Bookings (As Renter)</span>
           </button>
-          <button
-            onClick={() => setActiveTab("owner")}
-            className={`btn ${activeTab === "owner" ? "btn-primary" : "btn-secondary"}`}
-          >
-            <Tractor size={18} />
-            <span>Incoming Requests (As Equipment Owner)</span>
-          </button>
+          
+          {hasOwnedEquipment && (
+            <button
+              onClick={() => setActiveTab("owner")}
+              className={`btn ${activeTab === "owner" ? "btn-primary" : "btn-secondary"}`}
+            >
+              <Tractor size={18} />
+              <span>Incoming Requests (As Equipment Owner)</span>
+            </button>
+          )}
         </div>
 
         {/* Bookings List */}
@@ -346,6 +372,25 @@ export default function BookingsManagementPage() {
                       </button>
                     )}
 
+                    {activeTab === "renter" && booking.status === "COMPLETED" && !booking.can_review && (
+                      <span
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "6px",
+                          padding: "6px 12px",
+                          borderRadius: "var(--radius-full)",
+                          fontSize: "0.82rem",
+                          fontWeight: "600",
+                          backgroundColor: "rgba(16, 185, 129, 0.12)",
+                          color: "#10b981",
+                          border: "1px solid rgba(16, 185, 129, 0.3)",
+                        }}
+                      >
+                        <CheckCircle2 size={15} /> Review Submitted
+                      </span>
+                    )}
+
                     <Link href={`/equipment/${booking.equipment}`} className="btn btn-ghost btn-sm">
                       <ExternalLink size={15} /> Machinery Details
                     </Link>
@@ -364,6 +409,12 @@ export default function BookingsManagementPage() {
           isOpen={!!reviewBooking}
           onClose={() => setReviewBooking(null)}
           onSuccess={() => {
+            // Immediately mark booking as reviewed in local state
+            setBookings((prev) =>
+              prev.map((b) =>
+                b.id === reviewBooking.id ? { ...b, can_review: false } : b
+              )
+            );
             fetchBookings();
           }}
         />

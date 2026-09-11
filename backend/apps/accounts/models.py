@@ -5,11 +5,22 @@ def user_profile_image_path(instance, filename):
     """Generate path for user profile images."""
     return f"profiles/user_{instance.id}/{filename}"
 
+class UserRole(models.TextChoices):
+    RENTER = "RENTER", "Renter / Farmer"
+    OWNER = "OWNER", "Equipment Owner"
+
 class User(AbstractUser):
     """
     Custom User model for AgriShare platform.
     Email is unique and required.
     """
+    role = models.CharField(
+        max_length=20,
+        choices=UserRole.choices,
+        default=UserRole.RENTER,
+        verbose_name="User Role",
+        help_text="Designates whether the user is primarily a renter or equipment owner.",
+    )
     email = models.EmailField(
         unique=True,
         verbose_name="Email Address",

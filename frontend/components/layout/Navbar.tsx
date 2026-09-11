@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import { RealtimeClock } from "@/components/ui/RealtimeClock";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { NotificationDrawer } from "@/components/notifications/NotificationDrawer";
 import { Logo } from "@/components/ui/Logo";
@@ -25,6 +26,8 @@ export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
 
+  const isOwner = user?.role === "OWNER";
+
   const handleLogout = async () => {
     await logout();
     setUserDropdownOpen(false);
@@ -40,12 +43,11 @@ export function Navbar() {
 
   return (
     <header
+      className="glass-nav"
       style={{
         position: "sticky",
         top: 0,
         zIndex: 50,
-        backgroundColor: "var(--bg-surface)",
-        borderBottom: "1px solid var(--border)",
         transition: "background-color 0.15s ease, border-color 0.15s ease",
       }}
     >
@@ -65,7 +67,7 @@ export function Navbar() {
         <nav
           style={{
             display: "none",
-            gap: "24px",
+            gap: "8px",
             alignItems: "center",
           }}
           className="desktop-nav"
@@ -77,13 +79,14 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 style={{
-                  fontSize: "0.95rem",
-                  fontWeight: isActive ? "800" : "600",
+                  fontSize: "0.88rem",
+                  fontWeight: isActive ? "600" : "500",
                   color: isActive ? "var(--primary)" : "var(--text-muted)",
-                  padding: "6px 12px",
-                  borderRadius: "var(--radius-sm)",
+                  padding: "6px 14px",
+                  borderRadius: "9999px",
                   backgroundColor: isActive ? "var(--primary-light)" : "transparent",
                   transition: "all 0.15s ease",
+                  letterSpacing: "-0.01em",
                 }}
               >
                 {link.name}
@@ -96,13 +99,14 @@ export function Navbar() {
               <Link
                 href="/bookings"
                 style={{
-                  fontSize: "0.95rem",
-                  fontWeight: pathname === "/bookings" ? "800" : "600",
+                  fontSize: "0.88rem",
+                  fontWeight: pathname === "/bookings" ? "600" : "500",
                   color: pathname === "/bookings" ? "var(--primary)" : "var(--text-muted)",
-                  padding: "6px 12px",
-                  borderRadius: "var(--radius-sm)",
+                  padding: "6px 14px",
+                  borderRadius: "9999px",
                   backgroundColor: pathname === "/bookings" ? "var(--primary-light)" : "transparent",
                   transition: "all 0.15s ease",
+                  letterSpacing: "-0.01em",
                 }}
               >
                 Bookings
@@ -110,13 +114,14 @@ export function Navbar() {
               <Link
                 href="/dashboard"
                 style={{
-                  fontSize: "0.95rem",
-                  fontWeight: pathname === "/dashboard" ? "800" : "600",
+                  fontSize: "0.88rem",
+                  fontWeight: pathname === "/dashboard" ? "600" : "500",
                   color: pathname === "/dashboard" ? "var(--primary)" : "var(--text-muted)",
-                  padding: "6px 12px",
-                  borderRadius: "var(--radius-sm)",
+                  padding: "6px 14px",
+                  borderRadius: "9999px",
                   backgroundColor: pathname === "/dashboard" ? "var(--primary-light)" : "transparent",
                   transition: "all 0.15s ease",
+                  letterSpacing: "-0.01em",
                 }}
               >
                 Dashboard
@@ -130,20 +135,37 @@ export function Navbar() {
           style={{
             display: "none",
             alignItems: "center",
-            gap: "12px",
+            gap: "10px",
           }}
           className="desktop-nav"
         >
+          {/* Realtime Live Clock */}
+          <RealtimeClock />
+
           <ThemeToggle />
 
           {isAuthenticated ? (
             <>
               <NotificationDrawer />
 
-              <Link href="/equipment/new" className="btn btn-primary btn-sm">
-                <PlusCircle size={16} />
-                <span>List Equipment</span>
-              </Link>
+              {isOwner && (
+                <Link
+                  href="/equipment/new"
+                  className="btn btn-primary btn-sm"
+                  style={{
+                    height: "36px",
+                    padding: "0 14px",
+                    borderRadius: "9999px",
+                    fontSize: "0.84rem",
+                    fontWeight: "600",
+                    letterSpacing: "-0.01em",
+                    boxShadow: "0 1px 3px rgba(0,0,0,0.12)",
+                  }}
+                >
+                  <PlusCircle size={15} />
+                  <span>List Equipment</span>
+                </Link>
+              )}
 
               {/* User Avatar Menu */}
               <div style={{ position: "relative" }}>
@@ -154,8 +176,11 @@ export function Navbar() {
                     display: "flex",
                     alignItems: "center",
                     gap: "8px",
-                    padding: "6px 14px",
-                    borderRadius: "var(--radius-full)",
+                    height: "36px",
+                    padding: "0 12px 0 5px",
+                    borderRadius: "9999px",
+                    border: "1px solid var(--border)",
+                    backgroundColor: "var(--bg-card)",
                   }}
                 >
                   <div
@@ -168,13 +193,13 @@ export function Navbar() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontWeight: "800",
-                      fontSize: "0.78rem",
+                      fontWeight: "700",
+                      fontSize: "0.75rem",
                     }}
                   >
                     {user?.first_name ? user.first_name[0].toUpperCase() : "U"}
                   </div>
-                  <span style={{ fontSize: "0.88rem", fontWeight: "700" }}>
+                  <span style={{ fontSize: "0.84rem", fontWeight: "600", color: "var(--text-main)" }}>
                     {user?.first_name || user?.username}
                   </span>
                 </button>
@@ -217,14 +242,16 @@ export function Navbar() {
                         <LayoutDashboard size={16} /> Dashboard
                       </Link>
 
-                      <Link
-                        href="/my-equipment"
-                        onClick={() => setUserDropdownOpen(false)}
-                        className="btn btn-ghost btn-sm"
-                        style={{ width: "100%", justifyContent: "flex-start" }}
-                      >
-                        <Wrench size={16} /> My Equipment
-                      </Link>
+                      {isOwner && (
+                        <Link
+                          href="/my-equipment"
+                          onClick={() => setUserDropdownOpen(false)}
+                          className="btn btn-ghost btn-sm"
+                          style={{ width: "100%", justifyContent: "flex-start" }}
+                        >
+                          <Wrench size={16} /> My Equipment
+                        </Link>
+                      )}
 
                       <Link
                         href="/bookings"
@@ -272,6 +299,7 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }} className="mobile-toggle">
+          <RealtimeClock />
           <ThemeToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -333,21 +361,26 @@ export function Navbar() {
               >
                 <CalendarDays size={18} /> Bookings
               </Link>
-              <Link
-                href="/my-equipment"
-                onClick={() => setMobileMenuOpen(false)}
-                className="btn btn-secondary"
-                style={{ justifyContent: "flex-start" }}
-              >
-                <Wrench size={18} /> My Equipment
-              </Link>
-              <Link
-                href="/equipment/new"
-                onClick={() => setMobileMenuOpen(false)}
-                className="btn btn-primary"
-              >
-                <PlusCircle size={18} /> List Equipment
-              </Link>
+              {isOwner && (
+                <>
+                  <Link
+                    href="/my-equipment"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="btn btn-secondary"
+                    style={{ justifyContent: "flex-start" }}
+                  >
+                    <Wrench size={18} /> My Equipment
+                  </Link>
+                  <Link
+                    href="/equipment/new"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="btn btn-primary"
+                    style={{ justifyContent: "flex-start" }}
+                  >
+                    <PlusCircle size={18} /> List Equipment
+                  </Link>
+                </>
+              )}
               <button
                 onClick={handleLogout}
                 className="btn btn-danger"

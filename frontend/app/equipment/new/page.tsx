@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 export default function NewEquipmentPage() {
-  const { isAuthenticated, isLoading: authLoading } = useAuth();
+  const { user, isAuthenticated, isLoading: authLoading } = useAuth();
   const router = useRouter();
 
   const [categories, setCategories] = useState<Category[]>([]);
@@ -36,10 +36,14 @@ export default function NewEquipmentPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!authLoading && !isAuthenticated) {
-      router.push("/login?redirect=/equipment/new");
+    if (!authLoading) {
+      if (!isAuthenticated) {
+        router.push("/login?redirect=/equipment/new");
+      } else if (user && user.role !== "OWNER") {
+        router.push("/equipment");
+      }
     }
-  }, [authLoading, isAuthenticated, router]);
+  }, [authLoading, isAuthenticated, user, router]);
 
   useEffect(() => {
     async function loadCats() {

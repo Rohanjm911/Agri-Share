@@ -2,6 +2,7 @@ export interface User {
   id: number;
   email: string;
   username: string;
+  role?: "OWNER" | "RENTER" | string;
   first_name: string;
   last_name: string;
   phone_number?: string;
@@ -117,7 +118,7 @@ export interface Review {
   equipment: number;
   equipment_name: string;
   rating: number;
-  comment: string;
+  comment?: string;
   created_at: string;
   updated_at: string;
 }
@@ -125,7 +126,7 @@ export interface Review {
 export interface ReviewCreatePayload {
   booking: number;
   rating: number;
-  comment: string;
+  comment?: string;
 }
 
 export type NotificationType =
@@ -197,6 +198,8 @@ export interface EquipmentFilterParams {
   brand?: string;
   min_price?: number;
   max_price?: number;
+  owner?: number;
+  exclude_owner?: number;
   search?: string;
   ordering?: string;
   page?: number;

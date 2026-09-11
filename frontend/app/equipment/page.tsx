@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 import { equipmentService } from "@/services/equipmentService";
 import { Category, EquipmentListItem, PaginatedResponse } from "@/types";
 import { EquipmentCard } from "@/components/equipment/EquipmentCard";
@@ -13,9 +15,13 @@ import {
   ChevronLeft,
   ChevronRight,
   AlertCircle,
+  Wrench,
+  Eye,
+  ShieldCheck,
 } from "lucide-react";
 
 export default function EquipmentCatalogPage() {
+  const { user, isAuthenticated } = useAuth();
   const [equipmentList, setEquipmentList] = useState<EquipmentListItem[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [totalCount, setTotalCount] = useState(0);
@@ -58,16 +64,23 @@ export default function EquipmentCatalogPage() {
       if (selectedCondition) params.condition = selectedCondition;
       if (locationQuery.trim()) params.location = locationQuery.trim();
       if (maxPrice) params.max_price = Number(maxPrice);
+      if (isAuthenticated && user?.id) {
+        params.exclude_owner = user.id;
+      }
 
       const res = await equipmentService.getEquipmentList(params);
-      setEquipmentList(res.results);
+      // Double check client-side filtering so current owner NEVER sees their own listings in browse mode
+      const filtered = (res.results || []).filter(
+        (item) => !isAuthenticated || !user?.id || item.owner_id !== user.id
+      );
+      setEquipmentList(filtered);
       setTotalCount(res.count);
     } catch (err: any) {
       setError(err.message || "Failed to load equipment catalog.");
     } finally {
       setIsLoading(false);
     }
-  }, [currentPage, sortBy, searchQuery, selectedCategory, selectedCondition, locationQuery, maxPrice]);
+  }, [currentPage, sortBy, searchQuery, selectedCategory, selectedCondition, locationQuery, maxPrice, isAuthenticated, user]);
 
   useEffect(() => {
     fetchEquipment();
@@ -116,39 +129,163 @@ export default function EquipmentCatalogPage() {
             Search tractors, harvesters, seeders, and tillage implements from verified local farm owners.
           </p>
 
-          {/* Quick Category Chips */}
+          {isAuthenticated && (
+            <div
+              style={{
+                marginTop: "16px",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "10px",
+                padding: "8px 16px",
+                borderRadius: "var(--radius-md)",
+                backgroundColor: "var(--primary-light)",
+                border: "1px solid rgba(46, 125, 50, 0.2)",
+                fontSize: "0.86rem",
+                color: "var(--primary)",
+                fontWeight: "500",
+              }}
+            >
+              <Eye size={16} />
+              <span>
+                Browsing machinery from fellow farmers. Your own equipment listings are hidden here.
+              </span>
+              <Link
+                href="/my-equipment"
+                style={{
+                  textDecoration: "underline",
+                  fontWeight: "700",
+                  marginLeft: "4px",
+                  color: "var(--primary)",
+                }}
+              >
+                View My Equipment &rarr;
+              </Link>
+            </div>
+          )}
+
+          {/* Quick Category Slide Switcher with Scroll Controls */}
           <div
             style={{
+              position: "relative",
+              marginTop: "24px",
               display: "flex",
-              gap: "10px",
-              overflowX: "auto",
-              paddingTop: "24px",
-              paddingBottom: "4px",
+              alignItems: "center",
             }}
           >
+            {/* Scroll Left Button */}
             <button
               onClick={() => {
-                setSelectedCategory("");
-                setCurrentPage(1);
+                const el = document.getElementById("category-slide-container");
+                if (el) el.scrollBy({ left: -260, behavior: "smooth" });
               }}
-              className={`btn btn-sm ${selectedCategory === "" ? "btn-primary" : "btn-secondary"}`}
-              style={{ borderRadius: "var(--radius-full)", flexShrink: 0 }}
+              aria-label="Slide Left"
+              className="btn btn-secondary btn-sm category-nav-arrow"
+              style={{
+                position: "absolute",
+                left: "-12px",
+                zIndex: 10,
+                width: "36px",
+                height: "36px",
+                borderRadius: "50%",
+                padding: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "var(--bg-card)",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                border: "1px solid var(--border)",
+              }}
             >
-              All Machinery
+              <ChevronLeft size={18} />
             </button>
-            {categories.map((cat) => (
+
+            {/* Scrollable Track */}
+            <div
+              id="category-slide-container"
+              style={{
+                display: "flex",
+                gap: "8px",
+                overflowX: "auto",
+                scrollBehavior: "smooth",
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+                padding: "6px 28px",
+                width: "100%",
+                maskImage: "linear-gradient(to right, transparent, black 28px, black calc(100% - 28px), transparent 100%)",
+                WebkitMaskImage: "linear-gradient(to right, transparent, black 28px, black calc(100% - 28px), transparent 100%)",
+              }}
+            >
               <button
-                key={cat.id}
                 onClick={() => {
-                  setSelectedCategory(cat.slug);
+                  setSelectedCategory("");
                   setCurrentPage(1);
                 }}
-                className={`btn btn-sm ${selectedCategory === cat.slug ? "btn-primary" : "btn-secondary"}`}
-                style={{ borderRadius: "var(--radius-full)", flexShrink: 0 }}
+                className={`btn btn-sm ${selectedCategory === "" ? "btn-primary" : "btn-secondary"}`}
+                style={{
+                  borderRadius: "var(--radius-full)",
+                  flexShrink: 0,
+                  fontWeight: selectedCategory === "" ? "700" : "500",
+                  padding: "8px 18px",
+                  boxShadow: selectedCategory === "" ? "0 2px 8px rgba(46, 125, 50, 0.35)" : "none",
+                  transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                  fontSize: "0.88rem",
+                }}
               >
-                {cat.name}
+                All Machinery
               </button>
-            ))}
+              {categories.map((cat) => {
+                const isActive = selectedCategory === cat.slug;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => {
+                      setSelectedCategory(cat.slug);
+                      setCurrentPage(1);
+                    }}
+                    className={`btn btn-sm ${isActive ? "btn-primary" : "btn-secondary"}`}
+                    style={{
+                      borderRadius: "var(--radius-full)",
+                      flexShrink: 0,
+                      fontWeight: isActive ? "700" : "500",
+                      padding: "8px 18px",
+                      boxShadow: isActive ? "0 2px 8px rgba(46, 125, 50, 0.35)" : "none",
+                      transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                      fontSize: "0.88rem",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {cat.name}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Scroll Right Button */}
+            <button
+              onClick={() => {
+                const el = document.getElementById("category-slide-container");
+                if (el) el.scrollBy({ left: 260, behavior: "smooth" });
+              }}
+              aria-label="Slide Right"
+              className="btn btn-secondary btn-sm category-nav-arrow"
+              style={{
+                position: "absolute",
+                right: "-12px",
+                zIndex: 10,
+                width: "36px",
+                height: "36px",
+                borderRadius: "50%",
+                padding: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "var(--bg-card)",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              <ChevronRight size={18} />
+            </button>
           </div>
         </div>
       </section>
@@ -369,7 +506,7 @@ export default function EquipmentCatalogPage() {
                   No Equipment Found
                 </h3>
                 <p style={{ color: "var(--text-muted)", maxWidth: "420px", marginBottom: "24px" }}>
-                  We couldn't find any agricultural equipment matching your specific filter criteria.
+                  We couldn&apos;t find any agricultural equipment matching your specific filter criteria.
                 </p>
                 <button onClick={handleResetFilters} className="btn btn-secondary">
                   Clear All Filters
@@ -435,6 +572,23 @@ export default function EquipmentCatalogPage() {
           :global(.catalog-layout) {
             grid-template-columns: 280px 1fr !important;
           }
+        }
+        :global(.category-nav-arrow) {
+          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+          color: var(--text-main);
+        }
+        :global(.category-nav-arrow:hover) {
+          transform: scale(1.12);
+          background-color: var(--primary) !important;
+          color: #ffffff !important;
+          border-color: var(--primary) !important;
+          box-shadow: 0 6px 16px rgba(46, 125, 50, 0.35) !important;
+        }
+        :global(.category-nav-arrow:active) {
+          transform: scale(0.95);
+        }
+        #category-slide-container::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
     </div>

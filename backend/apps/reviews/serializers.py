@@ -1,10 +1,14 @@
 from rest_framework import serializers
+# pyrefly: ignore [missing-import]
 from apps.accounts.serializers import UserSerializer
+# pyrefly: ignore [missing-import]
+from apps.bookings.models import BookingStatus
 from .models import Review
 
 class ReviewSerializer(serializers.ModelSerializer):
     reviewer = UserSerializer(read_only=True)
     equipment_name = serializers.CharField(source="equipment.name", read_only=True)
+    comment = serializers.CharField(required=False, allow_blank=True, default="")
 
     class Meta:
         model = Review
@@ -25,7 +29,6 @@ class ReviewSerializer(serializers.ModelSerializer):
         request = self.context.get("request")
         booking = attrs.get("booking")
         if booking:
-            from apps.bookings.models import BookingStatus
             if booking.status != BookingStatus.COMPLETED:
                 raise serializers.ValidationError({"booking": "You can only review completed bookings."})
             if request and booking.renter_id != request.user.id:

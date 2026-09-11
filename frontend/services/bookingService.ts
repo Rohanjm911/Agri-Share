@@ -5,6 +5,7 @@ export const bookingService = {
   async getBookings(params?: {
     role?: "renter" | "owner";
     status?: string;
+    equipment?: number;
     page?: number;
   }): Promise<PaginatedResponse<Booking>> {
     const res = await api.get<PaginatedResponse<Booking> | Booking[]>("/bookings/", params);

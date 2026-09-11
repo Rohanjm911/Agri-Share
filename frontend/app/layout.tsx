@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { LoginNotificationPopup } from "@/components/notifications/LoginNotificationPopup";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -47,6 +48,7 @@ export default function RootLayout({
             <Navbar />
             <main style={{ flex: 1 }}>{children}</main>
             <Footer />
+            <LoginNotificationPopup />
           </AuthProvider>
         </ThemeProvider>
       </body>

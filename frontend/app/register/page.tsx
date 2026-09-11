@@ -16,6 +16,7 @@ export default function RegisterPage() {
     email: "",
     first_name: "",
     last_name: "",
+    role: "RENTER",
     phone_number: "",
     password: "",
     password_confirm: "",
@@ -30,7 +31,7 @@ export default function RegisterPage() {
     }
   }, [isAuthenticated, router]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -104,6 +105,50 @@ export default function RegisterPage() {
         )}
 
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+          {/* Role / Account Type Selection */}
+          <div className="form-group" style={{ marginBottom: 0 }}>
+            <label className="form-label">I am joining as *</label>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+              <button
+                type="button"
+                onClick={() => setFormData((prev) => ({ ...prev, role: "RENTER" }))}
+                className={`btn ${formData.role === "RENTER" ? "btn-primary" : "btn-secondary"}`}
+                style={{
+                  padding: "12px",
+                  borderRadius: "var(--radius-md)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "4px",
+                  fontSize: "0.88rem",
+                  border: formData.role === "RENTER" ? "2px solid var(--primary)" : "1px solid var(--border)",
+                }}
+              >
+                <span style={{ fontWeight: "700" }}>Farmer / Renter</span>
+                <span style={{ fontSize: "0.75rem", opacity: 0.8 }}>Rent agricultural machinery</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setFormData((prev) => ({ ...prev, role: "OWNER" }))}
+                className={`btn ${formData.role === "OWNER" ? "btn-primary" : "btn-secondary"}`}
+                style={{
+                  padding: "12px",
+                  borderRadius: "var(--radius-md)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "4px",
+                  fontSize: "0.88rem",
+                  border: formData.role === "OWNER" ? "2px solid var(--primary)" : "1px solid var(--border)",
+                }}
+              >
+                <span style={{ fontWeight: "700" }}>Equipment Owner</span>
+                <span style={{ fontSize: "0.75rem", opacity: 0.8 }}>List equipment for rent</span>
+              </button>
+            </div>
+          </div>
+
           {/* First & Last Name */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
             <div className="form-group" style={{ marginBottom: 0 }}>

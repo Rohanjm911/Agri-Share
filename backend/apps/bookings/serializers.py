@@ -1,5 +1,7 @@
 from rest_framework import serializers
+# pyrefly: ignore [missing-import]
 from apps.accounts.serializers import UserSerializer
+# pyrefly: ignore [missing-import]
 from apps.equipment.serializers import EquipmentListSerializer
 from .models import Booking, BookingStatus
 
@@ -53,6 +55,9 @@ class BookingSerializer(serializers.ModelSerializer):
             and not hasattr(obj, "review")
         )
 
+from django.utils import timezone
+from django.core.exceptions import ValidationError as DjangoValidationError
+
 class BookingCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
@@ -62,11 +67,42 @@ class BookingCreateSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         request = self.context.get("request")
         equipment = attrs.get("equipment")
+        start_date = attrs.get("start_date")
+        end_date = attrs.get("end_date")
+
+        # 1. Owner cannot rent own equipment
         if equipment and request and equipment.owner_id == request.user.id:
-            raise serializers.ValidationError("You cannot book your own equipment.")
+            raise serializers.ValidationError({"equipment": "You cannot book your own equipment."})
+
+        # 2. Start & End date validations
+        if start_date and end_date:
+            if end_date < start_date:
+                raise serializers.ValidationError({"end_date": "End date cannot be earlier than start date."})
+            if start_date < timezone.now().date():
+                raise serializers.ValidationError({"start_date": "Booking start date cannot be in the past."})
+
+        # 3. Check for overlapping approved bookings
+        if equipment and start_date and end_date:
+            has_overlap = Booking.objects.filter(
+                equipment=equipment,
+                status=BookingStatus.APPROVED,
+                start_date__lte=end_date,
+                end_date__gte=start_date,
+            ).exists()
+            if has_overlap:
+                raise serializers.ValidationError({
+                    "non_field_errors": "This equipment already has an approved booking during the selected dates."
+                })
+
         return attrs
 
     def create(self, validated_data):
         request = self.context.get("request")
         validated_data["renter"] = request.user
-        return super().create(validated_data)
+        try:
+            return super().create(validated_data)
+        except DjangoValidationError as exc:
+            if hasattr(exc, "message_dict"):
+                raise serializers.ValidationError(exc.message_dict)
+            raise serializers.ValidationError(exc.messages)
+

@@ -18,6 +18,7 @@ interface AuthContextType {
     first_name: string;
     last_name: string;
     phone_number?: string;
+    role?: "OWNER" | "RENTER" | string;
     password: string;
     password_confirm: string;
   }) => Promise<AuthResponse>;

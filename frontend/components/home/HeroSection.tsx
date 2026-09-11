@@ -83,7 +83,7 @@ export function HeroSection() {
               owners across Punjab, Haryana, Madhya Pradesh, Gujarat, Maharashtra, and beyond.
             </p>
 
-            {/* CTA Buttons - Solid Dual-Tone Pair */}
+            {/* CTA Buttons - Modern Sleek Dual-Tone Pair */}
             <div
               style={{
                 display: "flex",
@@ -92,27 +92,45 @@ export function HeroSection() {
                 marginBottom: "40px",
               }}
             >
-              <Link href="/equipment" className="btn btn-primary btn-lg">
-                <Search size={18} />
+              <Link
+                href="/equipment"
+                className="btn btn-primary btn-lg"
+                style={{
+                  borderRadius: "9999px",
+                  padding: "12px 28px",
+                  fontSize: "0.98rem",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                <Search size={17} />
                 <span>Search Equipment</span>
-                <ArrowRight size={18} />
+                <ArrowRight size={17} />
               </Link>
-              <Link href="/equipment/new" className="btn btn-secondary btn-lg">
-                <Tractor size={18} />
+              <Link
+                href="/equipment/new"
+                className="btn btn-secondary btn-lg"
+                style={{
+                  borderRadius: "9999px",
+                  padding: "12px 26px",
+                  fontSize: "0.98rem",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                <Tractor size={17} />
                 <span>List Your Tractor & Implements</span>
               </Link>
             </div>
 
-            {/* Solid Verified Metric Bar */}
+            {/* Frosted Glass Verified Metric Bar */}
             <div
-              className="card"
+              className="card glass-panel"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
-                padding: "18px 24px",
+                padding: "20px 26px",
                 gap: "16px",
-                backgroundColor: "var(--bg-subtle)",
-                border: "1px solid var(--border)",
+                borderRadius: "var(--radius-lg)",
+                boxShadow: "var(--shadow-sm)",
               }}
             >
               <div>

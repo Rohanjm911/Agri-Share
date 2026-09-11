@@ -134,22 +134,98 @@ function LoginForm() {
         <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "0.8rem", fontWeight: "700", color: "var(--primary)", textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "10px" }}>
           <Sparkles size={14} /> Quick Demo Kisan Accounts:
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
+        
+        {/* 3 Owners */}
+        <div style={{ fontSize: "0.72rem", fontWeight: "700", color: "var(--text-muted)", marginBottom: "6px", textTransform: "uppercase" }}>
+          Registered Equipment Owners (3):
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6px", marginBottom: "12px" }}>
           <button
             type="button"
             onClick={() => handleQuickDemo("gurpreet.singh@agrishare.com", "password123")}
             className="btn btn-secondary btn-sm"
-            style={{ fontSize: "0.78rem" }}
+            style={{ fontSize: "0.74rem", padding: "6px 8px" }}
           >
-            Owner (Gurpreet)
+            Gurpreet (Punjab)
           </button>
+          <button
+            type="button"
+            onClick={() => handleQuickDemo("rajesh.patel@agrishare.com", "password123")}
+            className="btn btn-secondary btn-sm"
+            style={{ fontSize: "0.74rem", padding: "6px 8px" }}
+          >
+            Rajesh (Gujarat)
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickDemo("vikram.choudhary@agrishare.com", "password123")}
+            className="btn btn-secondary btn-sm"
+            style={{ fontSize: "0.74rem", padding: "6px 8px" }}
+          >
+            Vikram (Haryana)
+          </button>
+        </div>
+
+        {/* 7 Renters */}
+        <div style={{ fontSize: "0.72rem", fontWeight: "700", color: "var(--text-muted)", marginBottom: "6px", textTransform: "uppercase" }}>
+          Registered Kisan Renters (7):
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px" }}>
           <button
             type="button"
             onClick={() => handleQuickDemo("ramesh.sharma@agrishare.com", "password123")}
             className="btn btn-secondary btn-sm"
-            style={{ fontSize: "0.78rem" }}
+            style={{ fontSize: "0.75rem", padding: "6px 8px" }}
           >
             Renter (Ramesh)
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickDemo("devendra.yadav@agrishare.com", "password123")}
+            className="btn btn-secondary btn-sm"
+            style={{ fontSize: "0.75rem", padding: "6px 8px" }}
+          >
+            Renter (Devendra)
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickDemo("ananya.reddy@agrishare.com", "password123")}
+            className="btn btn-secondary btn-sm"
+            style={{ fontSize: "0.75rem", padding: "6px 8px" }}
+          >
+            Renter (Ananya)
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickDemo("harpreet.kaur@agrishare.com", "password123")}
+            className="btn btn-secondary btn-sm"
+            style={{ fontSize: "0.75rem", padding: "6px 8px" }}
+          >
+            Renter (Harpreet)
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickDemo("suresh.kumar@agrishare.com", "password123")}
+            className="btn btn-secondary btn-sm"
+            style={{ fontSize: "0.75rem", padding: "6px 8px" }}
+          >
+            Renter (Suresh)
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickDemo("priya.nair@agrishare.com", "password123")}
+            className="btn btn-secondary btn-sm"
+            style={{ fontSize: "0.75rem", padding: "6px 8px" }}
+          >
+            Renter (Priya)
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickDemo("manoj.tiwari@agrishare.com", "password123")}
+            className="btn btn-secondary btn-sm"
+            style={{ fontSize: "0.75rem", padding: "6px 8px", gridColumn: "span 2" }}
+          >
+            Renter (Manoj)
           </button>
         </div>
       </div>
