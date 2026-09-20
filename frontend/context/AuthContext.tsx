@@ -96,6 +96,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const res = await authService.login(credentials);
       setUser(res.user);
       refreshUnreadCount();
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("agrishare_login", { detail: res.user }));
+      }
       return res;
     } finally {
       setIsLoading(false);
@@ -108,6 +111,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     first_name: string;
     last_name: string;
     phone_number?: string;
+    role?: "OWNER" | "RENTER" | string;
     password: string;
     password_confirm: string;
   }) => {
@@ -116,6 +120,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const res = await authService.register(data);
       setUser(res.user);
       refreshUnreadCount();
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("agrishare_login", { detail: res.user }));
+      }
       return res;
     } finally {
       setIsLoading(false);

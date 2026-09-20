@@ -7,13 +7,9 @@ import { authService } from "@/services/authService";
 import {
   User as UserIcon,
   Lock,
-  Mail,
-  Phone,
-  MapPin,
   CheckCircle2,
   AlertCircle,
   Tractor,
-  ShieldCheck,
 } from "lucide-react";
 
 export default function ProfilePage() {

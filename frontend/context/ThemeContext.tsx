@@ -12,7 +12,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       } else {
         document.documentElement.classList.remove("dark");
       }
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    } else {
+      // Default to Deep Agro-Tech Dark Mode
       setTheme("dark");
       document.documentElement.setAttribute("data-theme", "dark");
       document.documentElement.classList.add("dark");
@@ -48,7 +49,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const nextTheme: Theme = theme === "light" ? "dark" : "light";
 
     // If browser supports Modern View Transition API
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (typeof document !== "undefined" && "startViewTransition" in document) {
       const x = origin?.x ?? window.innerWidth / 2;
       const y = origin?.y ?? window.innerHeight / 2;
@@ -63,7 +63,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       document.documentElement.style.setProperty("--theme-origin-y", `${y}px`);
       document.documentElement.classList.add("theme-transitioning");
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const transition = (document as any).startViewTransition(() => {
         applyTheme(nextTheme);
       });

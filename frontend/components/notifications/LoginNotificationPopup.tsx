@@ -10,7 +10,6 @@ import {
   XCircle,
   X,
   ArrowRight,
-  Sparkles,
   Tractor,
 } from "lucide-react";
 

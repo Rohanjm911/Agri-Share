@@ -156,8 +156,20 @@ export function ReviewModal({ booking, isOpen, onClose, onSuccess }: ReviewModal
                 placeholder="Share details on equipment performance, machine cleanliness, fuel efficiency, or owner communication (optional)..."
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
+                onInput={(e) => {
+                  const target = e.currentTarget;
+                  target.style.height = "auto";
+                  target.style.height = `${Math.max(96, target.scrollHeight)}px`;
+                }}
                 className="form-textarea"
                 rows={4}
+                style={{
+                  minHeight: "96px",
+                  maxHeight: "260px",
+                  overflowY: "auto",
+                  resize: "vertical",
+                  transition: "height 0.1s ease",
+                }}
               />
             </div>
 

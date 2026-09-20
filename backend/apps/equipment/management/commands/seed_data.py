@@ -292,9 +292,13 @@ class Command(BaseCommand):
 
         self.stdout.write(self.style.SUCCESS("[OK] Equipment categories seeded."))
 
-        # 3. Indian Machinery Equipment Listings (Properly distributed across 3 Owners)
+        # 3. Indian Machinery Equipment Listings (Diversified across 3 Owners)
+        # Each owner has a balanced fleet: Tractor, Harvester, Tillage/Leveler, Sprayer/Seeder/Baler/Trailer, and Tools/Carts
         equipment_data = [
-            # --- Owner 1 (Gurpreet Singh - Punjab): 9 Listings ---
+            # =========================================================================
+            # OWNER 1: Gurpreet Singh (Ludhiana, Punjab) - 8 Listings
+            # Heavy tractor, Combine Harvester, Rotavator, Round Baler, Orchard Sprayer, & Quality Carts/Tools
+            # =========================================================================
             {
                 "owner": owner1,
                 "category": cat_objs["tractors"],
@@ -309,21 +313,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "49 HP 4-cylinder mZIP engine, 4WD traction, 12 Forward + 3 Reverse gears, and 1,700 kg hydraulic lift capacity. Ideal for heavy rotavator, laser land leveler, and super seeder operations in Punjab fields.",
-            },
-            {
-                "owner": owner1,
-                "category": cat_objs["tractors"],
-                "name": "Swaraj 855 FE Heavy Duty Tractor (52 HP)",
-                "brand": "Swaraj",
-                "model": "855 FE",
-                "manufacturing_year": 2022,
-                "condition": EquipmentCondition.EXCELLENT,
-                "price_per_day": 2500.00,
-                "security_deposit": 7500.00,
-                "location": "Sangrur, Punjab",
-                "is_available": True,
-                "status": EquipmentStatus.AVAILABLE,
-                "description": "52 HP 3-cylinder reliable engine with multi-speed reverse PTO, dual clutch, and heavy-duty front axle. Outstanding fuel efficiency for continuous threshing, haulage, and field preparation.",
+                "image": "equipment/mahindra_tractor.jpg",
             },
             {
                 "owner": owner1,
@@ -339,6 +329,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "101 HP Ashok Leyland turbo engine, 14-foot cutter bar width with hydraulic reel adjustment and large grain tank. Designed for rapid, low-grain-loss harvesting of wheat, paddy, mustard, and soybeans in northern India.",
+                "image": "equipment/preet_harvester.jpg",
             },
             {
                 "owner": owner1,
@@ -354,21 +345,39 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "Boron steel curved L-blades with side gear drive in oil bath. Provides deep pulverization and soil aerating in single pass, ideal for wheat and paddy sowing.",
+                "image": "equipment/shaktiman_rotavator.jpg",
             },
             {
                 "owner": owner1,
-                "category": cat_objs["tractors"],
-                "name": "Kubota MU4501 4WD Precision Agriculture Tractor (45 HP)",
-                "brand": "Kubota",
-                "model": "MU4501 4WD",
-                "manufacturing_year": 2023,
-                "condition": EquipmentCondition.NEW,
-                "price_per_day": 2700.00,
-                "security_deposit": 8000.00,
+                "category": cat_objs["hay-forage"],
+                "name": "New Holland Roll-Belt 450 Round Straw Baler",
+                "brand": "New Holland",
+                "model": "Roll-Belt 450",
+                "manufacturing_year": 2022,
+                "condition": EquipmentCondition.EXCELLENT,
+                "price_per_day": 3000.00,
+                "security_deposit": 10000.00,
                 "location": "Sangrur, Punjab",
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
-                "description": "Japanese engineered 4-cylinder quad-valve e-CDIS diesel engine with synchromesh transmission, shuttle shift, and bevel gear 4WD front axle. Superior maneuvering in wet paddy puddling and inter-cultivation.",
+                "description": "High-density round baler with wide SuperFeed pickup and net wrap technology. Efficiently compacts paddy and sugarcane straw into weatherproof dense cylindrical bales for biogas and biomass trade.",
+                "image": "equipment/round_baler.jpg",
+            },
+            {
+                "owner": owner1,
+                "category": cat_objs["sprayers-application"],
+                "name": "Mitra Bullet 400L Tractor-Mounted Orchard & Field Sprayer",
+                "brand": "Mitra",
+                "model": "Bullet 400",
+                "manufacturing_year": 2023,
+                "condition": EquipmentCondition.NEW,
+                "price_per_day": 1200.00,
+                "security_deposit": 3500.00,
+                "location": "Ludhiana, Punjab",
+                "is_available": True,
+                "status": EquipmentStatus.AVAILABLE,
+                "description": "400-liter polyethylene chemical tank, Italian brass high-pressure diaphragm pump, and 2-speed aerodynamic blower. High-efficiency penetration for orchard horticulture, cotton, and vegetables.",
+                "image": "equipment/crop_sprayer.jpg",
             },
             {
                 "owner": owner1,
@@ -384,6 +393,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "PTO-driven heavy spiral auger tool (9-inch and 12-inch drill bits) with shear bolt protection. Quickly digs 3-foot deep holes for fencing poles, solar pump foundations, and tree/orchard plantation.",
+                "image": "equipment/post_hole_digger.jpg",
             },
             {
                 "owner": owner1,
@@ -399,21 +409,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "Heavy-gauge reinforced steel bucket with dual puncture-resistant pneumatic tires and ergonomic padded handles. Perfectly balanced for hauling harvested grains, compost, fertilizer bags, and tools across uneven muddy farm tracks without tipping.",
-            },
-            {
-                "owner": owner1,
-                "category": cat_objs["hand-tools-carts"],
-                "name": "Bharat Galvanized Steel 2-Wheel Manual Bulk Grain & Fodder Cart",
-                "brand": "Bharat Implements",
-                "model": "BGC-500",
-                "manufacturing_year": 2022,
-                "condition": EquipmentCondition.GOOD,
-                "price_per_day": 240.00,
-                "security_deposit": 750.00,
-                "location": "Ludhiana, Punjab",
-                "is_available": True,
-                "status": EquipmentStatus.AVAILABLE,
-                "description": "Traditional heavy galvanized sheet metal haulage cart with reinforced axle, sealed roller bearings, and heavy-duty treaded wheels. Designed for transporting wet cattle dung manure, harvested fodder bundles, and grain bushels.",
+                "image": "equipment/heavy_duty_wheelbarrow.jpg",
             },
             {
                 "owner": owner1,
@@ -429,9 +425,13 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "Complete 4-piece hardened high-carbon steel manual farm set including heavy digging Kodali spade, sharp serrated harvesting Sickle (Daranti), ergonomic Khurpi hand weeder, and heavy 4-prong spading fork. Fitted with treated sal-wood handles.",
+                "image": "equipment/hand_tools_set.jpg",
             },
 
-            # --- Owner 2 (Rajesh Patel - Gujarat): 8 Listings ---
+            # =========================================================================
+            # OWNER 2: Rajesh Patel (Rajkot, Gujarat) - 9 Listings
+            # High-capacity John Deere Tractor & Swaraj Tractor, Super Seeder, Thresher/Trolley, Disc Harrow, Tools
+            # =========================================================================
             {
                 "owner": owner2,
                 "category": cat_objs["tractors"],
@@ -446,6 +446,23 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "55 HP turbocharged PowerTech engine, dual-clutch transmission with top shaft synchromesh and oil-immersed disc brakes. Ideal for heavy disk harrows, balers, and laser levelers in Saurashtra cotton fields.",
+                "image": "equipment/tractor_john_deere.jpg",
+            },
+            {
+                "owner": owner2,
+                "category": cat_objs["tractors"],
+                "name": "Swaraj 855 FE Heavy Duty Tractor (52 HP)",
+                "brand": "Swaraj",
+                "model": "855 FE",
+                "manufacturing_year": 2022,
+                "condition": EquipmentCondition.EXCELLENT,
+                "price_per_day": 2500.00,
+                "security_deposit": 7500.00,
+                "location": "Junagadh, Gujarat",
+                "is_available": True,
+                "status": EquipmentStatus.AVAILABLE,
+                "description": "52 HP 3-cylinder reliable engine with multi-speed reverse PTO, dual clutch, and heavy-duty front axle. Outstanding fuel efficiency for continuous threshing, haulage, and field preparation.",
+                "image": "equipment/swaraj_tractor.jpg",
             },
             {
                 "owner": owner2,
@@ -461,6 +478,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "Zero burning solution! Directly plants wheat seeds into standing paddy stubbles without prior tillage. Equipped with high precision fluted seed metering and fertilizer placement.",
+                "image": "equipment/precision_planter.jpg",
             },
             {
                 "owner": owner2,
@@ -476,36 +494,23 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "High output multi-crop thresher for wheat, maize, pulses, and paddy with pneumatic blower and 5-ton hydraulic tipping trailer attachment.",
+                "image": "equipment/grain_cart.jpg",
             },
             {
                 "owner": owner2,
-                "category": cat_objs["sprayers-application"],
-                "name": "Mitra Bullet 400L Tractor-Mounted Orchard & Field Sprayer",
-                "brand": "Mitra",
-                "model": "Bullet 400",
-                "manufacturing_year": 2023,
-                "condition": EquipmentCondition.NEW,
-                "price_per_day": 1200.00,
-                "security_deposit": 3500.00,
-                "location": "Rajkot, Gujarat",
-                "is_available": True,
-                "status": EquipmentStatus.AVAILABLE,
-                "description": "400-liter polyethylene chemical tank, Italian brass high-pressure diaphragm pump, and 2-speed aerodynamic blower. High-efficiency penetration for orchard horticulture, cotton, and vegetables.",
-            },
-            {
-                "owner": owner2,
-                "category": cat_objs["hay-forage"],
-                "name": "New Holland Roll-Belt 450 Round Straw Baler",
-                "brand": "New Holland",
-                "model": "Roll-Belt 450",
+                "category": cat_objs["tillage-cultivation"],
+                "name": "Mahindra Heavy Duty Trailing Offset Disc Harrow (16 Discs)",
+                "brand": "Mahindra",
+                "model": "AppliTrac 16D",
                 "manufacturing_year": 2022,
-                "condition": EquipmentCondition.EXCELLENT,
-                "price_per_day": 3000.00,
-                "security_deposit": 10000.00,
+                "condition": EquipmentCondition.GOOD,
+                "price_per_day": 1100.00,
+                "security_deposit": 3000.00,
                 "location": "Rajkot, Gujarat",
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
-                "description": "High-density round baler with wide SuperFeed pickup and net wrap technology. Efficiently compacts paddy and sugarcane straw into weatherproof dense cylindrical bales for biogas and biomass trade.",
+                "description": "16 high-grade Boron steel notched and plain concave discs with heavy box-section frame. Breaks hard clods, uproots weeds, and chops previous crop stubbles for secondary tillage.",
+                "image": "equipment/disc_harrow.jpg",
             },
             {
                 "owner": owner2,
@@ -521,6 +526,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "4-wheel heavy steel garden flatbed trolley cart with removable drop-down wire mesh sides, wide 10-inch pneumatic turf tires, and 180-degree turn handle. Superb for bulk harvest sacks, crates of tomatoes, onions, and field seedling trays.",
+                "image": "equipment/trolley_hand_cart.jpg",
             },
             {
                 "owner": owner2,
@@ -536,6 +542,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "Manual 2-row push seed drill and fertilizer applicator cart on spoke bicycle wheels with adjustable furrow openers and calibrated seed metering drum. Ideal for small-scale wheat, soybean, groundnut, and maize sowing.",
+                "image": "equipment/hand_rotary_seeder.jpg",
             },
             {
                 "owner": owner2,
@@ -551,9 +558,45 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "Drop-forged carbon steel bypass heavy loppers (cuts up to 40mm thick branches) with shock-absorbing bumpers, paired with ergonomic Japanese SK5 steel spring-assisted hand secateurs and stainless fruit harvesting shears.",
+                "image": "equipment/pruning_loppers_secateurs.jpg",
+            },
+            {
+                "owner": owner2,
+                "category": cat_objs["hand-tools-carts"],
+                "name": "Bharat Galvanized Steel 2-Wheel Manual Bulk Grain & Fodder Cart",
+                "brand": "Bharat Implements",
+                "model": "BGC-500",
+                "manufacturing_year": 2022,
+                "condition": EquipmentCondition.GOOD,
+                "price_per_day": 240.00,
+                "security_deposit": 750.00,
+                "location": "Junagadh, Gujarat",
+                "is_available": True,
+                "status": EquipmentStatus.AVAILABLE,
+                "description": "Traditional heavy galvanized sheet metal haulage cart with reinforced axle, sealed roller bearings, and heavy-duty treaded wheels. Designed for transporting wet cattle dung manure, harvested fodder bundles, and grain bushels.",
+                "image": "equipment/manual_grain_cart.jpg",
             },
 
-            # --- Owner 3 (Vikram Choudhary - Haryana): 8 Listings ---
+            # =========================================================================
+            # OWNER 3: Vikram Choudhary (Karnal, Haryana) - 9 Listings
+            # 4WD Kubota Precision Tractor, Claas Combine Harvester, Laser Land Leveler, Vertical Tillage Disc, & Specialty Tools
+            # =========================================================================
+            {
+                "owner": owner3,
+                "category": cat_objs["tractors"],
+                "name": "Kubota MU4501 4WD Precision Agriculture Tractor (45 HP)",
+                "brand": "Kubota",
+                "model": "MU4501 4WD",
+                "manufacturing_year": 2023,
+                "condition": EquipmentCondition.NEW,
+                "price_per_day": 2700.00,
+                "security_deposit": 8000.00,
+                "location": "Karnal, Haryana",
+                "is_available": True,
+                "status": EquipmentStatus.AVAILABLE,
+                "description": "Japanese engineered 4-cylinder quad-valve e-CDIS diesel engine with synchromesh transmission, shuttle shift, and bevel gear 4WD front axle. Superior maneuvering in wet paddy puddling and inter-cultivation.",
+                "image": "equipment/kubota_tractor.jpg",
+            },
             {
                 "owner": owner3,
                 "category": cat_objs["harvesters-combines"],
@@ -568,6 +611,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "Rubber crawler track multi-crop combine harvester with tangential threshing system (APS). Delivers unmatched grain cleanliness and zero bogging down in muddy paddy basins.",
+                "image": "equipment/combine_harvester.jpg",
             },
             {
                 "owner": owner3,
@@ -583,6 +627,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "Dual-slope high accuracy rotary laser transmitter with hydraulic mast and 7-foot grade bucket scraper. Saves up to 35% irrigation water, improves seed germination, and ensures flat paddy/wheat seedbeds.",
+                "image": "equipment/laser_land_leveler.jpg",
             },
             {
                 "owner": owner3,
@@ -598,21 +643,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "Heavy-duty 620mm notched hollow discs with individual overload protection. Incorporates heavy green manure, stalks, and thick crop residue uniformly at high working speeds.",
-            },
-            {
-                "owner": owner3,
-                "category": cat_objs["tillage-cultivation"],
-                "name": "Mahindra Heavy Duty Trailing Offset Disc Harrow (16 Discs)",
-                "brand": "Mahindra",
-                "model": "AppliTrac 16D",
-                "manufacturing_year": 2022,
-                "condition": EquipmentCondition.GOOD,
-                "price_per_day": 1100.00,
-                "security_deposit": 3000.00,
-                "location": "Karnal, Haryana",
-                "is_available": True,
-                "status": EquipmentStatus.AVAILABLE,
-                "description": "16 high-grade Boron steel notched and plain concave discs with heavy box-section frame. Breaks hard clods, uproots weeds, and chops previous crop stubbles for secondary tillage.",
+                "image": "equipment/vertical_tillage.jpg",
             },
             {
                 "owner": owner3,
@@ -628,6 +659,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "High-impact rust-resistant poly bed with patented quick-release roll-over dumping lever. Dual front steering axle allows effortlessly dumping manure, gravel, compost, and animal feed exactly where needed.",
+                "image": "equipment/tipping_dump_cart.jpg",
             },
             {
                 "owner": owner3,
@@ -643,6 +675,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "Dual-mode 12V 8Ah rechargeable battery and manual hand pump knapsack sprayer with 16-liter UV-stabilized tank, extendable stainless steel lance, and multiple brass nozzles. Ideal for precise pesticide and foliar fertilizer application in vegetable and cotton patches.",
+                "image": "equipment/knapsack_manual_sprayer.jpg",
             },
             {
                 "owner": owner3,
@@ -658,6 +691,7 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "Ergonomic manual push wheel hoe with 3 reversible spring-steel cultivation tines and weeding sweep. Eradicates weed roots between vegetable rows 5x faster than conventional hand hoeing while aerating surface soil.",
+                "image": "equipment/wheel_hoe_weeder.jpg",
             },
             {
                 "owner": owner3,
@@ -673,41 +707,13 @@ class Command(BaseCommand):
                 "is_available": True,
                 "status": EquipmentStatus.AVAILABLE,
                 "description": "Manual push SRI paddy field weeder featuring dual conical serrated rotors with float board. Simultaneously uproots aquatic weeds, incorporates them as green organic manure, and aerates submerged rice root zones without chemical weedicides.",
+                "image": "equipment/cono_weeder_paddy.jpg",
             },
         ]
 
-        images_map = [
-            "equipment/mahindra_tractor.jpg",
-            "equipment/swaraj_tractor.jpg",
-            "equipment/preet_harvester.jpg",
-            "equipment/shaktiman_rotavator.jpg",
-            "equipment/tractor_john_deere.jpg",
-            "equipment/precision_planter.jpg",
-            "equipment/vertical_tillage.jpg",
-            "equipment/grain_cart.jpg",
-            "equipment/kubota_tractor.jpg",
-            "equipment/combine_harvester.jpg",
-            "equipment/crop_sprayer.jpg",
-            "equipment/round_baler.jpg",
-            "equipment/laser_land_leveler.jpg",
-            "equipment/disc_harrow.jpg",
-            "equipment/post_hole_digger.jpg",
-            # Carts (5 types)
-            "equipment/heavy_duty_wheelbarrow.jpg",
-            "equipment/trolley_hand_cart.jpg",
-            "equipment/tipping_dump_cart.jpg",
-            "equipment/hand_rotary_seeder.jpg",
-            "equipment/manual_grain_cart.jpg",
-            # Hand Tools (5 types)
-            "equipment/hand_tools_set.jpg",
-            "equipment/knapsack_manual_sprayer.jpg",
-            "equipment/wheel_hoe_weeder.jpg",
-            "equipment/pruning_loppers_secateurs.jpg",
-            "equipment/cono_weeder_paddy.jpg",
-        ]
-
         created_equipment = []
-        for i, eq_dict in enumerate(equipment_data):
+        for eq_dict in equipment_data:
+            img_path = eq_dict.pop("image", None)
             eq, created = Equipment.objects.get_or_create(
                 name=eq_dict["name"],
                 defaults=eq_dict,
@@ -719,15 +725,14 @@ class Command(BaseCommand):
             created_equipment.append(eq)
 
             # Seed Real Equipment Image
-            if i < len(images_map):
-                img_path = images_map[i]
+            if img_path:
                 EquipmentImage.objects.get_or_create(
                     equipment=eq,
                     image=img_path,
                     defaults={"is_primary": True},
                 )
 
-        self.stdout.write(self.style.SUCCESS(f"[OK] {len(created_equipment)} Indian Equipment listings seeded with photos."))
+        self.stdout.write(self.style.SUCCESS(f"[OK] {len(created_equipment)} Diversified Indian Equipment listings seeded with photos."))
 
         # 4. Seed sample completed bookings and reviews
         today = timezone.now().date()

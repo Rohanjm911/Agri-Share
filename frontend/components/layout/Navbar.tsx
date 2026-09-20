@@ -38,7 +38,7 @@ export function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Equipment", href: "/equipment" },
-    { name: "How It Works", href: "/#how-it-works" },
+    ...(!isAuthenticated ? [{ name: "How It Works", href: "/#how-it-works" }] : []),
   ];
 
   return (
@@ -78,6 +78,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
+                className="pill-tab"
                 style={{
                   fontSize: "0.88rem",
                   fontWeight: isActive ? "600" : "500",
@@ -85,7 +86,6 @@ export function Navbar() {
                   padding: "6px 14px",
                   borderRadius: "9999px",
                   backgroundColor: isActive ? "var(--primary-light)" : "transparent",
-                  transition: "all 0.15s ease",
                   letterSpacing: "-0.01em",
                 }}
               >
@@ -98,6 +98,7 @@ export function Navbar() {
             <>
               <Link
                 href="/bookings"
+                className="pill-tab"
                 style={{
                   fontSize: "0.88rem",
                   fontWeight: pathname === "/bookings" ? "600" : "500",
@@ -105,7 +106,6 @@ export function Navbar() {
                   padding: "6px 14px",
                   borderRadius: "9999px",
                   backgroundColor: pathname === "/bookings" ? "var(--primary-light)" : "transparent",
-                  transition: "all 0.15s ease",
                   letterSpacing: "-0.01em",
                 }}
               >
@@ -113,6 +113,7 @@ export function Navbar() {
               </Link>
               <Link
                 href="/dashboard"
+                className="pill-tab"
                 style={{
                   fontSize: "0.88rem",
                   fontWeight: pathname === "/dashboard" ? "600" : "500",
@@ -120,7 +121,6 @@ export function Navbar() {
                   padding: "6px 14px",
                   borderRadius: "9999px",
                   backgroundColor: pathname === "/dashboard" ? "var(--primary-light)" : "transparent",
-                  transition: "all 0.15s ease",
                   letterSpacing: "-0.01em",
                 }}
               >
@@ -259,7 +259,7 @@ export function Navbar() {
                         className="btn btn-ghost btn-sm"
                         style={{ width: "100%", justifyContent: "flex-start" }}
                       >
-                        <CalendarDays size={16} /> My Bookings
+                        <CalendarDays size={16} /> {isOwner ? "Rental Requests" : "My Bookings"}
                       </Link>
 
                       <Link

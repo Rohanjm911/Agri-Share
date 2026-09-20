@@ -107,6 +107,7 @@ export function FeaturesSection() {
               >
                 <div>
                   <div
+                    className="card-icon-bounce"
                     style={{
                       width: "48px",
                       height: "48px",

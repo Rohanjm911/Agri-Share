@@ -9,11 +9,6 @@ import {
   Tractor,
   Upload,
   AlertCircle,
-  CheckCircle2,
-  DollarSign,
-  MapPin,
-  Calendar,
-  Layers,
 } from "lucide-react";
 
 export default function NewEquipmentPage() {

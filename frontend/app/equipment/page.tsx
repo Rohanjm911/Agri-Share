@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { equipmentService } from "@/services/equipmentService";
-import { Category, EquipmentListItem, PaginatedResponse } from "@/types";
+import { Category, EquipmentListItem } from "@/types";
 import { EquipmentCard } from "@/components/equipment/EquipmentCard";
 import {
   Search,
@@ -15,9 +15,7 @@ import {
   ChevronLeft,
   ChevronRight,
   AlertCircle,
-  Wrench,
   Eye,
-  ShieldCheck,
 } from "lucide-react";
 
 export default function EquipmentCatalogPage() {
@@ -129,7 +127,7 @@ export default function EquipmentCatalogPage() {
             Search tractors, harvesters, seeders, and tillage implements from verified local farm owners.
           </p>
 
-          {isAuthenticated && (
+          {isAuthenticated && user?.role === "OWNER" && (
             <div
               style={{
                 marginTop: "16px",
@@ -526,8 +524,14 @@ export default function EquipmentCatalogPage() {
                     marginBottom: "40px",
                   }}
                 >
-                  {equipmentList.map((eq) => (
-                    <EquipmentCard key={eq.id} equipment={eq} />
+                  {equipmentList.map((eq, index) => (
+                    <div
+                      key={eq.id}
+                      className={`animate-reveal stagger-${(index % 6) + 1}`}
+                      style={{ height: "100%" }}
+                    >
+                      <EquipmentCard equipment={eq} />
+                    </div>
                   ))}
                 </div>
 

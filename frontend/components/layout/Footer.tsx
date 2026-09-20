@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 import { Logo } from "@/components/ui/Logo";
 import {
   Heart,
@@ -9,6 +10,7 @@ import {
 } from "lucide-react";
 
 export function Footer() {
+  const { isAuthenticated } = useAuth();
   return (
     <footer
       style={{
@@ -115,11 +117,13 @@ export function Footer() {
               Platform
             </h4>
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px" }}>
-              <li>
-                <Link href="/#how-it-works" style={{ color: "var(--text-muted)", fontSize: "0.9rem", transition: "color 0.15s" }}>
-                  How It Works
-                </Link>
-              </li>
+              {!isAuthenticated && (
+                <li>
+                  <Link href="/#how-it-works" style={{ color: "var(--text-muted)", fontSize: "0.9rem", transition: "color 0.15s" }}>
+                    How It Works
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link href="/dashboard" style={{ color: "var(--text-muted)", fontSize: "0.9rem", transition: "color 0.15s" }}>
                   Kisan Dashboard

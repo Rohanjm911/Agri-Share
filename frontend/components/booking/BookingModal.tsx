@@ -6,7 +6,7 @@ import { useAuth } from "@/context/AuthContext";
 import { bookingService } from "@/services/bookingService";
 import { EquipmentDetail } from "@/types";
 import { formatCurrency, calculateDaysBetween } from "@/lib/utils";
-import { X, Calendar, DollarSign, Shield, CheckCircle2, AlertCircle, Tractor } from "lucide-react";
+import { X, Calendar, Shield, CheckCircle2, AlertCircle } from "lucide-react";
 
 interface BookingModalProps {
   equipment: EquipmentDetail;

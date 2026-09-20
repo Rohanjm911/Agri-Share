@@ -9,21 +9,15 @@ import { DashboardOverview, DashboardStats } from "@/types";
 import { formatCurrency, formatDate, getStatusBadge } from "@/lib/utils";
 import {
   Tractor,
-  DollarSign,
   CalendarDays,
   Clock,
-  Star,
   PlusCircle,
   Search,
   CheckCircle2,
   TrendingUp,
   ArrowUpRight,
-  User,
-  Wrench,
   CheckCircle,
   ShieldCheck,
-  Tag,
-  ShoppingBag,
 } from "lucide-react";
 
 export default function DashboardPage() {
@@ -77,6 +71,11 @@ export default function DashboardPage() {
   return (
     <div style={{ backgroundColor: "var(--bg-main)", minHeight: "100vh", padding: "48px 0 80px" }}>
       <div className="container">
+        {error && (
+          <div className="badge badge-danger" style={{ width: "100%", padding: "12px 16px", marginBottom: "20px", fontSize: "0.88rem" }}>
+            {error}
+          </div>
+        )}
         {/* Welcome Header */}
         <div
           style={{
@@ -175,21 +174,21 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Card 4: My Rentals (As Renter) */}
+            {/* Card 4: Completed Rentals */}
             <div className="card" style={{ padding: "24px" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "12px" }}>
                 <span style={{ fontSize: "0.85rem", fontWeight: "700", color: "var(--text-muted)", textTransform: "uppercase" }}>
-                  My Bookings
+                  Completed Rentals
                 </span>
                 <div style={{ padding: "8px", borderRadius: "var(--radius-md)", backgroundColor: "rgba(14, 165, 233, 0.15)", color: "#0284c7" }}>
-                  <CalendarDays size={20} />
+                  <CheckCircle2 size={20} />
                 </div>
               </div>
               <div style={{ fontSize: "1.8rem", fontWeight: "800", color: "var(--text-main)" }}>
-                {renter?.total_bookings || 0}
+                {owner?.completed_rentals || 0}
               </div>
               <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", marginTop: "4px" }}>
-                Spent: {formatCurrency(renter?.total_spent)}
+                Avg Rating: {owner?.average_rating ? `${owner.average_rating.toFixed(1)} ★` : "New Owner"}
               </div>
             </div>
           </div>
@@ -294,7 +293,7 @@ export default function DashboardPage() {
                   <Clock size={18} style={{ color: "var(--primary)" }} /> Incoming Rental Requests
                 </h3>
                 <Link href="/bookings" className="btn btn-ghost btn-sm" style={{ fontSize: "0.82rem" }}>
-                  View All <ArrowUpRight size={14} />
+                  View All Requests <ArrowUpRight size={14} />
                 </Link>
               </div>
 
@@ -327,61 +326,6 @@ export default function DashboardPage() {
                           </div>
                           <div style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
                             Renter: {b.renter.first_name || b.renter.username} &bull; {formatDate(b.start_date)} to {formatDate(b.end_date)}
-                          </div>
-                        </div>
-                        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                          <span className={`badge ${badge.colorClass}`}>{badge.label}</span>
-                          <div style={{ fontWeight: "800", color: "var(--primary)", fontSize: "0.95rem" }}>
-                            {formatCurrency(b.total_amount)}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-
-            {/* My Recent Bookings (Owner also rents sometimes) */}
-            <div className="card" style={{ padding: "28px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px", borderBottom: "1px solid var(--border)", paddingBottom: "12px" }}>
-                <h3 style={{ fontSize: "1.15rem", fontWeight: "700", display: "flex", alignItems: "center", gap: "8px" }}>
-                  <CalendarDays size={18} style={{ color: "var(--primary)" }} /> My Recent Rentals
-                </h3>
-                <Link href="/bookings" className="btn btn-ghost btn-sm" style={{ fontSize: "0.82rem" }}>
-                  View All <ArrowUpRight size={14} />
-                </Link>
-              </div>
-
-              {overview?.recent_bookings.length === 0 ? (
-                <p style={{ color: "var(--text-muted)", fontSize: "0.9rem", padding: "16px 0" }}>
-                  You have not booked any agricultural equipment yet.
-                </p>
-              ) : (
-                <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                  {overview?.recent_bookings.map((b) => {
-                    const badge = getStatusBadge(b.status);
-                    return (
-                      <div
-                        key={b.id}
-                        style={{
-                          padding: "12px 16px",
-                          borderRadius: "var(--radius-md)",
-                          backgroundColor: "var(--bg-subtle)",
-                          border: "1px solid var(--border)",
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          flexWrap: "wrap",
-                          gap: "12px",
-                        }}
-                      >
-                        <div>
-                          <div style={{ fontWeight: "700", fontSize: "0.95rem" }}>
-                            {b.equipment_detail?.name}
-                          </div>
-                          <div style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
-                            Dates: {formatDate(b.start_date)} &rarr; {formatDate(b.end_date)} ({b.total_days} days)
                           </div>
                         </div>
                         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>

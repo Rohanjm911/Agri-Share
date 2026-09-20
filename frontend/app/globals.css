@@ -1,9 +1,9 @@
 /* ==========================================================================
-   AgriShare Professional Dual-Tone Design System
-   Architecture: Pure Solid Dual-Tone Palette (Strictly ZERO Gradients)
-   Tone 1: Fresh Modern Emerald (#15803d / #16a34a / #10b981)
-   Tone 2: Warm Honey & Amber (#d97706 / #f59e0b)
-   Canvas: Crisp Mint & Organic Light Neutral (#f4f9f5)
+   AgriShare Design System: Deep Agro-Tech & Electric Lime
+   Architecture: High-Performance Dark Slate & Cyber-Agro Electric Lime
+   Tone 1: Electric Lime & Cyber Meadow (#10b981 / #00f076 / #22c55e)
+   Tone 2: High-Contrast Amber / Solar Gold (#f59e0b / #fbbf24)
+   Canvas: Obsidian Carbon (#080d0a), Slate (#0f1713), Elevated (#15221b)
    ========================================================================== */
 
 :root {
@@ -11,18 +11,19 @@
   --font-family-heading: var(--font-outfit), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-family-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  /* Tone 1 - Fresh Modern Emerald */
-  --primary: #15803d;
-  --primary-hover: #166534;
-  --primary-active: #14532d;
-  --primary-light: #dcfce7;
+  /* Tone 1 - Electric Agro-Tech Lime & Vivid Emerald */
+  --primary: #059669;
+  --primary-hover: #047857;
+  --primary-active: #065f46;
+  --primary-light: #ecfdf5;
   --primary-text: #ffffff;
+  --primary-glow: rgba(5, 150, 105, 0.25);
 
-  /* Tone 2 - Warm Honey & Amber */
+  /* Tone 2 - Solar Energy Amber / Harvest Gold */
   --accent: #d97706;
   --accent-hover: #b45309;
   --accent-active: #92400e;
-  --accent-light: #fef3c7;
+  --accent-light: #fffbeb;
   --accent-text: #ffffff;
 
   /* Backward Compatibility Aliases */
@@ -30,35 +31,35 @@
   --accent-gold-hover: var(--accent-hover);
   --accent-gold-light: var(--accent-light);
 
-  /* Architectural Canvas & Neutrals (Light Mode - Fresh Mint Organic Tone) */
-  --bg-main: #f4f8f5;
+  /* Architectural Canvas & Neutrals (Light Mode - Crisp Clean Agro Canvas) */
+  --bg-main: #f0fdf4;
   --bg-surface: #ffffff;
-  --bg-subtle: #eaf3ec;
+  --bg-subtle: #e2f7ea;
   --bg-card: #ffffff;
-  --bg-card-hover: #f0f7f2;
-  --bg-glass: rgba(255, 255, 255, 0.82);
-  --bg-glass-card: rgba(255, 255, 255, 0.75);
+  --bg-card-hover: #f3fbf6;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  --bg-glass-card: rgba(255, 255, 255, 0.78);
 
-  --text-main: #132418;
-  --text-muted: #3d5945;
-  --text-subtle: #5f7a67;
+  --text-main: #062413;
+  --text-muted: #235436;
+  --text-subtle: #4c775c;
   --text-inverse: #ffffff;
 
-  --border: #d5e5d9;
-  --border-focus: #15803d;
-  --border-hover: #b8d4bf;
-  --border-glass: rgba(21, 128, 61, 0.12);
+  --border: #c8e6d3;
+  --border-focus: #059669;
+  --border-hover: #9bd3b0;
+  --border-glass: rgba(5, 150, 105, 0.15);
 
-  /* Crisp Architectural Minimal Shadows (Clean, subtle ambient elevation) */
-  --shadow-xs: 0 1px 2px rgba(19, 36, 24, 0.03);
-  --shadow-sm: 0 1px 3px rgba(19, 36, 24, 0.04), 0 1px 2px rgba(19, 36, 24, 0.02);
-  --shadow-md: 0 4px 8px -2px rgba(19, 36, 24, 0.05), 0 2px 4px -2px rgba(19, 36, 24, 0.03);
-  --shadow-lg: 0 12px 24px -4px rgba(19, 36, 24, 0.06), 0 4px 6px -2px rgba(19, 36, 24, 0.02);
-  --shadow-xl: 0 20px 32px -6px rgba(19, 36, 24, 0.08), 0 8px 12px -4px rgba(19, 36, 24, 0.03);
-  --shadow-card: 0 1px 3px rgba(19, 36, 24, 0.04), 0 1px 2px rgba(19, 36, 24, 0.02);
-  --shadow-card-hover: 0 10px 25px -4px rgba(19, 36, 24, 0.08), 0 4px 8px -2px rgba(19, 36, 24, 0.03);
+  /* Elevation Shadows */
+  --shadow-xs: 0 1px 2px rgba(6, 36, 19, 0.04);
+  --shadow-sm: 0 1px 3px rgba(6, 36, 19, 0.06), 0 1px 2px rgba(6, 36, 19, 0.03);
+  --shadow-md: 0 4px 12px -2px rgba(6, 36, 19, 0.07), 0 2px 6px -2px rgba(6, 36, 19, 0.04);
+  --shadow-lg: 0 14px 28px -4px rgba(6, 36, 19, 0.09), 0 4px 8px -2px rgba(6, 36, 19, 0.04);
+  --shadow-xl: 0 24px 38px -6px rgba(6, 36, 19, 0.12);
+  --shadow-card: 0 1px 3px rgba(6, 36, 19, 0.05), 0 1px 2px rgba(6, 36, 19, 0.03);
+  --shadow-card-hover: 0 12px 28px -4px rgba(6, 36, 19, 0.1), 0 0 0 1px #9bd3b0;
 
-  /* Geometry - Modern Minimal Soft Radii */
+  /* Geometry */
   --radius-xs: 6px;
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -69,54 +70,55 @@
 
 [data-theme="dark"],
 .dark {
-  /* Tone 1 - Luminous Neon Emerald (Tone 1: Agri Core) */
+  /* Tone 1 - High-Intensity Cyber Lime & Neon Emerald */
   --primary: #10b981;
   --primary-hover: #34d399;
   --primary-active: #059669;
-  --primary-light: rgba(16, 185, 129, 0.14);
-  --primary-text: #052317;
+  --primary-light: rgba(16, 185, 129, 0.16);
+  --primary-text: #021a0f;
+  --primary-glow: rgba(16, 185, 129, 0.35);
 
-  /* Tone 2 - Radiant Golden Amber (Tone 2: Harvest Core) */
-  --accent: #f59e0b;
-  --accent-hover: #fbbf24;
-  --accent-active: #d97706;
-  --accent-light: rgba(245, 158, 11, 0.14);
-  --accent-text: #211303;
+  /* Tone 2 - Electric Solar Gold / Harvest Core */
+  --accent: #fbbf24;
+  --accent-hover: #fcd34d;
+  --accent-active: #f59e0b;
+  --accent-light: rgba(251, 191, 36, 0.14);
+  --accent-text: #1c1102;
 
   /* Backward Compatibility Aliases */
   --accent-gold: var(--accent);
   --accent-gold-hover: var(--accent-hover);
   --accent-gold-light: var(--accent-light);
 
-  /* Dual-Tone Architectural Canvas & Surfaces (Obsidian Slate + Forest Deep) */
-  --bg-main: #0a0f0d;         /* Deepest dual-tone obsidian dark base */
-  --bg-surface: #111a15;      /* Rich elevated dark forest tone */
-  --bg-card: #15221b;         /* Dual-tone card surface with emerald undertone */
-  --bg-card-hover: #1c2e24;   /* Illuminated interactive hover layer */
-  --bg-subtle: #192820;       /* Secondary architectural neutral */
-  --bg-glass: rgba(17, 26, 21, 0.82);
-  --bg-glass-card: rgba(21, 34, 27, 0.72);
+  /* Deep Agro-Tech Slate Obsidian Canvas */
+  --bg-main: #060b08;         /* Deep obsidian carbon backdrop */
+  --bg-surface: #0c140f;      /* Sleek dark aero-slate surface */
+  --bg-card: #111d16;         /* Elevated card base with emerald tint */
+  --bg-card-hover: #17271e;   /* Reactive hover state */
+  --bg-subtle: #142219;       /* Secondary neutral slate */
+  --bg-glass: rgba(12, 20, 15, 0.86);
+  --bg-glass-card: rgba(17, 29, 22, 0.8);
 
-  /* Crisp Typography for Maximum Contrast & Readability */
-  --text-main: #f1f5f3;       /* Ultra-crisp, clear reading tone */
-  --text-muted: #9bb5a5;      /* Soft sage-mint muted tone (harmonious with dark forest) */
-  --text-subtle: #678473;     /* Architectural hints */
-  --text-inverse: #0a0f0d;
+  /* Ultra-Crisp OLED Contrast Typography */
+  --text-main: #f3fcf6;       /* Radiant crisp white-mint */
+  --text-muted: #8fae9b;      /* High legibility tech sage */
+  --text-subtle: #5f806d;     /* Auxiliary technical info */
+  --text-inverse: #060b08;
 
-  /* Dual-Tone Architectural Borders & Subtle Highlights */
-  --border: #22372c;          /* Deep pine-slate border */
-  --border-hover: #325342;    /* Glowing interactive hover outline */
-  --border-focus: #10b981;    /* Precision neon emerald focus */
-  --border-glass: rgba(16, 185, 129, 0.2);
+  /* Cyber Agro Borders & Accents */
+  --border: #1a2f23;          /* Dark slate structural border */
+  --border-hover: #294d38;    /* Interactive border outline */
+  --border-focus: #10b981;    /* Glowing focus indicator */
+  --border-glass: rgba(16, 185, 129, 0.22);
 
-  /* Sleek Dark Mode Ambient Shadows */
+  /* High-Performance Atmospheric Shadows */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.6);
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.65);
-  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.75);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.85);
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.45);
-  --shadow-card-hover: 0 12px 28px rgba(0, 0, 0, 0.65), 0 0 0 1px #325342;
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.55);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.8);
+  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.9);
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(26, 47, 35, 0.6);
+  --shadow-card-hover: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 0 1px #294d38, 0 0 20px rgba(16, 185, 129, 0.15);
 }
 
 /* ==========================================================================
@@ -200,7 +202,11 @@ body::-webkit-scrollbar,
   border-radius: var(--radius-md);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.16s cubic-bezier(0.2, 0, 0, 1),
+              background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.16s ease;
   text-align: center;
   white-space: nowrap;
   user-select: none;
@@ -208,8 +214,13 @@ body::-webkit-scrollbar,
   background-image: none !important;
 }
 
-.btn:active {
-  transform: translateY(1px);
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.975) translateY(0);
+  transition-duration: 0.07s;
 }
 
 .btn:disabled {
@@ -218,7 +229,7 @@ body::-webkit-scrollbar,
   transform: none !important;
 }
 
-/* Primary Button (Tone 1: Deep Forest Pine in Light, Radiant Emerald in Dark) */
+/* Primary Button (Tone 1: Deep Agro in Light, Cyber Electric Lime in Dark) */
 .btn-primary {
   background-color: var(--primary);
   color: #ffffff;
@@ -227,13 +238,19 @@ body::-webkit-scrollbar,
 
 [data-theme="dark"] .btn-primary,
 .dark .btn-primary {
-  color: #041f14;
-  font-weight: 700;
+  color: #021a0f;
+  font-weight: 800;
+  box-shadow: 0 0 16px var(--primary-glow);
 }
 
 .btn-primary:hover:not(:disabled) {
   background-color: var(--primary-hover);
   border-color: var(--primary-hover);
+}
+
+[data-theme="dark"] .btn-primary:hover:not(:disabled),
+.dark .btn-primary:hover:not(:disabled) {
+  box-shadow: 0 0 24px var(--primary-glow);
 }
 
 /* Secondary Button (Solid Architectural Border) */
@@ -313,9 +330,9 @@ body::-webkit-scrollbar,
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.2s ease;
+  transition: transform 0.28s cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 0.28s cubic-bezier(0.2, 0, 0, 1),
+              border-color 0.22s ease;
   overflow: hidden;
   position: relative;
   background-image: none !important;
@@ -323,18 +340,87 @@ body::-webkit-scrollbar,
 
 .card-interactive {
   cursor: pointer;
+  will-change: transform, box-shadow;
 }
 
 .card-interactive:hover {
   border-color: var(--border-hover);
   box-shadow: var(--shadow-card-hover);
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+}
+
+.card-interactive:active {
+  transform: translateY(-2px);
+  transition-duration: 0.1s;
+}
+
+/* Natural Organic Zoom on Card Thumbnail Images */
+.card-interactive img {
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), filter 0.3s ease;
+  will-change: transform;
+}
+
+.card-interactive:hover img {
+  transform: scale(1.04);
+}
+
+/* Card Interactive Children Subtle Choreography */
+.card-interactive .card-arrow {
+  transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.card-interactive:hover .card-arrow {
+  transform: translateX(4px);
+}
+
+.card-interactive .card-icon-bounce {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-interactive:hover .card-icon-bounce {
+  transform: scale(1.08) translateY(-2px);
 }
 
 [data-theme="dark"] .card-interactive:hover,
 .dark .card-interactive:hover {
-  border-color: #345c48;
-  box-shadow: 0 16px 32px -4px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(16, 185, 129, 0.2);
+  border-color: var(--border-hover);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--border-hover), 0 0 20px rgba(16, 185, 129, 0.12);
+}
+
+/* Natural Organic Entrance Choreography (Tasteful & Non-AI) */
+@keyframes naturalFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal {
+  animation: naturalFadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+
+/* Subtle Pill / Tab Hover */
+.pill-tab {
+  transition: all 0.18s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.pill-tab:hover {
+  transform: translateY(-1px);
+}
+
+.pill-tab:active {
+  transform: scale(0.96);
 }
 
 /* Glassmorphism Accents (Applied deliberately to select key components) */
@@ -440,17 +526,27 @@ body::-webkit-scrollbar,
   border: 1px solid var(--border);
   background-color: var(--bg-card);
   color: var(--text-main);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.18s cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 0.18s cubic-bezier(0.2, 0, 0, 1),
+              background-color 0.18s ease;
   outline: none;
   box-shadow: 0 1px 2px rgba(19, 36, 24, 0.02);
   background-image: none !important;
+}
+
+.form-textarea {
+  min-height: 96px;
+  resize: vertical;
+  field-sizing: content;
+  line-height: 1.5;
+  font-family: inherit;
 }
 
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.15);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18), 0 2px 8px rgba(0, 0, 0, 0.2);
   background-color: var(--bg-surface);
 }
 
@@ -579,4 +675,81 @@ body::-webkit-scrollbar,
 :root:not([data-theme="dark"])::view-transition-new(root) {
   z-index: 1;
 }
+
+/* ==========================================================================
+   Mobile Auto-Scaling & Touch System
+   ========================================================================== */
+
+/* Prevent horizontal overflow on small displays */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Responsive Containers */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Full-width responsive buttons on mobile */
+  .btn-lg {
+    padding: 11px 20px;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  /* Ensure card grids adapt seamlessly without horizontal scroll */
+  .grid, [class*="grid-"] {
+    max-width: 100%;
+  }
+
+  /* Safe interactive touch target sizes */
+  button, a {
+    touch-action: manipulation;
+  }
+
+  /* Responsive headings auto-scaling */
+  h1 {
+    font-size: clamp(1.85rem, 7vw, 2.6rem) !important;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 5.5vw, 2rem) !important;
+  }
+  h3 {
+    font-size: clamp(1.15rem, 4.5vw, 1.45rem) !important;
+  }
+
+  /* Modal scaling for mobile screens */
+  .modal-card {
+    max-width: calc(100vw - 24px) !important;
+    margin: 12px;
+    border-radius: var(--radius-md) !important;
+    max-height: 88vh !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  /* Table auto-scrolling */
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Make filter search bars stack neatly */
+  .filter-stack {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+}
+
 

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, use } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 import { equipmentService } from "@/services/equipmentService";
 import { reviewService } from "@/services/reviewService";
 import { bookingService } from "@/services/bookingService";
@@ -10,27 +10,22 @@ import { EquipmentDetail, Review, Booking } from "@/types";
 import { formatCurrency, formatDate, getConditionColor } from "@/lib/utils";
 import { BookingModal } from "@/components/booking/BookingModal";
 import { ReviewModal } from "@/components/reviews/ReviewModal";
-import { useAuth } from "@/context/AuthContext";
 import {
   Tractor,
   MapPin,
   Calendar,
   Shield,
   Star,
-  User,
   Phone,
   Mail,
   ChevronLeft,
   CheckCircle2,
   AlertCircle,
-  Clock,
-  Sparkles,
 } from "lucide-react";
 
 export default function EquipmentDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
   const equipmentId = resolvedParams.id;
-  const router = useRouter();
   const { user } = useAuth();
 
   const [equipment, setEquipment] = useState<EquipmentDetail | null>(null);

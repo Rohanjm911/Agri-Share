@@ -11,27 +11,34 @@ import { formatCurrency, formatDate, getStatusBadge } from "@/lib/utils";
 import { ReviewModal } from "@/components/reviews/ReviewModal";
 import {
   CalendarDays,
-  Clock,
   CheckCircle2,
   XCircle,
   Tractor,
   Star,
-  DollarSign,
   AlertCircle,
   ExternalLink,
-  ShieldAlert,
 } from "lucide-react";
 
 export default function BookingsManagementPage() {
-  const { isAuthenticated, isLoading: authLoading } = useAuth();
+  const { user, isAuthenticated, isLoading: authLoading } = useAuth();
   const router = useRouter();
 
+  const isOwner = user?.role === "OWNER";
   const [activeTab, setActiveTab] = useState<"renter" | "owner">("renter");
   const [hasOwnedEquipment, setHasOwnedEquipment] = useState<boolean>(false);
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [actionSuccess, setActionSuccess] = useState<string | null>(null);
+
+  // Set default active tab based on user role
+  useEffect(() => {
+    if (isOwner) {
+      setActiveTab("owner");
+    } else {
+      setActiveTab("renter");
+    }
+  }, [isOwner]);
 
   // Check if current user has any listed equipment for rental
   useEffect(() => {
@@ -40,17 +47,14 @@ export default function BookingsManagementPage() {
       try {
         const res: any = await equipmentService.getMyEquipment();
         const items = Array.isArray(res) ? res : res.results || [];
-        const isOwner = items.length > 0;
-        setHasOwnedEquipment(isOwner);
-        if (!isOwner && activeTab === "owner") {
-          setActiveTab("renter");
-        }
+        const hasEquipment = items.length > 0;
+        setHasOwnedEquipment(hasEquipment || isOwner);
       } catch {
-        setHasOwnedEquipment(false);
+        setHasOwnedEquipment(isOwner);
       }
     }
     checkOwnerStatus();
-  }, [isAuthenticated, activeTab]);
+  }, [isAuthenticated, isOwner]);
 
   // Review modal state
   const [reviewBooking, setReviewBooking] = useState<Booking | null>(null);
@@ -195,15 +199,17 @@ export default function BookingsManagementPage() {
             alignItems: "center",
           }}
         >
-          <button
-            onClick={() => setActiveTab("renter")}
-            className={`btn ${activeTab === "renter" ? "btn-primary" : "btn-secondary"}`}
-          >
-            <CalendarDays size={18} />
-            <span>My Bookings (As Renter)</span>
-          </button>
+          {!isOwner && (
+            <button
+              onClick={() => setActiveTab("renter")}
+              className={`btn ${activeTab === "renter" ? "btn-primary" : "btn-secondary"}`}
+            >
+              <CalendarDays size={18} />
+              <span>My Bookings (As Renter)</span>
+            </button>
+          )}
           
-          {hasOwnedEquipment && (
+          {(hasOwnedEquipment || isOwner) && (
             <button
               onClick={() => setActiveTab("owner")}
               className={`btn ${activeTab === "owner" ? "btn-primary" : "btn-secondary"}`}

@@ -230,7 +230,7 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
             }}
           >
             <span>View</span>
-            <ArrowRight size={13} />
+            <ArrowRight size={13} className="card-arrow" />
           </Link>
         </div>
       </div>
