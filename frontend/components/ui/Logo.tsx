@@ -2,81 +2,168 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
-interface LogoProps {
+export interface LogoProps {
   size?: "sm" | "md" | "lg" | "xl";
   showText?: boolean;
-  variant?: "full" | "light" | "dark";
+  variant?: "default" | "full" | "horizontal";
   className?: string;
 }
 
-export function LogoIcon({ size = 32, className = "" }: { size?: number; className?: string }) {
+/**
+ * Brand Logo Icon: Emblem with 3 digital agro-leaves, circuit nodes & water waves.
+ * Automatically adapts between Light & Dark themes with crisp high-resolution assets.
+ */
+export function LogoIcon({
+  size = 36,
+  className = "",
+}: {
+  size?: number;
+  className?: string;
+}) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 48 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      style={{ display: "block", flexShrink: 0 }}
+    <div
+      className={`agrishare-logo-icon-container ${className}`}
+      style={{
+        position: "relative",
+        width: size,
+        height: size,
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
+      }}
     >
-      {/* Solid Forest Pine Background Shield (Tone 1) */}
-      <rect
-        x="4"
-        y="4"
-        width="40"
-        height="40"
-        rx="10"
-        fill="var(--primary)"
+      {/* Light Theme: Deep Agri Forest Green */}
+      <Image
+        src="/logo-icon.png"
+        alt="AgriShare Emblem"
+        width={size * 2}
+        height={size * 2}
+        priority
+        className="logo-theme-light"
+        style={{
+          width: size,
+          height: size,
+          objectFit: "contain",
+          filter: "drop-shadow(0 2px 4px rgba(15, 75, 6, 0.15))",
+          transition: "transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+        }}
       />
-
-      {/* Solid White Sprout Shape */}
-      <path
-        d="M24 11C24 11 29 16 29 23C29 27.4183 25.4183 31 21 31C16.5817 31 13 27.4183 13 23C13 18 19 13 24 11Z"
-        fill="#ffffff"
+      {/* Dark Theme: Vibrant Agro-Tech Neon Emerald */}
+      <Image
+        src="/logo-icon-dark.png"
+        alt="AgriShare Emblem"
+        width={size * 2}
+        height={size * 2}
+        priority
+        className="logo-theme-dark"
+        style={{
+          width: size,
+          height: size,
+          objectFit: "contain",
+          filter: "drop-shadow(0 0 10px rgba(16, 185, 129, 0.35))",
+          transition: "transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+        }}
       />
-
-      {/* Solid Warm Harvest Amber Growth Leaf (Tone 2) */}
-      <path
-        d="M24 14C24 14 35 17 35 27C35 32 30.5 36 25 36C21.5 36 18.5 34.5 17 32C22 33 27 30 28 25C29 20 25 16 24 14Z"
-        fill="var(--accent)"
-      />
-
-      {/* Center Pin & Precision Crosshairs */}
-      <circle cx="24" cy="24" r="3" fill="#ffffff" />
-      <path
-        d="M24 20V15M24 33V28M15 24H20M28 24H33"
-        stroke="#ffffff"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-    </svg>
+    </div>
   );
 }
 
+/**
+ * Full Brand Logo component with responsive sizes, typography & layout options.
+ */
 export function Logo({
   size = "md",
   showText = true,
+  variant = "default",
   className = "",
 }: LogoProps) {
-  const iconSizes = {
-    sm: 26,
-    md: 34,
-    lg: 42,
-    xl: 50,
+  const iconSizes: Record<NonNullable<LogoProps["size"]>, number> = {
+    sm: 28,
+    md: 38,
+    lg: 48,
+    xl: 60,
   };
 
-  const fontSizes = {
-    sm: "1.1rem",
-    md: "1.35rem",
-    lg: "1.65rem",
-    xl: "2rem",
+  const fontSizes: Record<NonNullable<LogoProps["size"]>, string> = {
+    sm: "1.15rem",
+    md: "1.42rem",
+    lg: "1.75rem",
+    xl: "2.2rem",
   };
 
   const pxSize = iconSizes[size];
   const fontSize = fontSizes[size];
 
+  // Full stacked lockup variant
+  if (variant === "full") {
+    const fullHeight = pxSize * 2.2;
+    return (
+      <Link
+        href="/"
+        className={`agrishare-brand-logo ${className}`}
+        style={{
+          display: "inline-block",
+          textDecoration: "none",
+          transition: "transform 0.2s ease",
+        }}
+      >
+        <Image
+          src="/logo.png"
+          alt="AgriShare Full Logo"
+          width={fullHeight}
+          height={fullHeight}
+          className="logo-theme-light"
+          style={{ width: "auto", height: fullHeight, objectFit: "contain" }}
+        />
+        <Image
+          src="/logo-dark.png"
+          alt="AgriShare Full Logo"
+          width={fullHeight}
+          height={fullHeight}
+          className="logo-theme-dark"
+          style={{ width: "auto", height: fullHeight, objectFit: "contain" }}
+        />
+      </Link>
+    );
+  }
+
+  // Horizontal lockup variant
+  if (variant === "horizontal") {
+    const hHeight = pxSize * 1.3;
+    return (
+      <Link
+        href="/"
+        className={`agrishare-brand-logo ${className}`}
+        style={{
+          display: "inline-block",
+          textDecoration: "none",
+          transition: "transform 0.2s ease",
+        }}
+      >
+        <Image
+          src="/logo-horizontal.png"
+          alt="AgriShare Brand"
+          width={hHeight * 3.4}
+          height={hHeight}
+          className="logo-theme-light"
+          style={{ width: "auto", height: hHeight, objectFit: "contain" }}
+        />
+        <Image
+          src="/logo-horizontal-dark.png"
+          alt="AgriShare Brand"
+          width={hHeight * 3.4}
+          height={hHeight}
+          className="logo-theme-dark"
+          style={{ width: "auto", height: hHeight, objectFit: "contain" }}
+        />
+      </Link>
+    );
+  }
+
+  // Default brand logo: Emblem icon + stylized text
   return (
     <Link
       href="/"
@@ -84,9 +171,10 @@ export function Logo({
       style={{
         display: "inline-flex",
         alignItems: "center",
-        gap: size === "sm" ? "8px" : size === "xl" ? "12px" : "10px",
+        gap: size === "sm" ? "8px" : size === "xl" ? "14px" : "11px",
         textDecoration: "none",
         userSelect: "none",
+        transition: "opacity 0.2s ease, transform 0.2s ease",
       }}
     >
       <LogoIcon size={pxSize} />
@@ -96,17 +184,25 @@ export function Logo({
             fontFamily: "var(--font-family-heading)",
             fontWeight: "900",
             fontSize: fontSize,
-            letterSpacing: "-0.03em",
+            letterSpacing: "-0.035em",
             lineHeight: 1,
             display: "flex",
             alignItems: "center",
           }}
         >
-          <span style={{ color: "var(--primary)" }}>AGRI</span>
+          <span
+            style={{
+              color: "var(--primary)",
+              textShadow: "0 1px 2px rgba(0,0,0,0.1)",
+            }}
+          >
+            AGRI
+          </span>
           <span
             style={{
               color: "var(--accent)",
-              marginLeft: "1px",
+              marginLeft: "2px",
+              textShadow: "0 1px 2px rgba(0,0,0,0.1)",
             }}
           >
             SHARE

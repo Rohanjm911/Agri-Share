@@ -57,7 +57,7 @@ export function Navbar() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          height: "72px",
+          height: "64px",
         }}
       >
         {/* Brand Logo */}
@@ -211,7 +211,7 @@ export function Navbar() {
                       style={{ position: "fixed", inset: 0, zIndex: 90 }}
                     />
                     <div
-                      className="card"
+                      className="apple-card glass-panel"
                       style={{
                         position: "absolute",
                         top: "calc(100% + 8px)",
@@ -219,9 +219,7 @@ export function Navbar() {
                         width: "230px",
                         zIndex: 91,
                         padding: "8px",
-                        backgroundColor: "var(--bg-surface)",
-                        border: "1px solid var(--border)",
-                        boxShadow: "var(--shadow-lg)",
+                        borderRadius: "20px",
                       }}
                     >
                       <div style={{ padding: "8px 12px", borderBottom: "1px solid var(--border)", marginBottom: "4px" }}>
@@ -286,11 +284,30 @@ export function Navbar() {
               </div>
             </>
           ) : (
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <Link href="/login" className="btn btn-ghost btn-sm">
-                Login
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <Link
+                href="/login"
+                className="pill-tab"
+                style={{
+                  fontSize: "0.86rem",
+                  fontWeight: "600",
+                  padding: "7px 16px",
+                  borderRadius: "9999px",
+                  color: "var(--text-main)",
+                }}
+              >
+                Sign In
               </Link>
-              <Link href="/register" className="btn btn-primary btn-sm">
+              <Link
+                href="/register"
+                className="btn btn-primary apple-pill-btn"
+                style={{
+                  height: "36px",
+                  padding: "0 18px !important",
+                  fontSize: "0.85rem",
+                  fontWeight: "700",
+                }}
+              >
                 Get Started
               </Link>
             </div>

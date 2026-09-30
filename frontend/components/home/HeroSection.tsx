@@ -165,149 +165,132 @@ export function HeroSection() {
   }, [user?.id, isAuthenticated]);
   return (
     <section
+      className="apple-spotlight"
       style={{
         position: "relative",
-        paddingTop: "64px",
-        paddingBottom: "80px",
+        paddingTop: "76px",
+        paddingBottom: "88px",
         backgroundColor: "var(--bg-surface)",
         borderBottom: "1px solid var(--border)",
         transition: "background-color 0.15s ease, border-color 0.15s ease",
       }}
     >
-      <div className="container">
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "1fr",
-            gap: "48px",
+            gap: "52px",
             alignItems: "center",
           }}
           className="hero-grid"
         >
           {/* Hero Left Content */}
           <div style={{ maxWidth: "660px" }}>
-            <div
-              className="animate-reveal stagger-1"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "6px 14px",
-                borderRadius: "var(--radius-full)",
-                backgroundColor: "var(--primary-light)",
-                border: "1px solid var(--border)",
-                fontSize: "0.85rem",
-                fontWeight: "700",
-                color: "var(--primary)",
-                marginBottom: "20px",
-              }}
-            >
-              <Sparkles size={15} style={{ color: "var(--accent)" }} />
-              <span>India&apos;s Agricultural Machinery Sharing Network</span>
-            </div>
-
             <h1
               className="animate-reveal stagger-2"
               style={{
-                fontSize: "clamp(2.4rem, 5vw, 3.8rem)",
+                fontSize: "clamp(2.5rem, 5.2vw, 4.1rem)",
                 fontWeight: "900",
-                lineHeight: "1.15",
-                letterSpacing: "-0.03em",
+                lineHeight: "1.08",
+                letterSpacing: "-0.04em",
                 color: "var(--text-main)",
-                marginBottom: "18px",
+                marginBottom: "20px",
               }}
             >
-              Agricultural Machinery <br />
-              <span style={{ color: "var(--primary)" }}>
-                Directly from Local Farmers.
+              Heavy Farm Machinery. <br />
+              <span className="apple-gradient-emerald">
+                Engineered for Kisans.
               </span>
             </h1>
 
             <p
               className="animate-reveal stagger-3"
               style={{
-                fontSize: "1.1rem",
+                fontSize: "1.12rem",
                 lineHeight: "1.65",
                 color: "var(--text-muted)",
-                marginBottom: "32px",
+                letterSpacing: "-0.015em",
+                marginBottom: "36px",
+                maxWidth: "600px",
               }}
             >
-              Rent high-capacity tractors, combine harvesters, rotavators, and laser levelers from verified equipment
-              owners across Punjab, Haryana, Madhya Pradesh, Gujarat, Maharashtra, and beyond.
+              Rent high-capacity 4WD tractors, combine harvesters, rotavators, and laser levelers directly from verified equipment
+              owners in your district — with zero broker fees.
             </p>
 
-            {/* CTA Buttons - Modern Sleek Dual-Tone Pair */}
+            {/* Apple-Style Pill CTA Buttons */}
             <div
               className="animate-reveal stagger-4"
               style={{
                 display: "flex",
                 flexWrap: "wrap",
                 gap: "14px",
-                marginBottom: "40px",
+                marginBottom: "44px",
               }}
             >
               <Link
                 href="/equipment"
-                className="btn btn-primary btn-lg"
+                className="btn btn-primary apple-pill-btn btn-lg"
                 style={{
-                  borderRadius: "9999px",
-                  padding: "12px 28px",
-                  fontSize: "0.98rem",
-                  letterSpacing: "-0.01em",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "10px",
                 }}
               >
-                <Search size={17} />
-                <span>Search Equipment</span>
+                <Search size={18} />
+                <span>Explore Machinery</span>
                 <ArrowRight size={17} className="card-arrow" />
               </Link>
               <Link
                 href="/equipment/new"
-                className="btn btn-secondary btn-lg"
+                className="btn btn-secondary apple-pill-btn btn-lg"
                 style={{
-                  borderRadius: "9999px",
-                  padding: "12px 26px",
-                  fontSize: "0.98rem",
-                  letterSpacing: "-0.01em",
+                  backdropFilter: "blur(16px)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "10px",
                 }}
               >
-                <Tractor size={17} />
-                <span>List Your Tractor & Implements</span>
+                <Tractor size={18} />
+                <span>List Your Machinery ›</span>
               </Link>
             </div>
 
-            {/* Frosted Glass Verified Metric Bar */}
+            {/* Apple-Grade Frosted Glass Metrics Bar */}
             <div
-              className="card glass-panel animate-reveal stagger-5 hero-metrics-bar"
+              className="glass-panel animate-reveal stagger-5 hero-metrics-bar"
               style={{
                 display: "grid",
-                padding: "18px 20px",
-                gap: "14px",
-                borderRadius: "var(--radius-lg)",
-                boxShadow: "var(--shadow-sm)",
+                padding: "20px 24px",
+                gap: "16px",
+                borderRadius: "var(--radius-squircle)",
               }}
             >
               <div>
                 <div
                   style={{
-                    fontSize: "1.65rem",
+                    fontSize: "1.75rem",
                     fontWeight: "900",
+                    letterSpacing: "-0.03em",
                     color: "var(--primary)",
-                    lineHeight: "1.2",
+                    lineHeight: "1.1",
                   }}
                 >
                   500+
                 </div>
-                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "700" }}>
+                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "600", marginTop: "2px" }}>
                   Verified Machines
                 </div>
               </div>
-              <div className="metric-col" style={{ borderLeft: "1px solid var(--border)", paddingLeft: "18px" }}>
+              <div className="metric-col" style={{ borderLeft: "1px solid var(--border)", paddingLeft: "20px" }}>
                 <div
                   style={{
-                    fontSize: "1.65rem",
+                    fontSize: "1.75rem",
                     fontWeight: "900",
+                    letterSpacing: "-0.03em",
                     color: "var(--accent)",
-                    lineHeight: "1.2",
+                    lineHeight: "1.1",
                     display: "flex",
                     alignItems: "center",
                     gap: "4px",
@@ -315,79 +298,106 @@ export function HeroSection() {
                 >
                   4.9 <Star size={16} fill="var(--accent)" color="var(--accent)" />
                 </div>
-                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "700" }}>
+                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "600", marginTop: "2px" }}>
                   Farmer Rating
                 </div>
               </div>
-              <div className="metric-col" style={{ borderLeft: "1px solid var(--border)", paddingLeft: "18px" }}>
+              <div className="metric-col" style={{ borderLeft: "1px solid var(--border)", paddingLeft: "20px" }}>
                 <div
                   style={{
-                    fontSize: "1.65rem",
+                    fontSize: "1.75rem",
                     fontWeight: "900",
+                    letterSpacing: "-0.03em",
                     color: "var(--primary)",
-                    lineHeight: "1.2",
+                    lineHeight: "1.1",
                   }}
                 >
                   ₹0
                 </div>
-                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "700" }}>
-                  Platform Brokerage
+                <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "600", marginTop: "2px" }}>
+                  Brokerage Fee
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Hero Right Visual Card */}
+          {/* Hero Right Visual Card: Apple Pro Showcase */}
           <div>
             <div
-              className="card"
+              className="apple-card"
               style={{
-                padding: "16px",
+                padding: "20px",
                 display: "flex",
                 flexDirection: "column",
-                gap: "16px",
-                backgroundColor: "var(--bg-card)",
-                border: "1px solid var(--border)",
-                boxShadow: "var(--shadow-lg)",
+                gap: "18px",
+                borderRadius: "var(--radius-squircle-lg)",
               }}
             >
+              {/* Card Header */}
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                   <div
                     style={{
-                      width: "36px",
-                      height: "36px",
-                      borderRadius: "var(--radius-sm)",
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "12px",
                       backgroundColor: "var(--primary)",
                       color: "#ffffff",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
+                      boxShadow: "0 4px 12px var(--primary-glow)",
                     }}
                   >
-                    <Tractor size={20} />
+                    <Tractor size={22} />
                   </div>
                   <div>
-                    <div style={{ fontWeight: "800", fontSize: "0.95rem", color: "var(--text-main)" }}>
-                      Featured Machinery
+                    <div style={{ fontWeight: "800", fontSize: "0.98rem", color: "var(--text-main)", letterSpacing: "-0.01em" }}>
+                      Featured Machine
                     </div>
                     <div style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>
-                      Ready for Immediate Field Work
+                      Live Field Availability
                     </div>
                   </div>
                 </div>
-                <span className="badge badge-success">Available</span>
+                <span
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    padding: "5px 12px",
+                    borderRadius: "9999px",
+                    backgroundColor: "rgba(16, 185, 129, 0.15)",
+                    border: "1px solid rgba(16, 185, 129, 0.3)",
+                    color: "var(--primary)",
+                    fontSize: "0.75rem",
+                    fontWeight: "700",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: "6px",
+                      height: "6px",
+                      borderRadius: "50%",
+                      backgroundColor: "var(--primary)",
+                      boxShadow: "0 0 6px var(--primary)",
+                    }}
+                  />
+                  Available Now
+                </span>
               </div>
 
-              {/* Machinery Photo */}
+              {/* Machinery Photo with Floating Glass Chips */}
               <div
                 style={{
-                  borderRadius: "var(--radius-sm)",
+                  borderRadius: "18px",
                   overflow: "hidden",
                   border: "1px solid var(--border)",
+                  position: "relative",
+                  boxShadow: "0 8px 24px -6px rgba(0, 0, 0, 0.2)",
                 }}
               >
-                <div style={{ height: "220px", position: "relative", backgroundColor: "var(--bg-subtle)" }}>
+                <div style={{ height: "235px", position: "relative", backgroundColor: "var(--bg-subtle)" }}>
                   <img
                     key={featuredItem.id}
                     src={featuredItem.image}
@@ -396,38 +406,91 @@ export function HeroSection() {
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
-                      transition: "opacity 0.3s ease",
+                      transition: "transform 0.4s var(--apple-ease)",
                     }}
                   />
-                  <span
+                  {/* Frosted Tag Pill */}
+                  <div
                     style={{
                       position: "absolute",
-                      top: "10px",
-                      left: "10px",
-                      fontSize: "0.72rem",
-                      fontWeight: "800",
-                      padding: "4px 10px",
-                      borderRadius: "var(--radius-full)",
-                      backgroundColor: "var(--primary)",
-                      color: "#ffffff",
-                      letterSpacing: "0.04em",
+                      top: "12px",
+                      left: "12px",
+                      display: "flex",
+                      gap: "6px",
+                      zIndex: 2,
                     }}
                   >
-                    {featuredItem.tag}
-                  </span>
+                    <span
+                      className="apple-badge"
+                      style={{
+                        padding: "4px 12px",
+                        fontSize: "0.72rem",
+                        backgroundColor: "rgba(0, 0, 0, 0.65)",
+                        color: "#ffffff",
+                        borderColor: "rgba(255, 255, 255, 0.15)",
+                        letterSpacing: "0.03em",
+                      }}
+                    >
+                      {featuredItem.tag}
+                    </span>
+                  </div>
+
+                  {/* Bottom Spec Pills Overlay */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "12px",
+                      left: "12px",
+                      right: "12px",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      gap: "8px",
+                      zIndex: 2,
+                    }}
+                  >
+                    <span
+                      className="apple-badge"
+                      style={{
+                        padding: "4px 10px",
+                        fontSize: "0.72rem",
+                        backgroundColor: "rgba(0, 0, 0, 0.65)",
+                        color: "#ffffff",
+                        borderColor: "rgba(255, 255, 255, 0.15)",
+                      }}
+                    >
+                      <MapPin size={11} style={{ color: "var(--accent)" }} />
+                      <span>{featuredItem.location}</span>
+                    </span>
+
+                    <span
+                      className="apple-badge"
+                      style={{
+                        padding: "4px 10px",
+                        fontSize: "0.72rem",
+                        backgroundColor: "rgba(0, 0, 0, 0.65)",
+                        color: "#ffffff",
+                        borderColor: "rgba(255, 255, 255, 0.15)",
+                      }}
+                    >
+                      ⚡ {featuredItem.feature}
+                    </span>
+                  </div>
                 </div>
 
-                <div style={{ padding: "18px 18px 16px", backgroundColor: "var(--bg-subtle)" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "16px", marginBottom: "12px" }}>
+                {/* Details Footer */}
+                <div style={{ padding: "18px", backgroundColor: "var(--bg-card)" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "16px", marginBottom: "16px" }}>
                     <div style={{ flex: 1 }}>
                       <h3
                         style={{
                           fontWeight: "800",
-                          fontSize: "1.1rem",
+                          fontSize: "1.15rem",
+                          letterSpacing: "-0.02em",
                           lineHeight: "1.3",
                           color: "var(--text-main)",
                           display: "-webkit-box",
-                          WebkitLineClamp: 2,
+                          WebkitLineClamp: 1,
                           WebkitBoxOrient: "vertical",
                           overflow: "hidden",
                           marginBottom: "4px",
@@ -435,8 +498,8 @@ export function HeroSection() {
                       >
                         {featuredItem.name}
                       </h3>
-                      <div style={{ fontSize: "0.8rem", color: "var(--text-muted)", fontWeight: "600" }}>
-                        {featuredItem.category_name}
+                      <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", fontWeight: "600" }}>
+                        {featuredItem.category_name} • {featuredItem.year}
                       </div>
                     </div>
 
@@ -444,26 +507,26 @@ export function HeroSection() {
                       style={{
                         textAlign: "right",
                         flexShrink: 0,
-                        backgroundColor: "var(--bg-card)",
-                        padding: "6px 12px",
-                        borderRadius: "var(--radius-sm)",
-                        border: "1px solid var(--border)",
                       }}
                     >
-                      <div style={{ color: "var(--primary)", fontWeight: "900", fontSize: "1.25rem", lineHeight: "1.1" }}>
+                      <div style={{ color: "var(--primary)", fontWeight: "900", fontSize: "1.35rem", letterSpacing: "-0.03em", lineHeight: "1" }}>
                         {formatCurrency(featuredItem.price_per_day)}
                       </div>
-                      <span style={{ fontSize: "0.72rem", color: "var(--text-muted)", fontWeight: "700" }}>per day</span>
+                      <span style={{ fontSize: "0.74rem", color: "var(--text-muted)", fontWeight: "600" }}>/ day</span>
                     </div>
                   </div>
 
-                  <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "16px" }}>
-                    <span className="badge badge-info"><MapPin size={11} /> {featuredItem.location}</span>
-                    <span className="badge badge-success">{featuredItem.feature}</span>
-                    <span className="badge badge-muted">{featuredItem.year}</span>
-                  </div>
-
-                  <Link href={`/equipment/${featuredItem.id}`} className="btn btn-primary" style={{ width: "100%" }}>
+                  <Link
+                    href={`/equipment/${featuredItem.id}`}
+                    className="btn btn-primary apple-pill-btn"
+                    style={{
+                      width: "100%",
+                      justifyContent: "center",
+                      gap: "8px",
+                      padding: "10px 20px !important",
+                      fontSize: "0.92rem",
+                    }}
+                  >
                     <span>{featuredItem.actionLabel}</span>
                     <ArrowRight size={16} className="card-arrow" />
                   </Link>
@@ -477,7 +540,7 @@ export function HeroSection() {
                   alignItems: "center",
                   gap: "10px",
                   padding: "10px 14px",
-                  borderRadius: "var(--radius-sm)",
+                  borderRadius: "14px",
                   backgroundColor: "var(--primary-light)",
                   border: "1px solid var(--border)",
                   fontSize: "0.82rem",

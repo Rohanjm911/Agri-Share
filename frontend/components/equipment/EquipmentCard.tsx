@@ -15,13 +15,14 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
 
   return (
     <div
-      className="card card-interactive"
+      className="apple-card card-interactive"
       style={{
         display: "flex",
         flexDirection: "column",
         height: "100%",
         backgroundColor: "var(--bg-card)",
         border: "1px solid var(--border)",
+        borderRadius: "var(--radius-squircle)",
       }}
     >
       {/* Card Image Banner */}
@@ -221,12 +222,11 @@ export function EquipmentCard({ equipment }: EquipmentCardProps) {
 
           <Link
             href={`/equipment/${equipment.id}`}
-            className="btn btn-primary btn-sm"
+            className="btn btn-primary apple-pill-btn btn-sm"
             style={{
-              borderRadius: "9999px",
-              padding: "6px 14px",
+              padding: "7px 16px !important",
               fontSize: "0.82rem",
-              fontWeight: "600",
+              fontWeight: "700",
             }}
           >
             <span>View</span>

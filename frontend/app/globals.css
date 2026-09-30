@@ -7,9 +7,18 @@
    ========================================================================== */
 
 :root {
-  /* Font Stacks */
-  --font-family-heading: var(--font-outfit), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-family-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Apple-Grade Font Stacks (SF Pro First, then Outfit & Inter) */
+  --font-family-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", var(--font-outfit), "Segoe UI", sans-serif;
+  --font-family-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-inter), "Segoe UI", Roboto, sans-serif;
+
+  /* Apple Motion & Material Tokens */
+  --apple-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --apple-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --apple-blur: blur(24px) saturate(180%);
+  --apple-specular: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --radius-squircle: 24px;
+  --radius-squircle-lg: 28px;
+  --radius-squircle-xl: 32px;
 
   /* Tone 1 - Electric Agro-Tech Lime & Vivid Emerald */
   --primary: #059669;
@@ -70,55 +79,55 @@
 
 [data-theme="dark"],
 .dark {
-  /* Tone 1 - High-Intensity Cyber Lime & Neon Emerald */
+  /* Tone 1 - Vivid Emerald / Cyber Lime Accent (pops against neutral graphite) */
   --primary: #10b981;
   --primary-hover: #34d399;
   --primary-active: #059669;
-  --primary-light: rgba(16, 185, 129, 0.16);
-  --primary-text: #021a0f;
-  --primary-glow: rgba(16, 185, 129, 0.35);
+  --primary-light: rgba(16, 185, 129, 0.14);
+  --primary-text: #000000;
+  --primary-glow: rgba(16, 185, 129, 0.3);
 
-  /* Tone 2 - Electric Solar Gold / Harvest Core */
+  /* Tone 2 - Apple Solar Gold / Harvest Amber */
   --accent: #fbbf24;
   --accent-hover: #fcd34d;
   --accent-active: #f59e0b;
-  --accent-light: rgba(251, 191, 36, 0.14);
-  --accent-text: #1c1102;
+  --accent-light: rgba(251, 191, 36, 0.12);
+  --accent-text: #000000;
 
   /* Backward Compatibility Aliases */
   --accent-gold: var(--accent);
   --accent-gold-hover: var(--accent-hover);
   --accent-gold-light: var(--accent-light);
 
-  /* Deep Agro-Tech Slate Obsidian Canvas */
-  --bg-main: #060b08;         /* Deep obsidian carbon backdrop */
-  --bg-surface: #0c140f;      /* Sleek dark aero-slate surface */
-  --bg-card: #111d16;         /* Elevated card base with emerald tint */
-  --bg-card-hover: #17271e;   /* Reactive hover state */
-  --bg-subtle: #142219;       /* Secondary neutral slate */
-  --bg-glass: rgba(12, 20, 15, 0.86);
-  --bg-glass-card: rgba(17, 29, 22, 0.8);
+  /* Apple Deep Space & Neutral Graphite Canvas (Zero Muddy Green) */
+  --bg-main: #000000;         /* True Apple OLED Black */
+  --bg-surface: #0c0c0e;      /* Elevated Dark Titanium Surface */
+  --bg-card: #151518;         /* Apple System Neutral Zinc/Graphite Card */
+  --bg-card-hover: #1e1e23;   /* Reactive Graphite Hover */
+  --bg-subtle: #19191d;       /* Subtle Secondary Graphite */
+  --bg-glass: rgba(12, 12, 14, 0.78);
+  --bg-glass-card: rgba(21, 21, 24, 0.72);
 
-  /* Ultra-Crisp OLED Contrast Typography */
-  --text-main: #f3fcf6;       /* Radiant crisp white-mint */
-  --text-muted: #8fae9b;      /* High legibility tech sage */
-  --text-subtle: #5f806d;     /* Auxiliary technical info */
-  --text-inverse: #060b08;
+  /* Ultra-Crisp Apple Neutral Typography (Zero Green Tint, High Legibility) */
+  --text-main: #f4f4f7;       /* Pure Crisp Platinum White */
+  --text-muted: #a0a0ab;      /* Neutral Cool Gray */
+  --text-subtle: #70707c;     /* Secondary Technical Slate */
+  --text-inverse: #000000;
 
-  /* Cyber Agro Borders & Accents */
-  --border: #1a2f23;          /* Dark slate structural border */
-  --border-hover: #294d38;    /* Interactive border outline */
-  --border-focus: #10b981;    /* Glowing focus indicator */
-  --border-glass: rgba(16, 185, 129, 0.22);
+  /* Apple Hairline Glass Borders */
+  --border: rgba(255, 255, 255, 0.08);   /* Subtle 1px Hairline */
+  --border-hover: rgba(255, 255, 255, 0.2);
+  --border-focus: #10b981;
+  --border-glass: rgba(255, 255, 255, 0.12);
 
-  /* High-Performance Atmospheric Shadows */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.6);
-  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.55);
-  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.7);
-  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.8);
-  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.9);
-  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(26, 47, 35, 0.6);
-  --shadow-card-hover: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 0 1px #294d38, 0 0 20px rgba(16, 185, 129, 0.15);
+  /* Apple Deep Space Atmospheric Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.7);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.65);
+  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.75);
+  --shadow-lg: 0 18px 40px rgba(0, 0, 0, 0.85);
+  --shadow-xl: 0 28px 56px rgba(0, 0, 0, 0.95);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 0 24px rgba(16, 185, 129, 0.12);
 }
 
 /* ==========================================================================
@@ -423,19 +432,115 @@ body::-webkit-scrollbar,
   transform: scale(0.96);
 }
 
-/* Glassmorphism Accents (Applied deliberately to select key components) */
+/* Glassmorphism Accents (Apple Vision & macOS Frosted Glass) */
 .glass-panel {
   background-color: var(--bg-glass-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: var(--apple-blur);
+  -webkit-backdrop-filter: var(--apple-blur);
   border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm), var(--apple-specular);
 }
 
 .glass-nav {
   background-color: var(--bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: var(--apple-blur);
+  -webkit-backdrop-filter: var(--apple-blur);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), var(--apple-specular);
+}
+
+/* Apple Design System Utility Classes */
+.apple-gradient-text {
+  background: linear-gradient(135deg, var(--text-main) 15%, var(--primary) 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.apple-gradient-emerald {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.apple-gradient-gold {
+  background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 60%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.apple-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-squircle);
+  box-shadow: var(--shadow-card), var(--apple-specular);
+  transition: transform 0.3s var(--apple-ease),
+              box-shadow 0.3s var(--apple-ease),
+              border-color 0.25s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.apple-card:hover {
+  transform: translateY(-4px) scale(1.006);
+  box-shadow: var(--shadow-card-hover), var(--apple-specular);
+  border-color: var(--border-hover);
+}
+
+.apple-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background: var(--bg-glass-card);
+  backdrop-filter: var(--apple-blur);
+  -webkit-backdrop-filter: var(--apple-blur);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-xs), var(--apple-specular);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.apple-pill-btn {
+  border-radius: var(--radius-full) !important;
+  padding: 12px 28px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08), var(--apple-specular) !important;
+  transition: transform 0.22s var(--apple-ease),
+              box-shadow 0.22s var(--apple-ease),
+              background-color 0.2s ease !important;
+}
+
+.apple-pill-btn:hover {
+  transform: scale(1.025) translateY(-1px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14), var(--apple-specular) !important;
+}
+
+.apple-pill-btn:active {
+  transform: scale(0.975) translateY(0) !important;
+}
+
+.apple-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.apple-spotlight::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(16, 185, 129, 0.14), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 
@@ -750,6 +855,35 @@ html, body {
     flex-direction: column !important;
     align-items: stretch !important;
   }
+}
+
+/* Brand Logo Adaptations for Light & Dark Themes */
+.logo-theme-dark {
+  display: none !important;
+}
+.logo-theme-light {
+  display: block !important;
+}
+
+[data-theme="dark"] .logo-theme-dark,
+.dark .logo-theme-dark {
+  display: block !important;
+}
+
+[data-theme="dark"] .logo-theme-light,
+.dark .logo-theme-light {
+  display: none !important;
+}
+
+/* Hide Next.js Dev Indicator Badge ("N" button) */
+nextjs-portal,
+div[data-next-badge],
+div[data-nextjs-toast],
+div[data-nextjs-dev-tools],
+#nextjs-dev-tools {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 

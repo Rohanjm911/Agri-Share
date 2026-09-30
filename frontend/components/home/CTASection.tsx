@@ -25,46 +25,43 @@ export function CTASection() {
       <div className="container">
         <div
           style={{
-            padding: "clamp(36px, 6vw, 64px)",
+            padding: "clamp(40px, 6vw, 68px)",
             backgroundColor: "var(--primary)",
             color: "#ffffff",
-            borderRadius: "var(--radius-lg)",
+            borderRadius: "var(--radius-squircle-lg)",
             textAlign: "center",
-            boxShadow: "var(--shadow-lg)",
+            boxShadow: "0 24px 50px -12px rgba(5, 150, 105, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
             border: "1px solid var(--primary-hover)",
+            position: "relative",
+            overflow: "hidden",
           }}
         >
-          <div style={{ maxWidth: "660px", margin: "0 auto" }}>
+          <div style={{ maxWidth: "660px", margin: "0 auto", position: "relative", zIndex: 1 }}>
             <div
+              className="apple-badge"
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "5px 14px",
-                borderRadius: "var(--radius-full)",
                 backgroundColor: "rgba(255, 255, 255, 0.15)",
-                fontSize: "0.85rem",
-                fontWeight: "700",
+                borderColor: "rgba(255, 255, 255, 0.25)",
                 color: "#ffffff",
                 marginBottom: "20px",
               }}
             >
-              <Sparkles size={16} style={{ color: "var(--accent)" }} />
+              <Sparkles size={16} style={{ color: "#fcd34d" }} />
               <span>Empowering Indian Kisans & Machinery Owners</span>
             </div>
 
             <h2
               style={{
-                fontSize: "clamp(2.2rem, 4.5vw, 3.2rem)",
+                fontSize: "clamp(2.2rem, 4.5vw, 3.4rem)",
                 fontWeight: "900",
-                lineHeight: "1.15",
-                letterSpacing: "-0.03em",
+                lineHeight: "1.12",
+                letterSpacing: "-0.04em",
                 color: "#ffffff",
                 marginBottom: "16px",
               }}
             >
               Maximize Crop Output. <br />
-              Save on Capital Equipment Costs.
+              Save on Machinery Costs.
             </h2>
 
             <p
@@ -72,6 +69,7 @@ export function CTASection() {
                 fontSize: "1.1rem",
                 color: "rgba(255, 255, 255, 0.9)",
                 lineHeight: "1.65",
+                letterSpacing: "-0.01em",
                 marginBottom: "36px",
               }}
             >
@@ -90,12 +88,13 @@ export function CTASection() {
             >
               <Link
                 href="/register"
-                className="btn btn-lg"
+                className="btn btn-lg apple-pill-btn"
                 style={{
                   backgroundColor: "#ffffff",
-                  color: "#0f3d24",
+                  color: "#062413",
                   fontWeight: "800",
                   border: "1px solid #ffffff",
+                  boxShadow: "0 6px 20px rgba(0, 0, 0, 0.15)",
                 }}
               >
                 <span>Create Free Account</span>
@@ -103,11 +102,12 @@ export function CTASection() {
               </Link>
               <Link
                 href="/equipment"
-                className="btn btn-lg"
+                className="btn btn-lg apple-pill-btn"
                 style={{
-                  backgroundColor: "transparent",
+                  backgroundColor: "rgba(255, 255, 255, 0.12)",
+                  backdropFilter: "blur(12px)",
                   color: "#ffffff",
-                  border: "1px solid rgba(255, 255, 255, 0.4)",
+                  border: "1px solid rgba(255, 255, 255, 0.35)",
                   fontWeight: "700",
                 }}
               >

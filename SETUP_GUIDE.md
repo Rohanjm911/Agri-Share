@@ -1,4 +1,8 @@
-# 🚜 AgriShare — Project Startup & Setup Guide
+<div align="center">
+  <img src="assets/logo.png" alt="AgriShare Logo" width="160" />
+
+  # 🚜 AgriShare — Project Startup & Setup Guide
+</div>
 
 This guide walks you through setting up and running **AgriShare** (both Backend and Frontend) on your local machine.
 

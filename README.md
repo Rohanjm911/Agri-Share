@@ -1,12 +1,33 @@
-🚜 AgriShare
+<div align="center">
+  <img src="assets/banner.svg" alt="AgriShare Animated Banner" width="100%" />
 
-Agricultural Equipment & Machinery Rental Marketplace
+  <br />
+  <br />
 
-AgriShare is a web-based agricultural equipment rental platform that connects farmers who need machinery with equipment owners who want to rent out their idle machines.
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com?font=Outfit&weight=700&size=22&duration=2400&pause=1100&color=10B981&center=true&vCenter=true&width=650&lines=Rent+Heavy+Farm+Machinery+Smarter;Empowering+Indian+Kisans+Across+Districts;Direct+Peer-to-Peer+Farm+Equipment+Sharing;Zero+Brokerage+%E2%80%A2+100%25+Verified+Machinery" alt="Typing SVG Animation" />
+  </a>
+
+  <br />
+
+  [![Frontend](https://img.shields.io/badge/Frontend-Next.js%2015-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+  [![Backend](https://img.shields.io/badge/Backend-Django%20REST-092E20?style=for-the-badge&logo=django)](https://www.djangoproject.com/)
+  [![Database](https://img.shields.io/badge/Database-SQLite%20%2F%20PostgreSQL-336791?style=for-the-badge&logo=postgresql)](https://sqlite.org/)
+  [![License](https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge)](LICENSE)
+
+  <br />
+  <br />
+  <img src="assets/animated-divider.svg" alt="Divider" width="100%" />
+</div>
+
+<br />
+
+**AgriShare** is a modern web-based agricultural equipment rental platform that connects farmers who need machinery with equipment owners who want to rent out their idle machines.
 
 The platform makes agricultural machinery more accessible by allowing farmers to find, compare, and book equipment locally without the need to purchase expensive machinery or depend on middlemen.
 
----
+<br />
+<img src="assets/animated-divider.svg" alt="Divider" width="100%" />
 
 📌 Project Status
 
@@ -44,7 +65,8 @@ AgriShare solves this problem by creating a rental marketplace where:
 - Manage rental requests
 - Track bookings and earnings
 
----
+<br />
+<img src="assets/animated-divider.svg" alt="Divider" width="100%" />
 
 ✨ Key Features
 
