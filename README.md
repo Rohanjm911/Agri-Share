@@ -45,6 +45,83 @@ Current status: Fully functional MVP with automated testing.
 
 ---
 
+## 🖼️ Application UI Showcase & Screenshots
+
+AgriShare features a production-ready, ultra-responsive web interface styled with modern agricultural aesthetics, including dual **Dark / Light mode** support, live equipment search, responsive cards, and role-based workflows for both equipment owners and renters.
+
+### 🌟 1. Homepage & Platform Overview
+> Dynamic hero section showcasing verified farm machinery, live district-level equipment availability, and real-time kisan metrics.
+
+<div align="center">
+  <img src="assets/screenshots/01_homepage.png" alt="AgriShare Homepage Hero" width="100%" />
+</div>
+
+<br />
+
+### 🚜 2. Agricultural Machinery Marketplace & Directory
+> Full catalog search with category pills (Tractors, Combines, Tillage, Seeders), condition filters, district search, and maximum daily rental rates in Indian Rupees (₹).
+
+<div align="center">
+  <img src="assets/screenshots/02_marketplace.png" alt="AgriShare Equipment Marketplace" width="100%" />
+</div>
+
+<br />
+
+### 🔍 3. Equipment Specifications & Booking Request Flow
+> Transparent machine profile displaying high-definition photos, technical specs, manufacturing year, verified owner profile, and transparent daily rental + refundable security deposit breakdown.
+
+<div align="center">
+  <img src="assets/screenshots/03_equipment_details.png" alt="Machinery Specifications and Rental Request" width="100%" />
+</div>
+
+<br />
+
+### 👥 4. Role-Based Dashboards & Rental Operations
+
+<div align="center">
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <b>🚜 Equipment Owner Dashboard</b><br />
+      <sub>Total earnings in ₹, fleet overview, active listings & incoming requests</sub><br /><br />
+      <img src="assets/screenshots/06_owner_dashboard.png" alt="Equipment Owner Dashboard" width="100%" />
+    </td>
+    <td width="50%" align="center">
+      <b>📋 Renter Booking Contracts & Reviews</b><br />
+      <sub>Track reservation status (Pending, Approved, Completed) & leave verified ratings</sub><br /><br />
+      <img src="assets/screenshots/08_renter_bookings.png" alt="Renter Bookings Management" width="100%" />
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <b>⚙️ Machinery Inventory Management</b><br />
+      <sub>Manage farm machinery, per-day rental rates, and real-time machine availability</sub><br /><br />
+      <img src="assets/screenshots/07_my_equipment.png" alt="My Equipment Inventory" width="100%" />
+    </td>
+    <td width="50%" align="center">
+      <b>🔑 Authentication & Quick Demo Kisan Accounts</b><br />
+      <sub>Secure JWT authentication with 1-click preset login for Punjab, Gujarat & Haryana kisans</sub><br /><br />
+      <img src="assets/screenshots/04_login.png" alt="Authentication and Quick Login" width="100%" />
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <b>✨ Interactive Kisan Onboarding Guide</b><br />
+      <sub>Step-by-step guided modal helping first-time farmers and machinery owners onboard</sub><br /><br />
+      <img src="assets/screenshots/05_kisan_onboarding_guide.png" alt="Kisan Onboarding Guide" width="100%" />
+    </td>
+    <td width="50%" align="center">
+      <b>☀️ Agricultural Light Theme</b><br />
+      <sub>Clean, daylight-optimized theme designed for outdoor sunlight readability in the field</sub><br /><br />
+      <img src="assets/screenshots/09_light_mode_marketplace.png" alt="Light Mode Marketplace View" width="100%" />
+    </td>
+  </tr>
+</table>
+</div>
+
+<br />
+<img src="assets/animated-divider.svg" alt="Divider" width="100%" />
+
 🌾 Why AgriShare?
 
 Agricultural machinery can be expensive to purchase and may remain unused for long periods.
@@ -222,6 +299,10 @@ Renters can view:
 - Pending requests
 - Rental activity
 
+<div align="center">
+  <img src="assets/screenshots/06_owner_dashboard.png" alt="Owner Dashboard Metrics" width="90%" />
+</div>
+
 ---
 
 🎨 Frontend
@@ -246,6 +327,10 @@ Harvest Amber  → #d97706
 
 Heading Font  → Outfit
 Body Font     → Inter
+
+<div align="center">
+  <img src="assets/screenshots/09_light_mode_marketplace.png" alt="AgriShare Light Mode UI" width="90%" />
+</div>
 
 ---
 
